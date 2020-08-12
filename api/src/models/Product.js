@@ -1,4 +1,8 @@
 const { DataTypes } = require('sequelize');
+
+//const Category = require(./category.js) 
+
+
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -58,4 +62,8 @@ module.exports = (sequelize) => {
     }
     
   });
+  
+  Product.hasMany(Category);  //Relaciones (uno a muchos)
+  Product.belongsTo(Category);
+
 };
