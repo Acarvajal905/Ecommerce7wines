@@ -1,11 +1,15 @@
 import React from 'react';
 import Producto from './components/producto.js'
+import { BrowserRouter } from 'react-router-dom'
+import Searchbar from './components/searchbar.js'
+
 
 function App() {
   return (
-    <React.Fragment>
+    <BrowserRouter>
+      <Searchbar />
       <Producto />
-    </React.Fragment>
+    </BrowserRouter>
 
 
   );

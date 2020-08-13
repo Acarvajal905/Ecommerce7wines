@@ -5,7 +5,7 @@ import "../Styles/producto.css"
 export const Producto = ({ name, image, description, price, stock, content, percentage, country, quantity, colour }) => {
     return (
         <div class="box1">
-            
+
             <img class="image">{image}</img>
 
             <div class="box2">
