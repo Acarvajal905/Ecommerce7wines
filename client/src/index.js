@@ -9,7 +9,6 @@ ReactDOM.render(
   <React.BrowserRouter>
     <App />
   </React.BrowserRouter>,
-
   document.getElementById('root')
 );
 
