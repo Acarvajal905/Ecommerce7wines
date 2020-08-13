@@ -1,0 +1,35 @@
+.tittle {
+    background-color: blue;
+}
+
+.image {
+    height: 300px;
+    width: 300px;
+    margin: 20px;
+    border: black;
+}
+
+.box1{
+    display: flex;
+}
+
+.box2{
+    width: 500px;
+    margin: 20px;
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.price {
+    height: auto;
+    width: auto;
+    border: black;
+    background-color: yellowgreen;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
