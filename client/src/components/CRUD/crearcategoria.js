@@ -8,4 +8,5 @@ export default function NewCategory(props) {
             <input type='submit' value='AGREGAR CATEGORIA' />
         </form>
     )
+
 }
