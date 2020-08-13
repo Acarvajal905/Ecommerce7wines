@@ -1,11 +1,12 @@
 import React from 'react';
 import Producto from './components/producto.js'
+import BrowserRouter from 'react-router-dom'
 
 function App() {
   return (
-    <React.Fragment>
+    <React.BrowserRouter>
       <Producto />
-    </React.Fragment>
+    </React.BrowserRouter>
 
 
   );
