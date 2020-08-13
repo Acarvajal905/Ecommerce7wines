@@ -1,12 +1,15 @@
 import React from 'react';
 import Producto from './components/producto.js'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom'
+import Searchbar from './components/searchbar.js'
+
 
 function App() {
   return (
-    <React.BrowserRouter>
+    <BrowserRouter>
+      <Searchbar />
       <Producto />
-    </React.BrowserRouter>
+    </BrowserRouter>
 
 
   );
