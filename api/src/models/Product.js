@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 
-//const Category = require(./category.js) 
+const Category = require('./category.js')
 
 
 // Exportamos una funcion que define el modelo
@@ -13,25 +13,25 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     description: {
-      type : DataTypes.STRING, //descripcion del producto
+      type: DataTypes.STRING, //descripcion del producto
     },
     price: {
-      type : DataTypes.DECIMAL, //(o INTEGER LUEGO ME AYUDAN A DECIDIR)
+      type: DataTypes.DECIMAL, //(o INTEGER LUEGO ME AYUDAN A DECIDIR)
       field: "price",
       allowNull: false
     },
-    stock : {
-      type : DataTypes.INTEGER, //cantidad de productos en almacen
+    stock: {
+      type: DataTypes.INTEGER, //cantidad de productos en almacen
       field: "stock",
       allowNull: false
     },
     categories: {
-      type : DataTypes.TEXT,  //(como es product le echare un ojo al diagrama ER en los catalogos)
+      type: DataTypes.TEXT,  //(como es product le echare un ojo al diagrama ER en los catalogos)
       field: "categories",
       allowNull: false
     },
     image: {
-      type : DataTypes.BLOB,  //imagen del producto (TAMAÑO POR DEFINIR)
+      type: DataTypes.BLOB,  //imagen del producto (TAMAÑO POR DEFINIR)
       field: "image",
       allowNull: false
     },
@@ -60,10 +60,10 @@ module.exports = (sequelize) => {
       field: 'colour',
       allowNull: false
     }
-    
+
   });
-  
-  Product.hasMany(Category);  //Relaciones (uno a muchos)
-  Product.belongsTo(Category);
+
+  // Product.hasMany(Category);  //Relaciones (uno a muchos)
+  // Product.belongsTo(Category);
 
 };
