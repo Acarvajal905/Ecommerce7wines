@@ -8,5 +8,21 @@ server.get('/', (req, res, next) => {
 		})
 		.catch(next);
 });
+//S17 Crea ruta para agregar categorias de un producto.
+server.post('/:idProducto/category/:idCategory', (req, res) => {
+	Product.findOne({
+		where: { name: req.params.idProduct }
+	}).then(function (obj) {
+		if (obj) return obj.update({ Category: req.params.idCategory });
+	})
+});
+//S17 Crea ruta para agregar categorias de un producto.
+server.delete('/:idProducto/category/:idCategory', (req, res) => {
+	Product.findOne({
+		where: { name: req.params.idProduct }
+	}).then(function (obj) {
+		if (obj) return obj.update({ Category: null });
+	})
+});
 
 module.exports = server;
