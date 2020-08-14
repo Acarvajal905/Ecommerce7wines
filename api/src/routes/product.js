@@ -1,6 +1,7 @@
 const server = require('express').Router();
 const { Product } = require('../db.js');
 
+//get a /products --> devuelvue un array vacio.
 server.get('/', (req, res, next) => {
 	Product.findAll()
 		.then( function (products) {
