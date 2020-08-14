@@ -44,5 +44,19 @@ server.put("/:id" , (req, res) => {
        return res.send(obj);
     })
 });
+GET /products/categoria/:nombreCat
+
+//S22
+
+server.get("/:nombreCat" , (req, res) => {
+    Category.findAll({
+        where: { name: req.params.name }
+    }).then(function (obj) {
+        if(obj) {
+            return res.send(obj);
+        }
+    })
+})
+
 
 module.exports = server;
