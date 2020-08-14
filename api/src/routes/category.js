@@ -1,6 +1,8 @@
 const server = require('express').Router();
 const { Category } = require('../db.js');
 
+
+//Devuelve un array con las categorias.
 server.get('/', (req, res, next) => {
 	Category.findAll()
 		.then((categorys) => {
@@ -22,15 +24,16 @@ server.post('/', (req, res, next) => {
     .catch(next);
 });
 
-//S19
-
+//S19 Borra una categoria.
 server.delete('/:id', (req, res) => {
-    Category.findOne({
-        where: { id: req.params.id }
-    }).then(function (obj) {
-        if (obj) return obj.update({ Category: null });
+    Category.destroy({
+        where: {id: req.params.id}
+    }).then(function (obj){
+        if(obj === 1){
+            res.json({ message: 'Categoria borrada'});
+        }
     })
-});
+})
 
 //S20
 
