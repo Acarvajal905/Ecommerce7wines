@@ -1,26 +1,32 @@
 import React from 'react';
-import Producto from "./producto.js"; /* Ajustar direccion del componente producto */
+import ProductCard from "./productcard"; /* Ajustar direccion del componente producto */
 
-export default function Catalogo(props){ /* Propiedades del modelo producto consultado desde la bd*/
-    return (
-    <div>{
-        props.map(v =>   /*Capaz haya que reagustar las forma en que recibe las props de la bd */
-            <Product
-           name = {v.name}
-           categories = {v.categories}
-           price = {v.price}
-           description = {v.description}
-           stock = {v.stock}
-           image = {v.image}
-           content = {v.content}
-           percentage = {v.percentage}
-           country = {v.country}
-           colour = {v.colour}
-           quantity = {v.quantity}
-           /> 
-           )
-        }
-        </div>
-    );
+export default function Catalogo({producto , categoria}){ /* recibe un array de objetos de todo los productos y una categoria*/
+    if(producto && categoria){
+        let ProductoEnCategoria = producto.filter(producto => producto.categories == categoria)
 
+         /* devuelvo un productcard por cada producto que machea con categoria */
+    return ( 
+        <div>{
+            ProductoEnCategoria.map(v =>   /*Capaz haya que reagustar las forma en que recibe las props de la bd */
+                <ProductCard 
+               name = {v.name}
+               categories = {v.categories}
+               price = {v.price}
+               description = {v.description}
+               stock = {v.stock}
+               image = {v.image}
+               content = {v.content}
+               percentage = {v.percentage}
+               country = {v.country}
+               colour = {v.colour}
+               quantity = {v.quantity}
+               /> 
+               )
+            }
+            </div>
+        );
+    
+    }else 
+    return <div>Not Category</div> 
 };
