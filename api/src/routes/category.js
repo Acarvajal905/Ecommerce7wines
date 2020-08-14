@@ -58,4 +58,5 @@ server.get("/:nombreCat" , (req, res) => {
     })
 })
 
+
 module.exports = server;
