@@ -28,5 +28,6 @@ export default function Update(props) {
         <label>Sube aqui la imagen del producto</label>
         <input type='file' id='imagen' name='imagen' />
         <input type='submit' value='ACTUALIZAR' />
+
     </form>
 }
