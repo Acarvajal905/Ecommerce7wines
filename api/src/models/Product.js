@@ -1,15 +1,12 @@
 const { DataTypes } = require('sequelize');
 
-const Category = require('./category.js')
-
-
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('product', {
-    name: {
-      type: DataTypes.STRING,
+  const Producto = sequelize.define('product', {
+    name: {  
+      type: DataTypes.STRING, //podemos usarlo para el url combinado con su id
       allowNull: false
     },
     description: {
@@ -17,53 +14,58 @@ module.exports = (sequelize) => {
     },
     price: {
       type: DataTypes.DECIMAL, //(o INTEGER LUEGO ME AYUDAN A DECIDIR)
-      field: "price",
       allowNull: false
     },
     stock: {
       type: DataTypes.INTEGER, //cantidad de productos en almacen
-      field: "stock",
       allowNull: false
     },
     categories: {
       type: DataTypes.TEXT,  //(como es product le echare un ojo al diagrama ER en los catalogos)
-      field: "categories",
       allowNull: false
     },
     image: {
       type: DataTypes.BLOB,  //imagen del producto (TAMAÑO POR DEFINIR)
-      field: "image",
       allowNull: false
     },
     quantity: {    //cantidad para comprar (creemos util en el carrito)
       type: DataTypes.INTEGER,
-      field: 'quantity',
       allowNull: false
     },
     content: { //Datos de la cantidad en mililitros (ml) o centimetros cubicos (cc)
       type: DataTypes.INTEGER,
-      field: 'content',
       allowNull: false
     },
     percentage: {  //Grado de alcohol del vino
       type: DataTypes.INTEGER,
-      field: 'percentage',
       allowNull: false
     },
     country: {  //Pais de origen 
       type: DataTypes.TEXT,
-      field: 'country',
       allowNull: false
     },
     colour: { //(color especifico del vino)
       type: DataTypes.TEXT,
-      field: 'colour',
       allowNull: false
+    },
+    url: { //(color especifico del vino)
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    route: { //RUTA DEL PRODUCTO
+      type: DataTypes.VIRTUAL,
+      get() {                          //NO SE SI AGREGARLE TAMBIEN EL ID ASI "+ this.getDataValur("id")"
+        return "/product" + this.getDataValue("name");
+      }
     }
 
   });
 
-  // Product.hasMany(Category);  //Relaciones (uno a muchos)
-  // Product.belongsTo(Category);
+  Producto.addHook("beforeValidate", (product) => {
+    product.url = product.name.replace(/\s+/g,"_").replace(/\W/g,"")
+  })
+ //cree un hook para la url para remplazar espacios y los valores como simbolos y caracterers raros
 
 };
+
+
