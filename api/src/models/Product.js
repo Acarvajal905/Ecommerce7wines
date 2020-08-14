@@ -53,9 +53,9 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     route: { //RUTA DEL PRODUCTO
-      type: DataTypes.VIRTUAL,
+      type: DataTypes.VIRTUAL, 
       get() {                          //NO SE SI AGREGARLE TAMBIEN EL ID ASI "+ this.getDataValur("id")"
-        return "/product" + this.getDataValue("name");
+        return "/product" + this.getDataValue("name") + this.getDataValue("id") ;
       }
     }
 

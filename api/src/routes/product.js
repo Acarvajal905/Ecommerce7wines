@@ -11,7 +11,7 @@ server.get('/', (req, res, next) => {
 //S17 Crea ruta para agregar categorias de un producto.
 server.post('/:idProducto/category/:idCategory', (req, res) => {
 	Product.findOne({
-		where: { name: req.params.idProduct } //buscas un name pero estas requiriendo el id del producto no deberia requerir el name?
+		where: { id: req.params.idProduct }
 	}).then(function (obj) {
 		if (obj) return obj.update({ Category: req.params.idCategory });
 	})
@@ -19,7 +19,7 @@ server.post('/:idProducto/category/:idCategory', (req, res) => {
 //S17 Crea ruta para sacar categorias de un producto.
 server.delete('/:idProducto/category/:idCategory', (req, res) => {
 	Product.findOne({
-		where: { name: req.params.idProduct } //buscas un name pero estas requiriendo el id del producto no deberia requerir el name?
+		where: { id: req.params.idProduct }
 	}).then(function (obj) {
 		if (obj) return obj.update({ Category: null });
 	})
