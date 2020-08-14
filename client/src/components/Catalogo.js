@@ -27,6 +27,28 @@ export default function Catalogo({producto , categoria}){ /* recibe un array de 
             </div>
         );
     
-    }else 
+    }if (producto && !categoria){
+        return ( 
+            <div>{
+                producto.map(v =>  
+                    <ProductCard 
+                      name = {v.name}
+                      categories = {v.categories}
+                      price = {v.price}
+                      description = {v.description}
+                      stock = {v.stock}
+                      image = {v.image}
+                      content = {v.content}
+                      percentage = {v.percentage}
+                      country = {v.country}
+                      colour = {v.colour}
+                      quantity = {v.quantity}
+                   /> 
+                   )
+                }
+            </div>
+        );
+    }
+    else 
     return <div>Not Category</div> 
 };
