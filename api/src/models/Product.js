@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER, //cantidad de productos en almacen
       allowNull: false
     },
-    categories: {
+    categorie: {
       type: DataTypes.TEXT,  //(como es product le echare un ojo al diagrama ER en los catalogos)
       allowNull: false
     },

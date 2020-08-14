@@ -1,9 +1,30 @@
 const server = require('express').Router();
 const { Category } = require('../db.js');
 
+server.get('/', (req, res, next) => {
+	Category.findAll()
+		.then((categorys) => {
+			res.send(categorys);
+		})
+		.catch(next);
+
+});
+
+//S18 Crea una categoría nueva.
+server.post('/', (req, res, next) => {
+	Category.create({
+        name: req.body.name,
+        description: req.body.description,
+    })
+    .then((category) => {
+        return res.status(201).send(category);
+    })
+    .catch(next);
+});
+
 //S19
 
-server.delete('/products/category/:id', (req, res) => {
+server.delete('/:id', (req, res) => {
     Category.findOne({
         where: { id: req.params.id }
     }).then(function (obj) {
@@ -13,12 +34,15 @@ server.delete('/products/category/:id', (req, res) => {
 
 //S20
 
-server.put("/products/category/:id" , (req, res) => {
+server.put("/:id" , (req, res) => {
     Category.findOne({
         where: { id: req.params.id}
     }).then(function(obj) {
         if(obj) return obj.update({
-            Category: req.params.Category 
+            Category: req.params.Category
         })
+       return res.send(obj);
     })
 });
+
+module.exports = server;
