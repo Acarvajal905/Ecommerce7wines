@@ -5,6 +5,10 @@ import Searchbar from './components/searchbar.js'
 import CreateProduct from './components/CRUD/crearproducto.js'
 import Catalogo from "./components/Catalogo.js"
 import { Route } from "react-router-dom"
+import CreateCategory from "./components/CRUD/crearcategoria.js"
+import Update from "./components/CRUD/actualizarproducto.js"
+import DeleteProduct from "./components/CRUD/borrarproducto.js"
+import Admin from "./components/CRUD/admin.js"
 
 let tipo = "tinto";
 
@@ -44,7 +48,26 @@ function App() {
   return (
     <BrowserRouter>
       <Searchbar />
-      <CreateProduct/>
+
+      <Route
+      exact path="/admin" component={Admin}
+      />
+
+      <Route
+      exact path='/admin/products/crearproducto' component={CreateProduct}
+      />
+
+      <Route
+      exact path='/admin/products/crearcategoria' component={CreateCategory}
+      />
+
+      <Route
+      exact path='/admin/products/borrarproducto' component={DeleteProduct}
+      />
+
+      <Route
+      exact path='/admin/products/actualizarproducto' component={Update}
+      />
 
       <Route
         exact path='/products/:id'

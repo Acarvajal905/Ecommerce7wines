@@ -1,23 +1,20 @@
 import React from 'react';
 
-export default function  DeleteProduct(props) {
-    return(
-    <form onSubmit = {props.delete}>
-        <div>
-
-            <h1>ELIMINAR Producto</h1>
-            
-        {/* <select onChange = {(x) =>   
-            (x.target.value)}> */}
-
-            <label>ID de producto:</label>
-            
-            <input type= 'text' value = {product.category.id}></input> 
-        {/* </select> */}
-
-            <input type="submit" value="ELIMINAR PRODUCTO" /> 
-            
-        </div>
-    </form>
-    )
+export default function  DeleteProduct() {
+    const handleSumit = function(e) {
+        e.preventDefault();
+        /* aca ba la funcion para editar la bd, eliminando un producto */
+    }
+    return (
+        <from onSubmit = {handleSumit}>
+            <div>
+                <h1>Eliminar Producto</h1>
+            </div>
+            <div>
+            <input type= 'text' placeholder = 'Producto a eliminar' name = 'Eliminar'></input>
+            </div>
+            <input type='submit' value='ELIMINAR'/>
+        </from>
+    )    
+    
 };
