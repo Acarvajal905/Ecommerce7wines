@@ -20,7 +20,7 @@ export default function Update() {
         }
 
      /* Aca va la funcion para traer los producto de la bd */
-
+           //arreglo de prueba//
       let productobd = [{name: "vino1",
       categories: ["tinto"],
       price: "$10",
@@ -74,9 +74,12 @@ export default function Update() {
         productoacambiar[0].description = prod.description;
       }if (prod.stock){
         productoacambiar[0].stock = prod.stock;
-      }
+      };
+
+      // funcion para enviar el put a la bd//
       console.log(productoacambiar);
      };
+     
     
      
      return ( 
