@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
     },
     description: {
       type: DataTypes.STRING, //descripcion del producto
+      allowNull: false
     },
     price: {
       type: DataTypes.DECIMAL, //(o INTEGER LUEGO ME AYUDAN A DECIDIR)
@@ -18,10 +19,6 @@ module.exports = (sequelize) => {
     },
     stock: {
       type: DataTypes.INTEGER, //cantidad de productos en almacen
-      allowNull: false
-    },
-    categorie: {
-      type: DataTypes.TEXT,  //(como es product le echare un ojo al diagrama ER en los catalogos)
       allowNull: false
     },
     image: {
