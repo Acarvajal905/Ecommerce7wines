@@ -32,11 +32,7 @@ export default function CreateProduct(){
       </div>
       <div>
         <label>Imagen:</label>
-        <input type= 'file' placeholder = 'montar imagen' name = 'image'></input> 
-      </div>
-      <div>
-        <label>Cantidad:</label>
-        <input type= 'text' placeholder = 'Cantindad' name = 'quantity'></input>
+        <input type= 'text' placeholder = 'montar imagen' name = 'image'></input> 
       </div>
       <div>
         <label>Contenido:</label>
