@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from "./productcard"; /* Ajustar direccion del componente producto */
+import "../Styles/Cards.css"
 
 export default function Catalogo({producto , categoria}){ /* recibe un array de objetos de todo los productos y una categoria*/
     if(producto && categoria){
@@ -7,7 +8,7 @@ export default function Catalogo({producto , categoria}){ /* recibe un array de 
 
          /* devuelvo un productcard por cada producto que machea con categoria */
     return ( 
-        <div>{
+        <div >{
             ProductoEnCategoria.map(v =>   /*Capaz haya que reagustar las forma en que recibe las props de la bd */
                 <ProductCard 
                name = {v.name}
@@ -29,7 +30,7 @@ export default function Catalogo({producto , categoria}){ /* recibe un array de 
     
     }if (producto && !categoria){
         return ( 
-            <div>{
+            <div class="box5">{
                 producto.map(v =>  
                     <ProductCard 
                       name = {v.name}

@@ -1,0 +1,28 @@
+.box3 {
+    background-color: blue;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 185px;
+    height: 237px;
+}
+
+.box5 {
+    background-color: green;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4 , auto);
+    align-items: start;
+    justify-content: space-around;
+}
+
+.imagenF {
+    width: 141px;
+    height: 131px;
+    border: 1px solid black;
+}
+
+.navbar {
+    flex-direction: row-reverse;
+}
