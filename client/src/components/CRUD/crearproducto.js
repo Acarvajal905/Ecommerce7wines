@@ -6,8 +6,8 @@ export default function CreateProduct(){
     e.preventDefault();
 
     const x = e.target
-
-    let Creado = {
+    //producto creado por el formulario
+    let Creado = { 
       name: x.name.value,
       description: x.description.value,
       price: x.price.value,
