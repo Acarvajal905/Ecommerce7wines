@@ -2,6 +2,8 @@ import React from 'react';
 import Producto  from './components/producto.js'
 import { BrowserRouter } from 'react-router-dom'
 import Searchbar from './components/searchbar.js'
+import Home from './components/Home.js'
+import NavBar from './components/NavBar.js'
 import CreateProduct from './components/CRUD/crearproducto.js'
 import Catalogo from "./components/Catalogo.js"
 import { Route } from "react-router-dom"
@@ -23,6 +25,7 @@ let articulo = [{name: "vino1",
   country: "argentina",
   colour: "borboña",
   quantity: "nose"},
+  
   {name: "vino2",
   categories: "tinto",
   price: "$10",
@@ -33,7 +36,79 @@ let articulo = [{name: "vino1",
   percentage: "10%",
   country: "argentina",
   colour: "borboña",
-  quantity: "nose"}];
+  quantity: "nose"},
+
+  {name: "vino3",
+  categories: "tinto",
+  price: "$10",
+  description: "nadan",
+  stock: 2,
+  image: "aca hay una foto",
+  content: "750cc",
+  percentage: "10%",
+  country: "argentina",
+  colour: "borboña",
+  quantity: "nose"},{name: "vino4",
+  categories: "tinto",
+  price: "$10",
+  description: "nadan",
+  stock: 2,
+  image: "aca hay una foto",
+  content: "750cc",
+  percentage: "10%",
+  country: "argentina",
+  colour: "borboña",
+  quantity: "nose"},{name: "vino5",
+  categories: "tinto",
+  price: "$10",
+  description: "nadan",
+  stock: 2,
+  image: "aca hay una foto",
+  content: "750cc",
+  percentage: "10%",
+  country: "argentina",
+  colour: "borboña",
+  quantity: "nose"},{name: "vino5",
+  categories: "tinto",
+  price: "$10",
+  description: "nadan",
+  stock: 2,
+  image: "aca hay una foto",
+  content: "750cc",
+  percentage: "10%",
+  country: "argentina",
+  colour: "borboña",
+  quantity: "nose"},{name: "vino6",
+  categories: "tinto",
+  price: "$10",
+  description: "nadan",
+  stock: 2,
+  image: "aca hay una foto",
+  content: "750cc",
+  percentage: "10%",
+  country: "argentina",
+  colour: "borboña",
+  quantity: "nose"},{name: "vino7",
+  categories: "tinto",
+  price: "$10",
+  description: "nadan",
+  stock: 2,
+  image: "aca hay una foto",
+  content: "750cc",
+  percentage: "10%",
+  country: "argentina",
+  colour: "borboña",
+  quantity: "nose"},{name: "vino7",
+  categories: "tinto",
+  price: "$10",
+  description: "nadan",
+  stock: 2,
+  image: "aca hay una foto",
+  content: "750cc",
+  percentage: "10%",
+  country: "argentina",
+  colour: "borboña",
+  quantity: "nose"},];
   
 function onFilter(id) {
     let productoelegido = articulo.filter(p => p.name === id);
@@ -48,37 +123,32 @@ function App() {
   return (
     <BrowserRouter>
       <Searchbar />
+      <Home />
+      <NavBar />
 
       <Route
-      exact path="/admin" component={Admin}
-      />
+      exact path="/admin" component={Admin}/>
 
       <Route
-      exact path='/admin/products/crearproducto' component={CreateProduct}
-      />
+      exact path='/admin/products/crearproducto' component={CreateProduct}/>
 
       <Route
-      exact path='/admin/products/crearcategoria' component={CreateCategory}
-      />
+      exact path='/admin/products/crearcategoria' component={CreateCategory}/>
 
       <Route
-      exact path='/admin/products/borrarproducto' component={DeleteProduct}
-      />
+      exact path='/admin/products/borrarproducto' component={DeleteProduct}/>
 
       <Route
-      exact path='/admin/products/actualizarproducto' component={Update}
-      />
+      exact path='/admin/products/actualizarproducto' component={Update}/>
 
       <Route
         exact path='/products/:id'
         render={({match}) => 
-        <Producto props={onFilter(match.params.id)}/>}
-      />
+        <Producto props={onFilter(match.params.id)}/>}/>
 
       <Route
         exact path="/products"
-        render={() => <Catalogo producto={articulo} />}
-      />
+        render={() => <Catalogo producto={articulo} />}/>
     </BrowserRouter>
 
 
