@@ -1,7 +1,6 @@
 import React from 'react';
 import Producto  from './components/producto.js'
 import { BrowserRouter } from 'react-router-dom'
-import Searchbar from './components/searchbar.js'
 import Home from './components/Home.js'
 import NavBar from './components/NavBar.js'
 import CreateProduct from './components/CRUD/crearproducto.js'
@@ -122,30 +121,17 @@ function onFilter(id) {
 function App() {
   return (
     <BrowserRouter>
-      <Searchbar />
       <Home />
       <NavBar />
-
-      <Route
-      exact path="/admin" component={Admin}/>
-
-      <Route
-      exact path='/admin/products/crearproducto' component={CreateProduct}/>
-
-      <Route
-      exact path='/admin/products/crearcategoria' component={CreateCategory}/>
-
-      <Route
-      exact path='/admin/products/borrarproducto' component={DeleteProduct}/>
-
-      <Route
-      exact path='/admin/products/actualizarproducto' component={Update}/>
-
+      <Route exact path="/admin" component={Admin}/>
+      <Route exact path='/admin/products/crearproducto' component={CreateProduct}/>
+      <Route exact path='/admin/products/crearcategoria' component={CreateCategory}/>
+      <Route exact path='/admin/products/borrarproducto' component={DeleteProduct}/>
+      <Route exact path='/admin/products/actualizarproducto' component={Update}/>
       <Route
         exact path='/products/:id'
         render={({match}) => 
         <Producto props={onFilter(match.params.id)}/>}/>
-
       <Route
         exact path="/products"
         render={() => <Catalogo producto={articulo} />}/>
