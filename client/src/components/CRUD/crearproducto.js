@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from "axios";
-import Admin from './admin';
 import "../../Styles/CRUD.css"
 
 export default function CreateProduct(){
@@ -36,7 +35,6 @@ export default function CreateProduct(){
  
   return ( 
     <div class="adminbox">
-      <Admin/> 
       <form  onSubmit={handleSumit}>
         <div> <h1>Crear Producto</h1> </div>
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import Admin from './admin';
 import axios from 'axios'
 
 export default function Update() {
@@ -112,7 +111,6 @@ export default function Update() {
      
      return ( 
       <div class="adminbox">
-        <Admin/>
         <form onSubmit={handleSumit}>
         <div> <h1>Actualizar Producto</h1> </div>
           

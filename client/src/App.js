@@ -3,13 +3,8 @@ import Producto  from './components/producto.js'
 import { BrowserRouter } from 'react-router-dom'
 import Home from './components/Home.js'
 import NavBar from './components/NavBar.js'
-import CreateProduct from './components/CRUD/crearproducto.js'
 import Catalogo from "./components/Catalogo.js"
 import { Route } from "react-router-dom"
-import CreateCategory from "./components/CRUD/crearcategoria.js"
-import Update from "./components/CRUD/actualizarproducto.js"
-import DeleteProduct from "./components/CRUD/borrarproducto.js"
-import Admin from "./components/CRUD/admin.js"
 
 let tipo = "tinto";
 
@@ -122,12 +117,8 @@ function App() {
   return (
     <BrowserRouter>
       <Home />
-      <NavBar />
-      <Route exact path="/admin" component={Admin}/>
-      <Route exact path='/admin/products/crearproducto' component={CreateProduct}/>
-      <Route exact path='/admin/products/crearcategoria' component={CreateCategory}/>
-      <Route exact path='/admin/products/borrarproducto' component={DeleteProduct}/>
-      <Route exact path='/admin/products/actualizarproducto' component={Update}/>
+      <Route
+         path="/" component={NavBar}/>
       <Route
         exact path='/products/:id'
         render={({match}) => 

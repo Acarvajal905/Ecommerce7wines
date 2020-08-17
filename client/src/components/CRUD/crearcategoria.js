@@ -1,5 +1,4 @@
 import React from 'react';
-import Admin from './admin';
 import axios from "axios"
 
 export default function NewCategory() {
@@ -28,7 +27,6 @@ export default function NewCategory() {
     
     return (
       <div class="adminbox">
-      <Admin/>
          <form onSubmit={handleSumit}>
             <div> <h1>Crear Categoria</h1> </div>
 

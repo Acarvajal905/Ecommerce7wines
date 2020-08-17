@@ -1,5 +1,4 @@
 import React from 'react';
-import Admin from './admin';
 import axios from "axios"
 
 export default function  DeleteProduct() {
@@ -37,7 +36,6 @@ export default function  DeleteProduct() {
     }
     return (
         <div class="adminbox">
-        <Admin/>
            <form onSubmit={handleSumit}>
               <div> <h1>Borrar Producto</h1> </div>
   
