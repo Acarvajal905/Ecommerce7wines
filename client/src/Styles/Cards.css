@@ -1,15 +1,16 @@
 .box3 {
-    background-color: blue;
+    background-color: #f2f4f7;
     margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 185px;
-    height: 237px;
+    width: 190px;
+    height: 250px;
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
 }
 
 .box5 {
-    background-color: green;
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4 , auto);

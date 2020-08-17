@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     image: {
-      type: DataTypes.BLOB,  //imagen del producto (TAMAÑO POR DEFINIR)
+      type: DataTypes.STRING,  //imagen del producto (TAMAÑO POR DEFINIR)
       allowNull: false
     },
     quantity: {    //cantidad para comprar (creemos util en el carrito)
