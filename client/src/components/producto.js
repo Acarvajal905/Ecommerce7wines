@@ -22,29 +22,31 @@ export default function Producto({ props }) {
       
       //retorno el estado y renderizo 
     return (
-         ProductoInfo && (       //AJUSTAR PARAMETROS
-            <div>
-            <div class="box1">
-            <h1 class="image">Aca hay una foto</h1>
-            </div>
+      ProductoInfo && (       //AJUSTAR PARAMETROS
+        <div>
+          <div class="box1">
             <div class="box2">
-                <h2 class="tittle" > {ProductoInfo.name}</h2>
-                <h5 class="description">{ProductoInfo.description}</h5>
-                <span class="price">{ProductoInfo.price}</span>
-            </div>
-            <ul>
-                <li>Stock: {ProductoInfo.stock}</li>
-                {/* <li>{ProductoInfo.route}</li> */}
-                <li>Grado Alcoholico: {7 * ProductoInfo.percentage}</li>
-                <li>Pais: {ProductoInfo.country}</li>
-                <li>{ProductoInfo.content} ml/cc</li>
-                <li>Color: {ProductoInfo.colour}</li>
-            </ul>
-            </div> 
+              <h1 class="image">Aca hay una foto</h1>
+              <div class="boxD">
+                <h1 class="tittle" > {ProductoInfo.name}</h1>
 
-            
-    )
-    
+                <p class="description">{ProductoInfo.description}</p>
+
+                <span class="price">{ProductoInfo.price} $</span>
+
+                <ul>
+                  <li>Stock: {ProductoInfo.stock}</li>
+                  {/* <li>{ProductoInfo.route}</li> */}
+                  <li>Grado Alcoholico: {7 * ProductoInfo.percentage}</li>
+                  <li>Pais: {ProductoInfo.country}</li>
+                  <li>{ProductoInfo.content} ml/cc</li>
+                  <li>Color: {ProductoInfo.colour}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> 
+      )
     )
   }
 
