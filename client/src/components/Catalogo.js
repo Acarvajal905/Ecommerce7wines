@@ -1,55 +1,49 @@
-import React from 'react';
-import ProductCard from "./productcard"; /* Ajustar direccion del componente producto */
-import "../Styles/Cards.css"
+import React, { useEffect, useState } from 'react';
+import ProductCard from "./productcard"; 
+import "../Styles/Cards.css";
+import axios from "axios";
 
-export default function Catalogo({producto , categoria}){ /* recibe un array de objetos de todo los productos y una categoria*/
-    if(producto && categoria){
-        let ProductoEnCategoria = producto.filter(producto => producto.categories == categoria)
+// AJUSTAR PARAMETROS, ESTAN DEFINIDOS PARA LA API
 
-         /* devuelvo un productcard por cada producto que machea con categoria */
-        return ( 
-            <div >{
-                ProductoEnCategoria.map(v =>   /*Capaz haya que reagustar las forma en que recibe las props de la bd */
-                    <ProductCard 
+export default function Catalogo(){ 
+
+    //define un estado al componente
+
+ const [CatalogoInfo, setCatalogoInfo] = useState(null) 
+
+         // hace un get a la bd sobre los productos 
+
+ useEffect(() => {
+    axios.get(`https://jsonplaceholder.typicode.com/users/`)
+      .then(function (response) {
+        setCatalogoInfo(response.data)
+        console.log(response.data)
+      })
+  }, [])  //ese array vacio, limita la actualizacion del componente al montarse
+
+   //retorno el estado y renderizo 
+   
+   return(                          //Definidos para la api                                                         
+    CatalogoInfo  && (             
+        <div class="box5">
+            { CatalogoInfo.map(v =>  
+             <ProductCard 
                 name = {v.name}
-                categories = {v.categories}
-                price = {v.price}
-                description = {v.description}
+               /*  categories = {v.categories} */
+                price = {v.id}
+               /*  description = {v.description}
                 stock = {v.stock}
                 image = {v.image}
                 content = {v.content}
                 percentage = {v.percentage}
                 country = {v.country}
                 colour = {v.colour}
-                quantity = {v.quantity}
-                /> 
-                )
-                }
-            </div>
-        );
-        
-        }if (producto && !categoria){
-            return ( 
-                <div class="box5">{
-                    producto.map(v =>  
-                        <ProductCard 
-                        name = {v.name}
-                        categories = {v.categories}
-                        price = {v.price}
-                        description = {v.description}
-                        stock = {v.stock}
-                        image = {v.image}
-                        content = {v.content}
-                        percentage = {v.percentage}
-                        country = {v.country}
-                        colour = {v.colour}
-                        quantity = {v.quantity}
+                quantity = {v.quantity} */
                     /> 
                     )
                 }
-                </div>
-            );
-        }
-    else 
-    return <div>Not Category</div> 
-};
+        </div>
+    )
+   ) 
+
+}
