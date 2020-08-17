@@ -11,10 +11,10 @@ export default function Catalogo(){
 
  const [CatalogoInfo, setCatalogoInfo] = useState(null) 
 
-         // hace un get a la bd sobre los productos 
+     // hace un get a la bd sobre los productos 
 
  useEffect(() => {
-    axios.get(`https://jsonplaceholder.typicode.com/users/`)
+    axios.get(`http://localhost:3001/products`)
       .then(function (response) {
         setCatalogoInfo(response.data)
         console.log(response.data)
@@ -29,17 +29,17 @@ export default function Catalogo(){
             { CatalogoInfo.map(v =>  
              <ProductCard 
                 name = {v.name}
-               /*  categories = {v.categories} */
-                price = {v.id}
-               /*  description = {v.description}
+                id={v.id}
+                description = {v.description}
+                price = {v.price}
                 stock = {v.stock}
                 image = {v.image}
+                quantity = {v.quantity} 
                 content = {v.content}
                 percentage = {v.percentage}
                 country = {v.country}
                 colour = {v.colour}
-                quantity = {v.quantity} */
-                    /> 
+                /> 
                     )
                 }
         </div>
