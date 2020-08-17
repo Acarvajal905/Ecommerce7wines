@@ -1,29 +1,29 @@
 import React from 'react';
-import crearproducto from './crearproducto.js';
-import borrarproducto from './borrarproducto.js';
-import crearcategoria from './crearcategoria.js';
-import actualizarproducto from './actualizarproducto.js';
-import { Link } from 'react-router-dom';
+import "../../Styles/CRUD.css"
 
 export default function Admin() {
     return (
-        <div>
-          <Link to='/admin/products/crearproducto'>
-              <button>Crear producto</button>
-          </Link>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ADMIN BAR</a>
 
-          <Link to='/admin/products/borrarproducto'>
-              <button>Borrar producto</button>
-          </Link>
-
-          <Link to='/admin/products/crearcategoria'>
-              <button>Crear categoria</button>
-          </Link>
-
-          <Link to='/admin/products/actualizarproducto'>
-             <button>Actualizar producto</button>
-           </Link>
-
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+        
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/products/crearproducto">Crear producto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/products/borrarproducto">Borrar producto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/products/crearcategoria">Crear categoria </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/products/actualizarproducto">Actualizar producto </a>
+            </li>
+            
+            </ul>
         </div>
+    </nav>     
     )
 };

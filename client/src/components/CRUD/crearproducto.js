@@ -1,4 +1,6 @@
 import React from 'react';
+import Admin from './admin';
+import "../../Styles/CRUD.css"
 
 export default function CreateProduct(){
   const handleSumit = function(e) {
@@ -7,55 +9,93 @@ export default function CreateProduct(){
  };
 
  
- return ( 
-    <form onSubmit={handleSumit}>
-      <div> <h1>Crear Producto</h1> </div>
-      <div>
-        <label>Nombre:</label>
-        <input type= 'text' placeholder = 'Nombre' name = 'name'></input>
-      </div>
-      <div>
-        <label>Descripcion:</label>
-        <input type= 'text' placeholder = 'Descripcion' name = 'description'></input>
-      </div>
-      <div>
-        <label>Precio:</label>
-        <input type= 'text' placeholder = 'Precio' name = 'price'></input>
-      </div>
-      <div>
-        <label>Stock:</label>
-        <input type= 'text' placeholder = 'Stock' name = 'stock'></input>
-      </div>
-      <div>
-        <label>Categories:</label>
-        <input type= 'text' placeholder = 'Categoria' name = 'categories'></input>
-      </div>
-      <div>
-        <label>Imagen:</label>
-        <input type= 'file' placeholder = 'montar imagen' name = 'image'></input> 
-      </div>
-      <div>
-        <label>Cantidad:</label>
-        <input type= 'text' placeholder = 'Cantindad' name = 'quantity'></input>
-      </div>
-      <div>
-        <label>Contenido:</label>
-        <input type= 'text' placeholder = 'Contenido' name = 'content'></input>
-      </div>
-      <div>
-        <label>Grado Alcoholico:</label>
-        <input type= 'text' placeholder = 'percentage' name = 'percentage'></input>
-      </div>
-      <div>
-        <label>Pais:</label>
-        <input type= 'text' placeholder = 'Pais' name = 'country'></input>
-      </div>
-      <div>
-        <label>Color:</label>
-        <input type= 'text' placeholder = 'Color' name = 'colour'></input>
-      </div>
-      <input type="submit" value="CREAR PRODUCTO" />
+  return ( 
+    <div class="adminbox">
+      <Admin/> 
+      <form  onSubmit={handleSumit}>
+        <div> <h1>Crear Producto</h1> </div>
 
-    </form>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nombre:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'name'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Descripcion:</label>
+          <div class="col-sm-10">
+          <textarea class="form-control" placeholder="descripcion"></textarea>
+
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Precio:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'price'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Stock:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'stock'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Categoria:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'categories'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Imagen:</label>
+          <div class="col-sm-10">
+            <input type= 'file' placeholder = 'montar imagen'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Cantidad:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'quantity'></input>
+          </div>
+        </div>
+      
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Contenido:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'content'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Grado Alcoholico:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'percentage'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Pais:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'country'></input>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Color:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'colour'></input>
+          </div>
+        </div>
+
+        <input class="btn btn-success" type="submit" value="CREAR PRODUCTO" />
+
+      </form>
+    </div>
   )
 };
