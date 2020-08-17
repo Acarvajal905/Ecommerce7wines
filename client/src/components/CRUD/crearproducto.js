@@ -20,7 +20,7 @@ export default function CreateProduct(){
       colour: x.colour.value
     }
     console.log("productor del target", Creado)
-    /* Aca va la funcion para editar la bd, creando producto */
+    /*  Aca va la funcion para editar la bd, creando producto */
     axios.post(`https://jsonplaceholder.typicode.com/posts/`, Creado)
     .then(response => {
       console.log("entre a ok")

@@ -15,7 +15,7 @@ export default function SearchBar () {
 
             console.log(Url)
 
-            window.location.href = Url /* Redirecciona a la url para que machee la app y renderice el producto */
+            window.location.href = Url /*  Redirecciona a la url para que machee la app y renderice el producto */
 
 
         } catch(error){

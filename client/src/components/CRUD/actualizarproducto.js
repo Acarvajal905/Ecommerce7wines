@@ -32,7 +32,7 @@ export default function Update() {
           colour : x.colour.value
         }
 
-     /* ejecuto la funcion de bd */
+     /* ejecuto la funcion de bd  */
      
       GetProducto(x.name.value)
 
