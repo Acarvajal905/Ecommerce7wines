@@ -1,33 +1,51 @@
-import React from 'react';
-import "../Styles/producto.css"
+import "../Styles/producto.css";
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
 
+// AJUSTAR PARAMETROS, ESTAN DEFINIDOS PARA LA API
 
-export default function Producto ({props}) {
-    if (!props){
-        return <div>El producto no existe</div>
-    }else 
+export default function Producto({ props }) {
+
+    //define un estado al componente 
+    const [ProductoInfo, setProductoInfo] = useState(null) 
+  
+      // hace un get a la bd sobre el id 
+
+    useEffect(() => {
+        axios.get(`https://jsonplaceholder.typicode.com/users/${props}`)
+          .then(function (response) {
+            setProductoInfo(response.data)
+            console.log(response.data)
+          })
+      }, [props])  //ese array limita el actualizacion del componente una vez trae el solicitado
+
+      
+      //retorno el estado y renderizo 
     return (
-        <div class="box1">
-
-          {/*   <img class="image">{pros.image}</img> */}
-
+        ProductoInfo && (       //AGUSTAR PARAMETROS
+            <div>
+            <div class="box1">
+            <h1 class="image">Aca hay una foto</h1>
+            </div>
             <div class="box2">
+                <h2 class="tittle" > {ProductoInfo.name}</h2>
+                <h5 class="description">{ProductoInfo.phone}</h5>
+                <span class="price">{ProductoInfo.id}</span>
+            </div>
+            <ul>
+                <li>Stock: {26 * ProductoInfo.id}</li>
+                <li>{ProductoInfo.address.suite}</li>
+                <li>Grado Alcoholico: {7 * ProductoInfo.id}</li>
+                <li>Pais: {ProductoInfo.address.city}</li>
+                <li>{14 * ProductoInfo.id} ml/cc</li>
+                <li>Color: {ProductoInfo.username}</li>
 
-                <h2 class="tittle" > {props.name}</h2>
-                <h5 class="description">{props.description}</h5>
-                <span class="price">{props.price}</span>
-                <ul>
-                    <li>Stock: {props.stock}</li>
-                    <li>{props.content}</li>
-                    <li>Grado Alcoholico: {props.percentage}</li>
-                    <li>Pais: {props.country}</li>
-                    <li>{props.quantity} ml/cc</li>
-                    <li>Color: {props.colour}</li>
-
-                </ul>
-
+            </ul>
             </div>
 
-        </div>
-    );
-}
+      )
+    )
+  }
+
+
+

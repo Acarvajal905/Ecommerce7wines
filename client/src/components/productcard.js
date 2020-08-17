@@ -8,7 +8,7 @@ export default function ProductCard(props) { /* las props las recibe desde catal
       /* Podemos agregar mas destalles a la vista previa */
     
       <div class="box3">
-        <Link to={`/products/${props.name}`} >
+        <Link to={`/products/${props.price}`} >   {/* Esta para que machee con la api */}
           <h3>{props.name}</h3>
         </Link>
         {/* <img>{props.image}</img> */}
