@@ -1,13 +1,38 @@
 import React from 'react';
+import axios from "axios";
 import Admin from './admin';
 import "../../Styles/CRUD.css"
 
 export default function CreateProduct(){
   const handleSumit = function(e) {
     e.preventDefault();
-    /* Aca va la funcion para editar la bd, creando producto */
- };
 
+    const x = e.target
+    //producto creado por el formulario
+    let Creado = { 
+      name: x.name.value,
+      description: x.description.value,
+      price: x.price.value,
+      stock: x.stock.value,
+      /* image: x.image.value */
+      quantity: x.quantity.value,
+      content: x.content.value,
+      percentage: x.percentage.value,
+      country: x.country.value,
+      colour: x.colour.value
+    }
+    console.log("productor del target", Creado)
+    /* Aca va la funcion para editar la bd, creando producto */
+    axios.post(`https://jsonplaceholder.typicode.com/posts/`, Creado)
+    .then(response => {
+      console.log("entre a ok")
+      console.log(response)
+    })
+    .catch (error2 => {
+      console.log(error2);
+    }) 
+        
+ };
  
   return ( 
     <div class="adminbox">
@@ -18,14 +43,14 @@ export default function CreateProduct(){
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Nombre:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'name'></input>
+            <input type= 'text' class="form-control" placeholder = 'name' name ="name"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Descripcion:</label>
           <div class="col-sm-10">
-          <textarea class="form-control" placeholder="descripcion"></textarea>
+          <textarea class="form-control" placeholder="descripcion" name ="description"></textarea>
 
           </div>
         </div>
@@ -33,63 +58,63 @@ export default function CreateProduct(){
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Precio:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'price'></input>
+            <input type= 'text' class="form-control" placeholder = 'price' name= "price"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Stock:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'stock'></input>
+            <input type= 'text' class="form-control" placeholder = 'stock' name="stock"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Categoria:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'categories'></input>
+            <input type= 'text' class="form-control" placeholder = 'categories' name="categories"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Imagen:</label>
           <div class="col-sm-10">
-            <input type= 'file' placeholder = 'montar imagen'></input>
+            <input type= 'file' placeholder = 'montar imagen' name="imagen"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Cantidad:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'quantity'></input>
+            <input type= 'text' class="form-control" placeholder = 'quantity' name="quantity"></input>
           </div>
         </div>
       
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Contenido:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'content'></input>
+            <input type= 'text' class="form-control" placeholder = 'content' name ="content"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Grado Alcoholico:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'percentage'></input>
+            <input type= 'text' class="form-control" placeholder = 'percentage' name="percentage"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Pais:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'country'></input>
+            <input type= 'text' class="form-control" placeholder = 'country' name="country"></input>
           </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Color:</label>
           <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'colour'></input>
+            <input type= 'text' class="form-control" placeholder = 'colour' name="colour"></input>
           </div>
         </div>
 
