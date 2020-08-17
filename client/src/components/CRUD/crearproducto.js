@@ -27,10 +27,10 @@ export default function CreateProduct(){
     axios.post(`http://localhost:3001/products/`, Creado)
     .then(response => {
       console.log("entre a ok")
-      console.log(response)
+      window.location.href = "http://localhost:3000/result/ok"
     })
     .catch (error2 => {
-      console.log(error2);
+      window.location.href = "http://localhost:3000/result/bad";
     }) 
         
  };
