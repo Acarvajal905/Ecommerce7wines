@@ -29,9 +29,11 @@ export default function  DeleteProduct() {
         .then(response => {
              console.log("entre a ok")
              console.log(response)
+             window.location.href = "http://localhost:3000/result/delete"
             })
         .catch (error2 => {
             console.log(error2);
+            window.location.href = "http://localhost:3000/result/bad"
         }) 
     }
     return (
