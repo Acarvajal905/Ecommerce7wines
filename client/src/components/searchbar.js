@@ -7,7 +7,7 @@ export default function SearchBar () {
     const GetProducto = async (Prod) =>{  /* GetProducto se encarga de buscar en bd */
         try{
                                             /* Agustar la direccion de la bd */
-            const resProd = await axios (`https://jsonplaceholder.typicode.com/users/`) /* Aca trae todos los productos de la bd */
+            const resProd = await axios (`http://localhost:3001/products/`) /* Aca trae todos los productos de la bd */
             
             console.log(resProd.data)
 

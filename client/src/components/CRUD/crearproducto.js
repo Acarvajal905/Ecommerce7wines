@@ -13,16 +13,18 @@ export default function CreateProduct(){
       description: x.description.value,
       price: x.price.value,
       stock: x.stock.value,
-      /* image: x.image.value */
+      image: x.imagen.value,
       quantity: x.quantity.value,
       content: x.content.value,
       percentage: x.percentage.value,
       country: x.country.value,
-      colour: x.colour.value
+      colour: x.colour.value,
+      url: x.url.value
     }
+
     console.log("productor del target", Creado)
     /* Aca va la funcion para editar la bd, creando producto */
-    axios.post(`https://jsonplaceholder.typicode.com/posts/`, Creado)
+    axios.post(`http://localhost:3001/products/`, Creado)
     .then(response => {
       console.log("entre a ok")
       console.log(response)
@@ -68,16 +70,9 @@ export default function CreateProduct(){
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Categoria:</label>
-          <div class="col-sm-10">
-            <input type= 'text' class="form-control" placeholder = 'categories' name="categories"></input>
-          </div>
-        </div>
-
-        <div class="form-group row">
           <label class="col-sm-2 col-form-label">Imagen:</label>
           <div class="col-sm-10">
-            <input type= 'file' placeholder = 'montar imagen' name="imagen"></input>
+            <input type= 'text' placeholder = 'montar imagen' name="imagen"></input>
           </div>
         </div>
 
@@ -113,6 +108,12 @@ export default function CreateProduct(){
           <label class="col-sm-2 col-form-label">Color:</label>
           <div class="col-sm-10">
             <input type= 'text' class="form-control" placeholder = 'colour' name="colour"></input>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Url:</label>
+          <div class="col-sm-10">
+            <input type= 'text' class="form-control" placeholder = 'Url' name="url"></input>
           </div>
         </div>
 

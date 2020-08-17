@@ -6,8 +6,8 @@ export default function  DeleteProduct() {
       //funcion que trae los productos de la bd
   const GetProducto = async (Prod) =>{  
     try{
-      const resProd = await axios (`https://jsonplaceholder.typicode.com/posts/`)
-      let Buscado= resProd.data.filter(p => p.id == Prod) //para probar busca que el id coinsida
+      const resProd = await axios (`http://localhost:3001/products/`)
+      let Buscado= resProd.data.filter(p => p.name == Prod) //para probar busca que el id coinsida
       console.log("me traje ", Buscado)                   //modificar cuando este listo
         return Buscado
      } catch(error){
@@ -24,7 +24,7 @@ export default function  DeleteProduct() {
         /* Elimino el producto */
         
         .then(Buscado =>
-            axios.delete(`https://jsonplaceholder.typicode.com/posts/${Buscado.id}`))
+            axios.delete(`http://localhost:3001/products/${Buscado[0].id}`))
 
         .then(response => {
              console.log("entre a ok")
