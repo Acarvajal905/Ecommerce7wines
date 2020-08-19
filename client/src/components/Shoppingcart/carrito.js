@@ -1,21 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Shoppingcart/carrito.css'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import Cartcard from './cartcard';
 
 
-export default function Carrito(props) { /* las props las recibe desde catalogo */
+export default function Carrito() { /* las props las recibe desde catalogo */
+
+
+    const [CarritoInfo, setCarritoInfo] = useState(null)
+
+    // hace un get a la bd sobre los productos 
+
+    useEffect(() => {
+        axios.get(`http://localhost:3001/products`)
+            .then(function (response) {
+                setCarritoInfo(response.data)
+                console.log(response.data)
+            })
+    }, [])  //ese array vacio, limita la actualizacion del componente al montarse
 
     return (
-        /* Podemos agregar mas destalles a la vista previa */
 
-        <nav >
-            <h4>Carrito de compras</h4>
-            <div class="imagenF" >IMAGEN</div>
+        CarritoInfo && (
+            <div class="box5">
+                {CarritoInfo.map(v =>
+                    <Cartcard
+                        name={v.name}
+                        id={v.id}
+                        description={v.description}
+                        price={v.price}
+                        stock={v.stock}
+                        image={v.image}
+                        quantity={v.quantity}
+                        content={v.content}
+                        percentage={v.percentage}
+                        country={v.country}
+                        colour={v.colour}
+                    />
+                )
+                }
+            </div>
+        )
 
-            <span>{props.products}</span>
-            <button type="button" class="btn btn-info btn-sm">Eliminar del carrito</button>
 
-        </nav>
 
     )
 };
