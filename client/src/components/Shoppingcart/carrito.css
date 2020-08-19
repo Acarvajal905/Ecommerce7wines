@@ -1,0 +1,15 @@
+.cart ion-icon {
+    vertical-align: bottom;
+    font-size: 20px;
+    padding-right: 5px;
+    
+}
+
+
+.derecho {
+    position: relative;
+    display: inline-block;
+    justify-content: flex-end;
+    padding: 5px;
+    
+}

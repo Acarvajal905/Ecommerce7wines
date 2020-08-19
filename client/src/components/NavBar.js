@@ -2,11 +2,11 @@ import React from "react";
 import "../Styles/Home.css"
 import SearchBar from "./searchbar";
 
-export const Home = () => {                 
+export const Home = () => {
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <SearchBar/>
+      <SearchBar />
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
