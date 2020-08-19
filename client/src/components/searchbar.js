@@ -4,49 +4,48 @@ import axios from "axios"
 
 export default function SearchBar () {          
 
-    const GetProducto = async (Prod) =>{  /* GetProducto se encarga de buscar en bd */
-        try{
-                                            /* Agustar la direccion de la bd */
-            const resProd = await axios (`http://localhost:3001/products/`) /* Aca trae todos los productos de la bd */
-            
-            console.log(resProd.data)
+    
+    const GetProducto= (prod) =>{  
+        axios.get (`http://localhost:3001/products/`)
+        .then(result => {
+            for (let i = 0; i < result.data.length; i++) {
+                if(prod === result.data[i].name){
+                    console.log(result.data[i])
+                    
+                    let Url = "http://localhost:3000/products/" + result.data[i].id;
+                    window.location.href = Url
+                    console.log(Url)
+                }
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }    
 
-            let Buscado= resProd.data.filter(p => p.name == Prod)   /* Hace un filtrado para buscar en producto que se busca */
-         
-             console.log(Buscado)
-             let Url = "http://localhost:3000/products/" + Buscado[0].id;   /* Genera el link segun el id */
-
-             console.log(Url) 
-
-            window.location.href = Url  /* Redirecciona a la url para que machee la app y renderice el producto */
-
-
-        } catch(error){
-            console.log(error);
-        }
-    }
+    const handleInputChange = (e) => {
+        const { value } = e.target;
+        console.log(value) }
 
     const handleSumit = function(e) {
-        e.preventDefault();
-        /* Aca va la funcion buscar en la bd */
-        
+        e.preventDefault();        
            console.log(e.target.searchbar.value)
            GetProducto(e.target.searchbar.value)
-      };
+        };
 
     return (
-
         <nav class="navbar navbar-light bg-light">
-        <form class="form-inline" onSubmit={handleSumit}>
-            <input  class="form-control mr-sm-2"   type="search" aria-label="Search"                                                 /* caja para escribir producto */
-                type="text"
-                placeholder="Buscar Producto"
-                name ="searchbar"
-            />
-            <input  class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Buscar..." />               {/* Boton para buscar */}
-        </form>
-        </nav>
+            <form class="form-inline" onSubmit={handleSumit}>
+                <input onChange={ e => handleInputChange(e)} 
+                    class="form-control mr-sm-2"
+                    type="search"
+                    type="text"
+                    placeholder="Buscar Producto"
+                    name ="searchbar"
+                />
 
-    
+                <input class="btn btn-outline-danger" type="submit" value="Buscar..." />               {/* Boton para buscar */}
+            </form>
+        </nav>
     );
 }

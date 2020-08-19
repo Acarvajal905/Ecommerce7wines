@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/Home.css"
+import "../Styles/Head.css"
 import SearchBar from "./searchbar";
 
 export const Home = () => {                 
