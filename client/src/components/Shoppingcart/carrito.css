@@ -13,3 +13,30 @@
     padding: 5px;
     
 }
+
+.box3 {
+    background-color: #f2f4f7;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 225px;
+    height: 300px;
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.box5 {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4 , auto);
+    align-items: start;
+    justify-content: space-around;
+}
+
+.btn-group-vertical>.btn, .btn-group>.btn {
+    background-color: #1993E3;
+
+
+}
+
