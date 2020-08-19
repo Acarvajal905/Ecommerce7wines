@@ -15,11 +15,6 @@ export const Home = () => {
     <div>
       <header>
         <h1 class="titulo">7wine</h1>
-        <div class='cart'>
-          <a class='derecho' href='/carrito'>
-            <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
-          </a>
-        </div>
       </header>
 
 

@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING, //descripcion del producto
+      type: DataTypes.TEXT, //descripcion del producto
       allowNull: false
     },
     price: {
@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     percentage: {  //Grado de alcohol del vino
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false
     },
     country: {  //Pais de origen 
