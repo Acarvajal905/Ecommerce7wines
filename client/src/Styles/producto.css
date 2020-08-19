@@ -3,7 +3,8 @@
     height: 300px;
     width: 300px;
     margin: 20px;
-    border: black;
+    border-bottom-right-radius: 60px;
+    border-top-left-radius: 60px;
 }
 
 .box1 {
@@ -17,6 +18,8 @@
     display: flex;
     align-items: center;
     padding: 20px;
+    padding-left: 20px;
+    padding-right: 30px;
     border-bottom-right-radius: 100px;
     border-top-left-radius: 100px;
 }
@@ -36,8 +39,10 @@
     padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 15px;
+    font-size: x-large;
 }
 
-.image {
-    border: 1px solid black;
+.description {
+    font-size: small;
+    margin-top: 15px;
 }

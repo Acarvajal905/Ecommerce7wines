@@ -2,6 +2,7 @@ import React from "react";
 import "../Styles/Home.css"
 import SearchBar from "./searchbar";
 
+
 export const Home = () => {
 
   return (
@@ -26,7 +27,13 @@ export const Home = () => {
             <a class="nav-link disabled" href="#">----</a>
           </li>
         </ul>
+        <div class='cart'>
+          <a class='derecho' href='/carrito'>
+            <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
+          </a>
+        </div>
       </div>
+      
     </nav>
   )
 }

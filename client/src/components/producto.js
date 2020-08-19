@@ -26,11 +26,9 @@ export default function Producto({ props }) {
         <div>
           <div class="box1">
             <div class="box2">
-              <h1 class="image">Aca hay una foto</h1>
+            <img class="image" src={ProductoInfo.image} ></img>
               <div class="boxD">
                 <h1 class="tittle" > {ProductoInfo.name}</h1>
-
-                <p class="description">{ProductoInfo.description}</p>
 
                 <span class="price">{ProductoInfo.price} $</span>
 
@@ -41,6 +39,8 @@ export default function Producto({ props }) {
                   <li>Pais: {ProductoInfo.country}</li>
                   <li>{ProductoInfo.content} ml/cc</li>
                   <li>Color: {ProductoInfo.colour}</li>
+
+                  <p class="description">{ProductoInfo.description}</p>
                 </ul>
               </div>
             </div>
