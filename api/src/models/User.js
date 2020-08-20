@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,//El email debe ser unico.
       validate: {
-        isEmail: true // chequea que el formato sea --> (foo@bar.com)
+        isEmail: true} // chequea que el formato sea --> (foo@bar.com)
     },
     adress: {
       type: DataTypes.STRING, 
@@ -28,13 +28,6 @@ module.exports = (sequelize) => {
     dni: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },//A definir si se usa o no.
-    /* route: { //ruta de Usuario
-      type: DataTypes.VIRTUAL, 
-      get() { 
-        return "/user" + this.getDataValue("name") + this.getDataValue("id") ;
-      }
-    } */
-  }
+    }
   })
 };
