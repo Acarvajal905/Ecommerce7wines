@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Product } = require('../db.js');
+const { Product, Category } = require('../db.js');
 
 
 //S21 : Crear ruta que devuelva todos los productos
@@ -8,7 +8,7 @@ server.get('/', (req, res, next) => {
 		.then((products) => {
 		res.send(products);
 	})
-	.catch(next);
+	.catch(err=>{console.log(err)});
 });
 
 //S24 : Crear ruta de producto individual, pasado un ID que retorne un producto con sus detalles
@@ -18,7 +18,7 @@ server.get('/:id',(req,res,next)=>{
 		if(!product){return res.status(404).end();}
 		return res.json(product)
 	})
-	.catch(err =>next(err))
+	.catch(err=>{console.log(err)});
 });
 //S23 : Crear ruta que retorne productos segun el keyword de búsqueda
 /* server.get('/search',(req,res,next) => {
@@ -29,7 +29,7 @@ server.get('/:id',(req,res,next)=>{
 		}
 	}).then((products) => {
 		res.render(products)
-	}).catch(next);
+	}).catch(err=>{console.log(err)});
 }); */
 
 server.get('/search',(req,res,next) => {
@@ -54,11 +54,18 @@ server.get('/search',(req,res,next) => {
 });
 //S25 : Crear ruta para crear/agregar Producto
 server.post('/',(req,res,next)=>{
-	Product.create(req.body)
+	const item = req.body
+	console.log({item});
+	Product.create(item)
 	.then((product) =>{
-		if(!product){return res.status(400).end();}
+	Category.findOne({
+		where: { id: categoryId },
+	}).then(result => {
+			product.addCategory(result);
+		})
+		console.log(result);
 		return res.send(product)
-	}).catch(err=>next(err = "error fatal"));
+	}).catch(err=>{console.log(err)});
 });
 
 //S26 : Crear ruta para Modificar Producto
@@ -71,7 +78,7 @@ server.put('/:id',(req,res,next)=>{
 		if(!product){return res.status(404).end()}
 		return res.json(product);
 	})
-	.catch(err=>next(err));
+	.catch(err=>{console.log(err)});
 })
 
 
@@ -86,7 +93,7 @@ server.delete('/:id',(req,res,next)=>{
 		/* {return res.status(404) .end();}
 		return res.status(200).end(); */
 	})
-	//.catch(err=>next(err));
+	//.catch(err=>{console.log(err)});
 });
 
 //Para estos hay que leer la documentancion
@@ -97,6 +104,7 @@ server.post('/:idProducto/category/:idCategory', (req, res) => {
 	}).then((obj) => {
 		if (obj) return obj.update({ Category: req.params.idCategory });
 	})
+	.catch(err=>{console.log(err)});
 });
 //S17 Crea ruta para sacar categorias de un producto.
 server.delete('/:idProducto/category/:idCategory', (req, res) => {
@@ -105,6 +113,7 @@ server.delete('/:idProducto/category/:idCategory', (req, res) => {
 	}).then((obj) => {
 		if (obj) return obj.update({ Category: null });
 	})
+	.catch(err=>{console.log(err)});
 });
 
 module.exports = server;

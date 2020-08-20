@@ -1,8 +1,18 @@
 const server = require('express').Router();
+const { User } = require('../db.js');
+
+//s36  retornar todos los usuarios
+server.get('/',(req,res, next)=>{
+    User.findAll()
+    .then((user)=>{
+        res.send(user);
+    })
+    .catch((err)=>{console.log(err)});
+});
 
 //s35 modificiar un usuario
 server.put('/:id',(req,res)=>{
-	Users.update(req.body,
+	User.update(req.body,
 		{where:
 			{id:req.params.id}
 	})
@@ -13,18 +23,9 @@ server.put('/:id',(req,res)=>{
 	.catch((err)=>{console.log(err)});
 });
 
-//s36  retornar todos los usuarios
-server.get('/',(req,res)=>{
-    Users.findAll()
-    .then((user)=>{
-        res.send(user);
-    })
-    .catch((err)=>{console.log(err)});
-})
-
 //s34 crear un usuario
 server.post('/',(req,res,next)=>{
-    Users.create(req.body)
+    User.create(req.body)
     .then((user)=>{
         res.send(user)
     })
@@ -33,7 +34,7 @@ server.post('/',(req,res,next)=>{
 
 //s37 eliminar un usuario..
 server.delete('/:id',(req,res)=>{
-    Users.destroy({where:
+    User.destroy({where:
         {id:req.params.id}
     }).then((user) => {
         if (user===1) {
@@ -42,3 +43,5 @@ server.delete('/:id',(req,res)=>{
     })
     .catch((err)=>{console.log(err)});
 })
+
+module.exports = server
