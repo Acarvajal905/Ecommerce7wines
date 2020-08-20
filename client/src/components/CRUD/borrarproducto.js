@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios"
+import "../../Styles/CRUD.css"
 
 export function validate(input) {
     let errors = {};
