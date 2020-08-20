@@ -35,7 +35,7 @@ export default function Producto({ props }) {
                 <ul>
                   <li>Stock: {ProductoInfo.stock}</li>
                   {/* <li>{ProductoInfo.route}</li> */}
-                  <li>Grado Alcoholico: {7 * ProductoInfo.percentage}</li>
+                  <li>Grado Alcoholico: {ProductoInfo.percentage}</li>
                   <li>Pais: {ProductoInfo.country}</li>
                   <li>{ProductoInfo.content} ml/cc</li>
                   <li>Color: {ProductoInfo.colour}</li>
