@@ -15,8 +15,8 @@ export default function ProductCard(props) { /* las props las recibe desde catal
       <Link to={`/products/${props.id}`} >
         <img class="imagenF" src={props.image} ></img>
       </Link>
-      <span class="precioprod">{props.price} $</span>
-      <button type="button" class="btn btn-info btn-sm">Agregar al carrito</button>
+      <span class="precioprod">{props.price} $</span> 
+      <button type="button" class="btn btn-danger btn-sm">Agregar al carrito</button>
 
     </div>
 

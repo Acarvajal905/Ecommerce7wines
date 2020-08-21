@@ -32,13 +32,13 @@ export default function Producto({ props }) {
 
                 <span class="price">{ProductoInfo.price} $</span>
 
-                <ul>
-                  <li>Stock: {ProductoInfo.stock}</li>
+                <ul class="list">
+                  <li>Stock:   {ProductoInfo.stock}</li>
                   {/* <li>{ProductoInfo.route}</li> */}
-                  <li>Grado Alcoholico: {ProductoInfo.percentage}</li>
-                  <li>Pais: {ProductoInfo.country}</li>
+                  <li>Grado Alcoholico:   {ProductoInfo.percentage} %</li>
+                  <li>Pais:   {ProductoInfo.country}</li>
                   <li>{ProductoInfo.content} ml/cc</li>
-                  <li>Color: {ProductoInfo.colour}</li>
+                  <li>Color:   {ProductoInfo.colour}</li>
 
                   <p class="description">{ProductoInfo.description}</p>
                 </ul>

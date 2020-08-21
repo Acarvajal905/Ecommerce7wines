@@ -21,7 +21,7 @@ export const Home = () => {
             <a class="nav-link" href="/products">Catalogo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">----</a>
+            <a class="nav-link" href="/account/create/">Registrarse</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">----</a>
@@ -32,6 +32,7 @@ export const Home = () => {
             <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
           </a>
         </div>
+        
       </div>
       
     </nav>

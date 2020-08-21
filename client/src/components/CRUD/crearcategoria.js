@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios"
+import "../../Styles/CRUD.css"
 
 export const handleSumit4 = function(e) {
    e.preventDefault();
@@ -84,14 +85,14 @@ export default function NewCategory() {
             <div class="form-group row">
           <label class="col-sm-2 col-form-label">Descripcion:</label>
           <div class="col-sm-10">
-            <input className={`${errors.categorydescription && 'danger'}`} onChange={handleInputChange} value={input.categorydescription}
+            <textarea className={`${errors.categorydescription && 'danger'}`} onChange={handleInputChange} value={input.categorydescription}
               type= 'text' placeholder = 'CategoryDescription' name ="categorydescription">
-            </input>
+            </textarea>
             {errors.categorydescription && (<p className="danger">{errors.categorydescription}</p>)}
           </div>
         </div>
               
-            <input class="btn btn-success" type='submit' value='AGREGAR CATEGORIA' />
+            <input class="btn btn-danger" type='submit' value='AGREGAR CATEGORIA' />
          </form>
       </div>
     )

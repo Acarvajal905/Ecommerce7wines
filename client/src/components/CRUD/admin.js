@@ -8,7 +8,10 @@ export default function Admin() {
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-        
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/products/ordenes">Ordenes</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/products/crearproducto">Crear producto</a>
             </li>
