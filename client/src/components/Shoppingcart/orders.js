@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../Shoppingcart/carrito.css'
 
 
-export default function Cartcard(props) { /* las props las recibe desde catalogo */
+export default function Orders(props) { /* las props las recibe desde catalogo */
 
     return (
         /* Podemos agregar mas destalles a la vista previa */
@@ -22,7 +22,7 @@ export default function Cartcard(props) { /* las props las recibe desde catalogo
                 <button type="button" class="btn btn-secondary">0</button>
                 <button type="button" class="btn btn-secondary">+</button>
             </div>
-
+           
         </div>
 
     )

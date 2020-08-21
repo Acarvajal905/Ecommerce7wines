@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../Shoppingcart/carrito.css'
 import axios from 'axios';
-import Cartcard from './cartcard';
+import Orders from './orders.js';
 
 
 export default function Carrito() { /* las props las recibe desde catalogo */
@@ -24,7 +24,7 @@ export default function Carrito() { /* las props las recibe desde catalogo */
         CarritoInfo && (
             <div class="box5">
                 {CarritoInfo.map(v =>
-                    <Cartcard
+                    <Orders
                         name={v.name}
                         id={v.id}
                         description={v.description}
