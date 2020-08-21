@@ -1,12 +1,10 @@
 import "../Styles/producto.css";
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
-import { GetProduct } from '../components/Redux/Actions/index.js';
-import { connect } from "react-redux"
+
 
 
 // AJUSTAR PARAMETROS, ESTAN DEFINIDOS PARA LA API
-
 
 export default function Producto({ props }) {
 
@@ -57,7 +55,3 @@ export default function Producto({ props }) {
   )
 }
 
-
-const mapStatetoProps = state => ({ Producto: state.product })
-
-export default connect(mapStatetoProps, { GetProduct })(Producto)

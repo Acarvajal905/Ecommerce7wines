@@ -4,7 +4,6 @@ import "../Styles/Cards.css";
 import axios from "axios";
 
 
-
 // AJUSTAR PARAMETROS, ESTAN DEFINIDOS PARA LA API
 
 export default function Catalogo() {
