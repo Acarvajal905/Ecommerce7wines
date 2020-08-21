@@ -14,8 +14,8 @@
     
 }
 
-.box3 {
-    background-color: #f2f4f7;
+.boxorder {
+    background-color: black;
     margin: 10px;
     display: flex;
     flex-direction: column;
