@@ -4,6 +4,7 @@ import "../Styles/Cards.css";
 import axios from "axios";
 
 
+
 // AJUSTAR PARAMETROS, ESTAN DEFINIDOS PARA LA API
 
 export default function Catalogo() {
@@ -20,7 +21,7 @@ export default function Catalogo() {
                 setCatalogoInfo(response.data)
                 console.log(response.data)
             })
-    }, [])  //ese array vacio, limita la actualizacion del componente al montarse
+    }, [])   //ese array vacio, limita la actualizacion del componente al montarse
 
     //retorno el estado y renderizo 
 
@@ -48,3 +49,4 @@ export default function Catalogo() {
     )
 
 }
+

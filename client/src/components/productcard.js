@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import "../Styles/Cards.css"
 
+
 export default function ProductCard(props) { /* las props las recibe desde catalogo */
 
   return (
@@ -22,3 +23,6 @@ export default function ProductCard(props) { /* las props las recibe desde catal
 
   )
 };
+
+
+
