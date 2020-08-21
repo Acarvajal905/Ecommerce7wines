@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-
+import "../../Styles/CRUD.css"
 
   // Valido el input
   export function validate(input) {

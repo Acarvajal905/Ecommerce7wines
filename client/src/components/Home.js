@@ -7,6 +7,7 @@ import DeleteProduct from "./CRUD/borrarproducto.js"
 import Admin from "./CRUD/admin.js"
 import CreateProduct from './CRUD/crearproducto.js'
 import './Shoppingcart/carrito.css'
+import NewUser from "./Usuarios/FormUsuario"
 
 
 export const Home = () => {
@@ -17,6 +18,9 @@ export const Home = () => {
         <h1 class="titulo">7wine</h1>
       </header>
 
+      <Route
+       exact path="/account/create/" component={NewUser}
+      />
 
       <Route
         path="/admin" component={Admin}
