@@ -24,7 +24,7 @@ export const Home = () => {
             <a class="nav-link" href="/account/create/">Registrarse</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">----</a>
+            <a class="nav-link" href="/admin">Admin</a>
           </li>
         </ul>
         <div class='cart'>

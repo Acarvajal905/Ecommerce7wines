@@ -17,9 +17,9 @@ export default function Catalogo() {
     useEffect(() => {
         axios.get(`http://localhost:3001/products`)
             .then(function (response) {
-                /* setCatalogoInfo(response.data)
-                console.log(response.data) */
-                setCatalogoInfo(response.data.filter(a => a.stock !== 0))
+                 setCatalogoInfo(response.data)
+                console.log(response.data) 
+                // setCatalogoInfo(response.data.filter(a => a.stock !== 0))
             })
     }, [])  //ese array vacio, limita la actualizacion del componente al montarse
 

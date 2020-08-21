@@ -8,7 +8,7 @@ export default function Orders(props) { /* las props las recibe desde catalogo *
     return (
         /* Podemos agregar mas destalles a la vista previa */
 
-        <div class="box3">
+        <div class="boxorder">
             {console.log(props)}
             <Link to={`/products/${props.id}`} >   {/* Esta para que machee con la api */}
                 <h3 class="tituloprod">{props.name}</h3>

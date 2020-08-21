@@ -12,7 +12,7 @@ export default function Carrito() { /* las props las recibe desde catalogo */
     // hace un get a la bd sobre los productos 
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/products`)
+        axios.get(`http://localhost:3001/carrito`)
             .then(function (response) {
                 setCarritoInfo(response.data)
                 console.log(response.data)
