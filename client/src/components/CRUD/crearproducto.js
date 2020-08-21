@@ -104,9 +104,6 @@ export function validate(input) {
 };
 
 
-
-
-
 export default function CreateProduct(){
 
   //asigno estados
@@ -157,9 +154,9 @@ export default function CreateProduct(){
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Descripcion:</label>
           <div class="col-sm-10">
-            <input className={`${errors.description && 'danger'}`} onChange={handleInputChange} value={input.description}
+            <textarea className={`${errors.description && 'danger'}`} onChange={handleInputChange} value={input.description}
               type= 'text' placeholder = 'Description' name ="description">
-            </input>
+            </textarea>
             {errors.description && (<p className="danger">{errors.description}</p>)}
           </div>
         </div>
@@ -254,7 +251,7 @@ export default function CreateProduct(){
           </div>
         </div>
 
-        <input class="btn btn-success" type="submit" value="CREAR PRODUCTO" />
+        <input class="btn btn-danger" type="submit" value="CREAR PRODUCTO" />
 
       </form>
     </div>

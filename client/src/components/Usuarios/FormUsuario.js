@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from "axios";
 import "../../Styles/CRUD.css"
+import NavBar from '../NavBar.js'
+
 export function handleSumit(e){
     e.preventDefault();
-    const x = e.target
+    const x = e.target 
 
     var usuario = {
         name: x.name.value,
@@ -92,8 +94,9 @@ export default function NewUser() {
        })
      }
      
-     return (
+     return ( 
        <div class="adminbox">
+           
           <form onSubmit={handleSumit}>
                <div> <h1>Registrarse</h1> </div>
  
@@ -158,7 +161,7 @@ export default function NewUser() {
                   </div>
              </div>
 
-             <input class="btn btn-success" type='submit' value='Crear Usuario' />
+             <input class="btn btn-danger" type='submit' value='Crear Usuario' />
           </form>
        </div>
      )

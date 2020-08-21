@@ -79,7 +79,7 @@ export default function  DeleteProduct() {
           </div>
         </div>
   
-              <input class="btn btn-success" type='submit' value='ELIMINAR' />
+              <input class="btn btn-danger" type='submit' value='ELIMINAR' />
            </form>
         </div>
         )
