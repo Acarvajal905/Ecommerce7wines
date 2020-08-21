@@ -1,5 +1,5 @@
 .box3 {
-    background-color: #f2f4f7;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(241,243,245,1) 35%, rgba(238,241,245,1) 60%, rgba(209,211,214,1) 100%);
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -32,10 +32,21 @@
 
 .tituloprod {
     font-size: inherit;
+    text-align: center;
     margin: 15px;
+    color: #2e1968
+}
+
+.tituloprod:hover {
+    color: #1e0e4a;
+    text-decoration-line: none;
 }
 
 .precioprod {
     font-size: larger;
 
+}
+
+.bg-light {
+    background-color: #eef1f5 !important;
 }
