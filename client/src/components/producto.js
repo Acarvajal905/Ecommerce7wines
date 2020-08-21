@@ -26,23 +26,26 @@ export default function Producto({ props }) {
         <div>
           <div class="box1">
             <div class="box2">
-            <img class="image" src={ProductoInfo.image} ></img>
-              <div class="boxD">
-                <h1 class="tittle" > {ProductoInfo.name}</h1>
+            <div class ='boxcontenedor'>
+              <img class="image" src={ProductoInfo.image} ></img>
+              <button type="button" class="btn btn-danger btn-sm">Agregar al carrito</button>
+            </div>
+            <div class="boxD">
+              <h1 class="tittle" > {ProductoInfo.name}</h1>
 
-                <span class="price">{ProductoInfo.price} $</span>
+              <span class="price">{ProductoInfo.price} $</span>
 
-                <ul class="list">
-                  <li>Stock:   {ProductoInfo.stock}</li>
-                  {/* <li>{ProductoInfo.route}</li> */}
-                  <li>Grado Alcoholico:   {ProductoInfo.percentage} %</li>
-                  <li>Pais:   {ProductoInfo.country}</li>
-                  <li>{ProductoInfo.content} ml/cc</li>
-                  <li>Color:   {ProductoInfo.colour}</li>
+              <ul class="list">
+                <li>Stock:   {ProductoInfo.stock}</li>
+                {/* <li>{ProductoInfo.route}</li> */}
+                <li>Grado Alcoholico:   {ProductoInfo.percentage} %</li>
+                <li>Pais:   {ProductoInfo.country}</li>
+                <li>{ProductoInfo.content} ml/cc</li>
+                <li>Color:   {ProductoInfo.colour}</li>
 
-                  <p class="description">{ProductoInfo.description}</p>
-                </ul>
-              </div>
+                <p class="description">{ProductoInfo.description}</p>
+              </ul>
+            </div>
             </div>
           </div>
         </div> 
