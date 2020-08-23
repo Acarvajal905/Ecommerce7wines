@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/Home.css"
 import SearchBar from "./searchbar";
+import { Link } from 'react-router-dom'
 
 
 export const Home = () => {
@@ -15,21 +16,31 @@ export const Home = () => {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <Link to={`/`} >
+            <a class="nav-link" >Home <span class="sr-only">(current)</span></a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/products">Catalogo</a>
+            <Link to={`/products`} >
+            <a class="nav-link" >Catalogo</a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/account/create/">Registrarse</a>
+            <Link to={`/account/create/`} >
+            <a class="nav-link" >Registrarse</a>
+            </Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
+            <Link to={`/admin`} >
+            <a class="nav-link" >Admin</a>
+            </Link>
           </li>
         </ul>
         <div class='cart'>
-          <a class='derecho' href='/carrito'>
+          <a class='derecho'>
+            <Link to={`/carrito`} >
             <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
+            </Link>
           </a>
         </div>
         

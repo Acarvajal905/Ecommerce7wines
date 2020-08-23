@@ -1,48 +1,51 @@
-import React, { useEffect, useState } from 'react';
 import '../Shoppingcart/carrito.css'
-import axios from 'axios';
-import Orders from './orders.js';
+import React from 'react';
+import * as actionCreators from "../Redux/Actions/index.js"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom'
 
 
-export default function Carrito() { /* las props las recibe desde catalogo */
+class Carrito extends React.Component {
 
+    render() {
+        return (
+            <div class="box5"> 
+            {this.props.carrito.map(v =>
 
-    const [CarritoInfo, setCarritoInfo] = useState(null)
+             <div class="box3">
+             <Link to={`/products/${v.id}`} >  
+               <h3 class="tituloprod">{v.name}</h3>
+             </Link>
+             <Link to={`/products/${v.id}`} >
+               <img class="imagenF" src={v.image} ></img>
+             </Link>
+             <span class="precioprod">{v.price} $</span> 
 
-    // hace un get a la bd sobre los productos 
-
-    useEffect(() => {
-        axios.get(`http://localhost:3001/carrito`)
-            .then(function (response) {
-                setCarritoInfo(response.data)
-                console.log(response.data)
-            })
-    }, [])  //ese array vacio, limita la actualizacion del componente al montarse
-
-    return (
-
-        CarritoInfo && (
-            <div class="box5">
-                {CarritoInfo.map(v =>
-                    <Orders
-                        name={v.name}
-                        id={v.id}
-                        description={v.description}
-                        price={v.price}
-                        stock={v.stock}
-                        image={v.image}
-                        quantity={v.quantity}
-                        content={v.content}
-                        percentage={v.percentage}
-                        country={v.country}
-                        colour={v.colour}
-                    />
-                )
-                }
+             <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">-</button>
+                <button type="button" class="btn btn-secondary">0</button>
+                <button type="button" class="btn btn-secondary">+</button>
             </div>
-        )
+           </div>
 
+            )
+            }
+            </div>
+        );
+    }
+}
 
+function mapStateToProps(state) {
+  return {
+    carrito: state.carrito
+   
+  }
+}
 
-    )
-};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Carrito);
+
