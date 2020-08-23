@@ -5,18 +5,15 @@ import Home from './components/Home.js'
 import Catalogo from "./components/Catalogo.js"
 import { Route } from "react-router-dom"
 import carrito from './components/Shoppingcart/carrito.js'
-
+import ResultSearch from "./components/search.js"
 
 
 function App() {
   return (
     <BrowserRouter>
       <Home />
-
-      <Route
-        exact path='/products/:id'
-        render={({ match }) => <Producto props={match.params.id} />}
-      />
+      <Route exact path="/search/:id" component={ResultSearch}/>
+      <Route exact path='/products/:id' component={Producto}/>
       <Route exact path="/products" component={Catalogo} />
       <Route exact path="/carrito" component={carrito} />
     </BrowserRouter>

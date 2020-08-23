@@ -1,54 +1,57 @@
 import "../Styles/producto.css";
-import axios from "axios";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import * as actionCreators from "../components/Redux/Actions/index.js"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-// AJUSTAR PARAMETROS, ESTAN DEFINIDOS PARA LA API
 
-export default function Producto({ props }) {
+class Producto extends React.Component {
 
-    //define un estado al componente 
-    const [ProductoInfo, setProductoInfo] = useState(null) 
-  
-      // hace un get a la bd sobre el id 
-      //http://localhost:3001/products/:id
-    useEffect(() => {
-        axios.get(`http://localhost:3001/products/${props}`)
-          .then(function (response) {
-            setProductoInfo(response.data)
-            console.log(response.data)
-          })
-      }, [props])  //ese array limita el actualizacion del componente una vez trae el solicitado
-
-      
-      //retorno el estado y renderizo 
-    return (
-      ProductoInfo && (       //AJUSTAR PARAMETROS
-        <div>
-          <div class="box1">
-            <div class="box2">
-            <img class="image" src={ProductoInfo.image} ></img>
-              <div class="boxD">
-                <h1 class="tittle" > {ProductoInfo.name}</h1>
-
-                <span class="price">{ProductoInfo.price} $</span>
-
-                <ul class="list">
-                  <li>Stock:   {ProductoInfo.stock}</li>
-                  {/* <li>{ProductoInfo.route}</li> */}
-                  <li>Grado Alcoholico:   {ProductoInfo.percentage} %</li>
-                  <li>Pais:   {ProductoInfo.country}</li>
-                  <li>{ProductoInfo.content} ml/cc</li>
-                  <li>Color:   {ProductoInfo.colour}</li>
-
-                  <p class="description">{ProductoInfo.description}</p>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> 
-      )
-    )
+  componentDidMount(){
+    const { match: {params: { id }}} = this.props
+    this.props.getProduct(id)
   }
 
+    render() {
+        return (
+          <div > 
+        <div class="box1">
+          <div class="box2">
+          <img class="image" src={this.props.product.image} ></img>
+            <div class="boxD">
+              <h1 class="tittle" > {this.props.product.name}</h1>
+
+              <span class="price">{this.props.product.price} $</span>
+
+              <ul class="list">
+                <li>Stock:   {this.props.product.stock}</li>
+                
+                <li>Grado Alcoholico:   {this.props.product.percentage} %</li>
+                <li>Pais:   {this.props.product.country}</li>
+                <li>{this.props.product.content} ml/cc</li>
+                <li>Color:   {this.props.product.colour}</li>
+
+                <p class="description">{this.props.product.description}</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+        );
+    }
+}
+
+function mapStateToProps(state) {
+  return {
+    product: state.product,
+   
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Producto);
 
 

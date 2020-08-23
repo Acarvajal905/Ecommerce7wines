@@ -1,34 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ProductCard from "./productcard";
 import "../Styles/Cards.css";
-import axios from "axios";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from "../components/Redux/Actions/index.js"
 
 
-// AJUSTAR PARAMETROS, ESTAN DEFINIDOS PARA LA API
+class Catalogo extends React.Component {
 
-export default function Catalogo() {
+    componentDidMount(){
+      this.props.getAllProduct()
+    }
+    render() {
+        return (
 
-    //define un estado al componente
-
-    const [CatalogoInfo, setCatalogoInfo] = useState(null)
-
-    // hace un get a la bd sobre los productos 
-
-    useEffect(() => {
-        axios.get(`http://localhost:3001/products`)
-            .then(function (response) {
-                 setCatalogoInfo(response.data)
-                console.log(response.data) 
-                // setCatalogoInfo(response.data.filter(a => a.stock !== 0))
-            })
-    }, [])  //ese array vacio, limita la actualizacion del componente al montarse
-
-    //retorno el estado y renderizo 
-
-    return (                          //Definidos para la api                                                         
-        CatalogoInfo && (
             <div class="box5">
-                {CatalogoInfo.map(v =>
+                {this.props.allproducts.map(v =>
+
                     <ProductCard
                         name={v.name}
                         id={v.id}
@@ -42,10 +30,25 @@ export default function Catalogo() {
                         country={v.country}
                         colour={v.colour}
                     />
+
                 )
                 }
-            </div>
-        )
-    )
+         </div>
+         
+        );
+    }
 
 }
+
+function mapStateToProps(state) {
+    return {
+        allproducts: state.allproducts,
+    }
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actionCreators, dispatch);
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Catalogo);
+  
