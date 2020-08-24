@@ -10,7 +10,7 @@ server.put('orders/:id',(req,res,next)=>{
         if (!order) {return res.status(404).end() }
         return res.json(order);
     })
-    .catch(err=>next(err));
+    .catch(err => { console.log(err) });;
 })
 
 // s46 ruta que retorne  una orden en particular
@@ -20,7 +20,7 @@ server.get('orders/:id',(req,res,next)=>{
         if (!order) {return res.status(404).end()}
         return res.json(order)
     })
-    .catch(err=>next(err))
+    .catch(err => { console.log(err) });
 })
 
 // s44 retorne todas las ordenes
@@ -30,7 +30,7 @@ server.get('/orders',(req,res,next)=>{
         if (!order) {return res.status(404).end();}
         return res.json(order)
     })
-    .catch(err=>next(err))
+    .catch(err => { console.log(err) });
 })
 
 //s45 retornar todas las ordenes de los usarios
@@ -42,4 +42,5 @@ server.get('/users/:id/orders',(req,res)=>{
         .then(function(order){
             res.json(order)
         })
+        .catch(err => { console.log(err) });
 })
