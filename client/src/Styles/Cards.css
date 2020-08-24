@@ -17,6 +17,13 @@
     align-items: start;
     justify-content: space-around;
 }
+.boxminicat {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5 , auto);
+    align-items: start;
+    justify-content: space-around;
+}
 
 .imagenF {
     width: 165px;

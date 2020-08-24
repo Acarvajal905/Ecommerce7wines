@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom"
 import "../Styles/Home.css"
 import NavBar from './NavBar.js'
 import Carrusel from './Carrusel.js'
+import Minicat from "./Minicatalogo.js"
 import Admin from "./CRUD/admin.js"
 import Order from "./CRUD/orders";
 import CreateCategory from "./CRUD/crearcategoria.js"
@@ -19,7 +20,7 @@ export const Home = () => {
     <div>
       <Link to="/" >
       <header>
-        <h1 class="titulo" href="/">7wine</h1>
+        <img href="/" src="https://cdn.discordapp.com/attachments/742768659256180832/747300411764899950/head0.jpg"></img>
       </header>
       </Link>
 
@@ -28,6 +29,9 @@ export const Home = () => {
       />
       <Route
         exact path="/" component={Carrusel} 
+      />
+      <Route
+        exact path="/" component={Minicat} 
       />
       <Route
        exact path="/account/create/" component={NewUser}
