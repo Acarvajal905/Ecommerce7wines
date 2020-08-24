@@ -55,7 +55,6 @@ export const Home = () => {
         exact path='/admin/products/actualizarproducto' component={Update}
       />
 
-
     </div>
 
   )

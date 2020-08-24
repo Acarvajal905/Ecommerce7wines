@@ -41,10 +41,8 @@ class Minicat extends React.Component {
                 )
                 }
          </div>
-         
         );
     }
-
 }
 
 function mapStateToProps(state) {
