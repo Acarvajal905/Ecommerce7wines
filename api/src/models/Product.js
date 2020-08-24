@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT, //descripcion del producto
       allowNull: false
     },
+    category: {
+      type: DataTypes.TEXT, //descripcion del producto
+      allowNull: false
+    },
     price: {
       type: DataTypes.DECIMAL, //(o INTEGER LUEGO ME AYUDAN A DECIDIR)
       allowNull: false
@@ -23,10 +27,6 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,  //imagen del producto (TAMAÑO POR DEFINIR)
-      allowNull: false
-    },
-    quantity: {    //cantidad para comprar (creemos util en el carrito)
-      type: DataTypes.INTEGER,
       allowNull: false
     },
     content: { //Datos de la cantidad en mililitros (ml) o centimetros cubicos (cc)
@@ -43,10 +43,6 @@ module.exports = (sequelize) => {
     },
     colour: { //(color especifico del vino)
       type: DataTypes.TEXT,
-      allowNull: false
-    },
-    url: { //(color especifico del vino)
-      type: DataTypes.STRING,
       allowNull: false
     },
     route: { //RUTA DEL PRODUCTO

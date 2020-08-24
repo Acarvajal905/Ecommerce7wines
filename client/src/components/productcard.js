@@ -5,7 +5,7 @@ import { AddToCars } from './Redux/Actions/index.js';
 import { connect } from 'react-redux';
 
 
-const ProductCard = ( { name, id, description , price , stock , image, quantity, content, percentage , country, colour , AddToCars}) =>(
+const ProductCard = ( { name, id, price, image, AddToCars}) =>(
 
     /* Podemos agregar mas destalles a la vista previa */
  

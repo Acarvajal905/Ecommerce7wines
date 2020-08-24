@@ -21,7 +21,7 @@ export const Home = () => {
             </Link>
           </li>
           <li class="nav-item">
-            <Link to={`/products`} >
+            <Link to={`/Catalogue`} >
             <a class="nav-link" >Catalogo</a>
             </Link>
           </li>

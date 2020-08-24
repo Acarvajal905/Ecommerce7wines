@@ -5,16 +5,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from "../components/Redux/Actions/index.js"
 
-class Minicat extends React.Component {
+class VinoTinto extends React.Component {
 
     componentDidMount(){
-      this.props.get5Product()
+      this.props.getVinosTintos()
     }
     render() {
         return (
 
-            <div class="boxminicat">
-                {this.props.fiveproducts.map(v =>
+            <div class="box5">
+                {this.props.vinotintos.map(v =>
 
                     <ProductCard
                         name={v.name}
@@ -33,13 +33,15 @@ class Minicat extends React.Component {
                 )
                 }
          </div>
+         
         );
     }
+
 }
 
 function mapStateToProps(state) {
     return {
-      fiveproducts: state.fiveproducts,
+        vinotintos: state.vinotintos,
     }
   }
   
@@ -47,5 +49,5 @@ function mapStateToProps(state) {
     return bindActionCreators(actionCreators, dispatch);
   }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Minicat);
+  export default connect(mapStateToProps, mapDispatchToProps)(VinoTinto);
   

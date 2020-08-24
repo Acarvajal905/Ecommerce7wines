@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Link } from "react-router-dom"
 import "../Styles/Home.css"
 import NavBar from './NavBar.js'
+import NavCat from './NavBar2.js'
 import Carrusel from './Carrusel.js'
 import Minicat from "./Minicatalogo.js"
 import Admin from "./CRUD/admin.js"
@@ -20,7 +21,7 @@ export const Home = () => {
     <div>
       <Link to="/" >
       <header>
-        <img href="/" src="https://cdn.discordapp.com/attachments/742768659256180832/747300411764899950/head0.jpg"></img>
+        <img class="head" href="/" src="https://cdn.discordapp.com/attachments/742768659256180832/747300411764899950/head0.jpg"></img>
       </header>
       </Link>
 
@@ -35,6 +36,9 @@ export const Home = () => {
       />
       <Route
        exact path="/account/create/" component={NewUser}
+      />
+      <Route
+        path="/Catalogue" component={NavCat} 
       />
       <Route
         path="/admin" component={Admin}

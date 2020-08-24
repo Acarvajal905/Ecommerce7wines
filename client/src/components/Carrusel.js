@@ -13,15 +13,19 @@ export const Carrusel = () => {
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <Link to={`/products`} >
+                <Link to={`/Catalogue`} >
                     <img src="https://cdn.discordapp.com/attachments/742768659256180832/747303674199408681/B0.jpg" class="d-block w-100" ></img>
                 </Link>
             </div>
             <div class="carousel-item">
-                <img src="https://cdn.discordapp.com/attachments/742768659256180832/747307812492804217/Bd1.jpg" class="d-block w-100" ></img>
+                <Link to={`/Catalogue/VinoTinto`} >
+                    <img src="https://cdn.discordapp.com/attachments/742768659256180832/747307812492804217/Bd1.jpg" class="d-block w-100" ></img>
+                </Link>
             </div>
             <div class="carousel-item">
-                <img src="https://cdn.discordapp.com/attachments/742768659256180832/747307808919257189/B2.jpg" class="d-block w-100" ></img>
+                <Link to={`/Catalogue/VinoBlanco`} >
+                    <img src="https://cdn.discordapp.com/attachments/742768659256180832/747307808919257189/B2.jpg" class="d-block w-100" ></img>
+                </Link>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
