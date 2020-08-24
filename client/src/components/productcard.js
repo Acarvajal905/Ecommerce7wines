@@ -23,7 +23,7 @@ const ProductCard = ( { name, id, description , price , stock , image, quantity,
       onClick={() =>{ AddToCars(id);}}>Agregar al carrito</button>  
       </Link>
     </div>
-
+    
   )
   
 
