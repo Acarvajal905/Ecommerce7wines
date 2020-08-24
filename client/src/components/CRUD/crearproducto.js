@@ -10,16 +10,15 @@ export function handleSumit2(e) {
   //producto creado por el formulario
   let Creado = { 
     name: x.name.value,
+    category: x.category.value,
     description: x.description.value,
     price: x.price.value,
     stock: x.stock.value,
     image: x.imagen.value,
-    quantity: x.quantity.value,
     content: x.content.value,
     percentage: x.percentage.value,
     country: x.country.value,
     colour: x.colour.value,
-    url: x.url.value
   };
   
   for (var prop in Creado){
@@ -59,6 +58,8 @@ export function validate(input) {
     errors.name = 'Name is required';
   } else if (!/\S/.test(input.name)) {
     errors.name = 'Name is invalid';
+  }if (!input.category) {
+    errors.category = 'Category is required';
   }if (!input.description) {
     errors.description = 'Description is required';
   } else if (!/\S/.test(input.description)) {
@@ -111,6 +112,7 @@ export default function CreateProduct(){
   const [input, setInput] = React.useState({
     name: '',
     description: "",
+    category: "",
     price: "",
     stock: "",
     imagen: "",
@@ -148,6 +150,17 @@ export default function CreateProduct(){
               type= 'text' placeholder = 'Nombre del producto' name ="name">
             </input>
             {errors.name && (<p className="danger">{errors.name}</p>)}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Categoria:</label>
+          <div class="col-sm-10">
+          <select name="category">
+            <option name ="category" value="Vino Tinto">Vino Tinto</option> 
+            <option name ="category" value="Vino Blanco">Vino Blanco</option> 
+            </select>
+            {errors.percentage && (<p className="danger">{errors.category}</p>)}
           </div>
         </div>
 
@@ -192,16 +205,6 @@ export default function CreateProduct(){
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Cantidad:</label>
-          <div class="col-sm-10">
-            <input className={`${errors.quantity && 'danger'}`} onChange={handleInputChange} value={input.quantity}
-              type= 'text' placeholder = 'Cantidad' name ="quantity">
-            </input>
-            {errors.quantity && (<p className="danger">{errors.quantity}</p>)}
-          </div>
-        </div>
-
-        <div class="form-group row">
           <label class="col-sm-2 col-form-label">Contenido:</label>
           <div class="col-sm-10">
             <input className={`${errors.content && 'danger'}`} onChange={handleInputChange} value={input.content}
@@ -238,16 +241,6 @@ export default function CreateProduct(){
               type= 'text' placeholder = 'Color' name ="colour">
             </input>
             {errors.colour && (<p className="danger">{errors.colour}</p>)}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Url:</label>
-          <div class="col-sm-10">
-            <input className={`${errors.url && 'danger'}`} onChange={handleInputChange} value={input.url}
-              type= 'text' placeholder = 'url' name ="url">
-            </input>
-            {errors.url && (<p className="danger">{errors.url}</p>)}
           </div>
         </div>
 

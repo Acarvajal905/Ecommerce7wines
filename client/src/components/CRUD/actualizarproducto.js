@@ -19,8 +19,6 @@ import "../../Styles/CRUD.css"
       errors.agregarcategories = 'Categories is invalid';
     }if (!/\S/.test(input.imagen)) {
       errors.imagen = 'Imagen is invalid';
-    }if (!/[0-9]/.test(input.quantity)) {
-      errors.quantity = 'Quantity is invalid';
     }if (!/[0-9]/.test(input.content)) {
       errors.content = 'Content is invalid';
     }if (!/[0-9]/.test(input.percentage)) {  //agustar exprecion

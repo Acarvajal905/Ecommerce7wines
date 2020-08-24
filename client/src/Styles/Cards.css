@@ -57,3 +57,11 @@
 .bg-light {
     background-color: #eef1f5 !important;
 }
+.btn-danger{
+    background-color: #982b64;
+    border-color: #982b64;
+}
+.btn-danger:hover{
+    background-color:#67143f;
+    border-color: #982b64;
+}
