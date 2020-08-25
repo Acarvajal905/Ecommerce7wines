@@ -8,7 +8,7 @@ server.get('/', (req, res, next) => {
 		.then((categorys) => {
 			res.send(categorys);
 		})
-		.catch(next);
+		.catch(err => { console.log(err) });
 
 });
 
@@ -21,7 +21,7 @@ server.post('/', (req, res, next) => {
     .then((category) => {
         return res.status(201).send(category);
     })
-    .catch(next);
+    .catch(err => { console.log(err) });
 });
 
 //S19 Borra una categoria.
@@ -32,7 +32,7 @@ server.delete('/:id', (req, res) => {
         if(obj === 1){
             res.json({ message: 'Categoria borrada'});
         }
-    })
+    }).catch(err => { console.log(err) });
 })
 
 //S20
@@ -45,7 +45,7 @@ server.put("/:id" , (req, res) => {
             Category: req.params.Category
         })
        return res.send(obj);
-    })
+    }).catch(err => { console.log(err) });
 });
 
 
@@ -58,7 +58,7 @@ server.get("/:nombreCat" , (req, res) => {
         if(obj) {
             return res.send(obj);
         }
-    })
+    }).catch(err => { console.log(err) });
 })
 
 
