@@ -98,8 +98,9 @@ export function SearchProduct(payload){
     .then(response => response.data)
     .then(ress =>
       {var arr=[];
+       var busq=payload.toUpperCase()
         for (var i = 0; i< ress.length; i++){
-         if(ress[i].name.includes(payload)){      // filtrar por coincidencias en el nombre
+         if(ress[i].name.toUpperCase().includes(busq)){      // filtrar por coincidencias en el nombre
          arr.push(ress[i])}
         }return arr;
       })

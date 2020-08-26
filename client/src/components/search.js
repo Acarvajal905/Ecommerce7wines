@@ -13,7 +13,7 @@ class ResultSearch extends React.Component {
     this.props.SearchProduct(id)
   }
 
-    render() {
+    render() { 
 
       if (this.props.searchproduct.length === 0){
         return(<h1>Producto no encontrado</h1>)
