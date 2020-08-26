@@ -13,6 +13,8 @@ import DeleteProduct from "./CRUD/borrarproducto.js"
 import CreateProduct from './CRUD/crearproducto.js'
 import NewUser from "./Usuarios/FormUsuario"
 import './Shoppingcart/carrito.css'
+import Usuario from './Usuarios/SigninScreen.js';
+import SigninScreen from "./Usuarios/SigninScreen.js";
 
 
 export const Home = () => {
@@ -20,25 +22,28 @@ export const Home = () => {
   return (
     <div>
       <Link to="/" >
-      <header>
-        <img class="head" href="/" src="https://cdn.discordapp.com/attachments/742768659256180832/747300411764899950/head0.jpg"></img>
-      </header>
+        <header>
+          <img class="head" href="/" src="https://cdn.discordapp.com/attachments/742768659256180832/747300411764899950/head0.jpg"></img>
+        </header>
       </Link>
 
       <Route
-        path="/" component={NavBar} 
+        path="/" component={NavBar}
       />
       <Route
-        exact path="/" component={Carrusel} 
+        exact path="/" component={Carrusel}
       />
       <Route
-        exact path="/" component={Minicat} 
+        exact path="/" component={Minicat}
       />
       <Route
-       exact path="/account/create/" component={NewUser}
+        exact path="/signin/" component={SigninScreen}
       />
       <Route
-        path="/Catalogue" component={NavCat} 
+        exact path="/users/create/" component={NewUser}
+      />
+      <Route
+        path="/Catalogue" component={NavCat}
       />
       <Route
         path="/admin" component={Admin}

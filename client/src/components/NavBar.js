@@ -17,35 +17,35 @@ export const Home = () => {
         <ul class="navbar-nav">
           <li class="nav-item active">
             <Link to={`/`} >
-            <a class="nav-link" >Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" >Home <span class="sr-only">(current)</span></a>
             </Link>
           </li>
           <li class="nav-item">
             <Link to={`/Catalogue`} >
-            <a class="nav-link" >Catalogo</a>
+              <a class="nav-link" >Catalogo</a>
             </Link>
           </li>
           <li class="nav-item">
-            <Link to={`/account/create/`} >
-            <a class="nav-link" >Registrarse</a>
+            <Link to={`/signin/`} >
+              <a class="nav-link" >Iniciar sesión/Registrarse</a>
             </Link>
           </li>
           <li class="nav-item">
             <Link to={`/admin`} >
-            <a class="nav-link" >Admin</a>
+              <a class="nav-link" >Admin</a>
             </Link>
           </li>
         </ul>
         <div class='cart'>
           <a class='derecho'>
             <Link to={`/carrito`} >
-            <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
+              <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
             </Link>
           </a>
         </div>
-        
+
       </div>
-      
+
     </nav>
   )
 }
