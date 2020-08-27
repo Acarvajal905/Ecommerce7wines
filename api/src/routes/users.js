@@ -1,40 +1,55 @@
 const server = require('express').Router();
 const { User } = require('../db.js');
+// const { signin } = require('../../../client/src/components/Redux/Actions/index.js');
 
+// CREA UN USUARIO
+server.post('/', (req, res) => {
+    const signinUser = req.body
+    console.log({ signinUser });
+    User.create(signinUser)
+        .then((user) => {
+            return res.send(user)
+        }).catch(err => { console.log(err) });
+});
+// TRAE TODOS LOS USUARIOS
+server.get('/', (req, res) => {
+    User.findAll()
+        .then((users) => {
+            res.send(users);
+        }).catch(err => { console.log(err) });
+})
 
-server.post('/create', async (req, res) => {
-    const signinUser = await User.findOne({
-        email: req.body.email,
-        password: req.body.password
-    });
-    if (signinUser) {
-        res.send({
-            _id: signinUser.id,
-            name: signinUser.name,
-            email: signinUser.email,
-            isAdmin: signinUser.isAdmin,
-            token: getToken(user)
+//MODIFICAR USUARIO (USAR PARA ASIGNAR ROL DE ADMIN)
+server.put('/:id', (req, res) => {
+    User.update(req.body,
+        {
+            where:
+                { id: req.params.id }
+        }).then(function (user) {
+            if (!user) {
+                return res.status(404).end()
+            }
+            return res.json(user);
+        }).catch(err => { console.log(err) });
+})
+//NO SIRVE BUSCAR USUARIOS
+server.get('/search', (req, res) => {
+    if (req.query.email || req.query.password) {
+        var Useremail = req.query.email;
+        var Userpassword = req.query.password;
+        // if (req.query.email || req.query.password) {
+        User.findAll({
+            where: { email: Useremail }
+        }).then((user) => {
+            res.send(user)
         })
-    } else {
-        res.status(401).send({ msg: 'Invalid Email or Password' })
+        // }
+        //  else if (!req.query.email && !req.query.password) {
+        //     console.log('Usuario no encontrado')
+        // }
     }
 })
 
-
-server.get('/createadmin', async (req, res) => {
-    try {
-        const user = new User({
-            name: 'Admin',
-            email: 'admin@admin.com',
-            password: '1234',
-            isAdmin: true
-        });
-        const newUser = await user.save();
-        res.send(newUser);
-    } catch (error) {
-        res.send({ msg: error.message });
-    }
-})
 
 
 // //s36  retornar todos los usuarios

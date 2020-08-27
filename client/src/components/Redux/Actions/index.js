@@ -6,9 +6,7 @@ export const ADD_TO_CARS = "ADD_TO_CARS"
 export const GET_5_PRODUCTS = "GET_5_PRODUCTS"
 export const GET_RED_WINE = "GET_RED_WINE"
 export const GET_WHITE_WINE = "GET_WHITE_WINE"
-export const USER_SIGNING_SUCCESS = "USER_SIGNIN_SUCCESS";
-export const USER_SIGNING_FAIL = 'USER_SIGNIN_FAIL';
-export const USER_SIGNIN_REQUEST = 'USER_SIGNIN_REQUEST';
+
 
 
 

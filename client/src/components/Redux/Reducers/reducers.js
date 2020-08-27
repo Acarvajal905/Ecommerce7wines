@@ -1,4 +1,4 @@
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_RED_WINE, GET_WHITE_WINE, USER_SIGNIN_REQUEST, USER_SIGNING_SUCCESS, USER_SIGNING_FAIL } from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_RED_WINE, GET_WHITE_WINE, } from "../Actions/index.js"
 
 const initialState = {
   allproducts: [],
@@ -58,21 +58,21 @@ function rootReducer(state = initialState, action) {
       carrito: state.carrito.concat(action.payload) // modifico carrito del store, agregando los producto que agrege
     }
   }
-  if (action.type === USER_SIGNIN_REQUEST) {
-    return {
-      loading: true
-    }
-  }
-  if (action.type === USER_SIGNING_SUCCESS) {
-    return {
-      loading: false, userInfo: action.payload
-    }
-  }
-  if (action.type === USER_SIGNING_FAIL) {
-    return {
-      loading: false, error: action.payload
-    }
-  }
+  // if (action.type === USER_SIGNIN_REQUEST) {
+  //   return {
+  //     loading: true
+  //   }
+  // }
+  // if (action.type === USER_SIGNING_SUCCESS) {
+  //   return {
+  //     loading: false, userInfo: action.payload
+  //   }
+  // }
+  // if (action.type === USER_SIGNING_FAIL) {
+  //   return {
+  //     loading: false, error: action.payload
+  //   }
+  // }
 
 
   return state

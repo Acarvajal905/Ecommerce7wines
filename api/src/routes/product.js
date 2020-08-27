@@ -4,7 +4,9 @@ const { Product, Category } = require('../db.js');
 
 //S21 : Crear ruta que devuelva todos los productos
 server.get('/', (req, res, next) => {
-	Product.findAll()
+	Product.findAll({
+		include: Category
+	})
 		.then((products) => {
 			res.send(products);
 		})
