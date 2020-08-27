@@ -12,7 +12,7 @@ server.get('/', (req, res, next) => {
 
 });
 
-//S18 Crea una categoría nueva.
+//S18 Crea una categoría nueva.s
 server.post('/', (req, res, next) => {
 	Category.create({
         name: req.body.name,

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 import "../../Styles/CRUD.css"
   
+
   // funcion del sumit
 export function handleSumit2(e) {
   e.preventDefault();
@@ -10,7 +11,6 @@ export function handleSumit2(e) {
   //producto creado por el formulario
   let Creado = { 
     name: x.name.value,
-    category: x.category.value,
     description: x.description.value,
     price: x.price.value,
     stock: x.stock.value,
@@ -19,6 +19,7 @@ export function handleSumit2(e) {
     percentage: x.percentage.value,
     country: x.country.value,
     colour: x.colour.value,
+    categories: x.categories.value
   };
   
   for (var prop in Creado){
@@ -121,10 +122,21 @@ export default function CreateProduct(){
     percentage: "",
     country:"",
     colour:"",
-    url:""
+    url:"",
   });
   const [errors, setErrors] = React.useState({});
 
+  const [categorias, setCategorias] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(`http://localhost:3001/category`)
+    .then(result => {
+      let categories = result.data
+      console.log(categories);
+      setCategorias(categories);
+    })
+  }, [])
+  
   const handleInputChange = function(e){
     setErrors(validate({
       ...input,
@@ -152,18 +164,22 @@ export default function CreateProduct(){
             {errors.name && (<p className="danger">{errors.name}</p>)}
           </div>
         </div>
-
+{/* ------------------------------------------------------------------------------------------------ */}
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Categoria:</label>
           <div class="col-sm-10">
-          <select name="category">
-            <option name ="category" value="Vino Tinto">Vino Tinto</option> 
-            <option name ="category" value="Vino Blanco">Vino Blanco</option> 
-            </select>
-            {errors.percentage && (<p className="danger">{errors.category}</p>)}
+
+          <select name ="categories">
+            {categorias.map(v =>
+              <option name ="categories" value={v}>{v.name}</option>)
+            }
+          </select>
+
+          {errors.percentage && (<p className="danger">{errors.category}</p>)}
           </div>
         </div>
 
+{/* ------------------------------------------------------------------------------------------------- */}
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Descripcion:</label>
           <div class="col-sm-10">

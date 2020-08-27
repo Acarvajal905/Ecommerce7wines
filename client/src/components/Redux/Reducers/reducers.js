@@ -1,4 +1,4 @@
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_RED_WINE, GET_WHITE_WINE} from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_RED_WINE, GET_WHITE_WINE, GET_ALL_CATEGORY} from "../Actions/index.js"
 
 const initialState = {
     allproducts: [],
@@ -7,7 +7,8 @@ const initialState = {
     vinoblancos:[],
     product: [],
     searchproduct: [],
-    carrito: []
+    carrito: [],
+    allcategories: []
   };
 
   function rootReducer(state = initialState, action){
@@ -53,9 +54,14 @@ const initialState = {
         carrito: state.carrito.concat(action.payload) // modifico carrito del store, agregando los producto que agrege
       }
     }
+    if (action.type === GET_ALL_CATEGORY){
+      return {
+        ...state,
+        allcategories: action.payload  //modifico allproducts del store, agregando todos los productos de la bd
+      }
+    }
+    
     return state
   }
-
-
 
   export default rootReducer;

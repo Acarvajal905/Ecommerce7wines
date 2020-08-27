@@ -30,6 +30,7 @@ class Producto extends React.Component {
             <div class="boxD">
               <h1 class="title" > {this.props.product.name}</h1>
 
+              <span class="categories">{this.props.product.categories}</span>
               <span class="price">{this.props.product.price} $</span>
 
               <ul class="list">
