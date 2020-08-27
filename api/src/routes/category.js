@@ -1,10 +1,12 @@
 const server = require('express').Router();
-const { Category } = require('../db.js');
+const { Category, Product } = require('../db.js');
 
 
 //Devuelve un array con las categorias.
 server.get('/', (req, res, next) => {
-	Category.findAll()
+	Category.findAll({
+        include: Product
+    })
 		.then((categorys) => {
 			res.send(categorys);
 		})

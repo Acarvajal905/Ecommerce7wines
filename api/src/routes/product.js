@@ -76,10 +76,10 @@ server.post('/', (req, res, next) => {
     Product.create(item)
         .then((product) => {
             const categoriesId = item.categories;//Array de ids de categorias.
-            categoriesId.forEach(categoryId => {
+            //categoriesId.forEach(categoryId => {
                 Category.findOne({
-                    where: { id: categoryId },
-            })
+                    where: { id: categoriesId },
+           // })
              }).then(result => {
                      product.addCategory(result);
                  })
