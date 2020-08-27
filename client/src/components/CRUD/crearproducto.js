@@ -171,7 +171,7 @@ export default function CreateProduct(){
 
           <select name ="categories">
             {categorias.map(v =>
-              <option name ="categories" value={v}>{v.name}</option>)
+              <option name ="categories" value={v.id}>{v.name}</option>)
             }
           </select>
 
