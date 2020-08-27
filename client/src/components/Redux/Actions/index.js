@@ -6,6 +6,7 @@ export const ADD_TO_CARS = "ADD_TO_CARS"
 export const GET_5_PRODUCTS = "GET_5_PRODUCTS"
 export const GET_RED_WINE = "GET_RED_WINE"
 export const GET_WHITE_WINE = "GET_WHITE_WINE"
+export const GET_ALL_CATEGORY = 'GET_ALL_CATEGORY'
 
 function getrandom(array){
   let product=[]
@@ -117,6 +118,18 @@ export function AddToCars(payload){
     return axios.get(`http://localhost:3001/products/${payload}`)
     .then(response => {
       dispatch({ type: ADD_TO_CARS, payload: response.data });  // despacha la accion ADD_TO_CARS
+    })
+    .catch(err =>{
+      console.log(err)
+    });
+  }
+}
+
+export function getAllCategory(){
+  return function(dispatch){
+    return axios.get(`http://localhost:3001/category/`)
+    .then(ress => {
+      dispatch({ type: GET_ALL_CATEGORY, payload: ress.data});  // despacha la accion GET_ALL_PRODUCTS
     })
     .catch(err =>{
       console.log(err)

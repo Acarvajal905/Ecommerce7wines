@@ -13,6 +13,7 @@ import DeleteProduct from "./CRUD/borrarproducto.js"
 import CreateProduct from './CRUD/crearproducto.js'
 import NewUser from "./Usuarios/FormUsuario"
 import './Shoppingcart/carrito.css'
+import Categorias from './CRUD/testcategory.js';
 
 
 export const Home = () => {
@@ -42,6 +43,9 @@ export const Home = () => {
       />
       <Route
         path="/admin" component={Admin}
+      />
+      <Route
+        path="/admin/testcategories" component={Categorias} 
       />
       <Route
         exact path='/admin/products/ordenes' component={Order}
