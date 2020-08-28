@@ -148,8 +148,8 @@ export default function CreateProduct() {
     })
   }
 
+  return ( 
 
-  return (
     <div class="adminbox">
       <form onSubmit={handleSumit2} id="formulario">
         <div> <h1>Crear Producto</h1> </div>
@@ -178,7 +178,6 @@ export default function CreateProduct() {
 
           </div>
         </div>
-
 {/* ------------------------------------------------------------------------------------------------- */}
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Descripcion:</label>

@@ -1,11 +1,10 @@
 
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_RED_WINE, GET_WHITE_WINE, GET_ALL_CATEGORY} from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_CATEGORY} from "../Actions/index.js"
 
 const initialState = {
     allproducts: [],
     fiveproducts: [],
     vinotintos: [],
-    vinoblancos:[],
     product: [],
     searchproduct: [],
     carrito: [],
@@ -32,23 +31,17 @@ const initialState = {
       ...state,
       fiveproducts: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
     }
-  }
-  if (action.type === GET_RED_WINE) {
-    return {
-      ...state,
-      vinotintos: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
+    if (action.type === GET_PRODUCT_CAT){
+      return {
+        ...state,
+        vinotintos: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
+      }
     }
-  }
-  if (action.type === GET_WHITE_WINE) {
-    return {
-      ...state,
-      vinoblancos: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
-    }
-  }
-  if (action.type === SEARCH_PRODUCT) {
-    return {
-      ...state,
-      searchproduct: action.payload  // modifico searchproduct del store, agregando los producto que machean
+    if (action.type === SEARCH_PRODUCT){
+      return {
+        ...state,
+        searchproduct: action.payload  // modifico searchproduct del store, agregando los producto que machean
+      }
     }
   }
   if (action.type === ADD_TO_CARS) {
@@ -62,8 +55,10 @@ const initialState = {
         ...state,
         allcategories: action.payload  //modifico allproducts del store, agregando todos los productos de la bd
       }
-    }
-    
+    } 
+    return state
+  }
+
 
   // if (action.type === USER_SIGNIN_REQUEST) {
   //   return {

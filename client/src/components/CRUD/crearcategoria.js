@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from "axios"
-import "../../Styles/CRUD.css"
+import axios from "axios";
+import "../../Styles/CRUD.css";
 
 export const handleSumit4 = function(e) {
   e.preventDefault();
@@ -83,7 +83,6 @@ export default function NewCategory() {
          </div>
        </div>
 
-        
            <div class="form-group row">
          <label class="col-sm-2 col-form-label">Descripcion:</label>
          <div class="col-sm-10">
