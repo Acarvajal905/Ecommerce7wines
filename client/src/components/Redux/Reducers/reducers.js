@@ -19,7 +19,7 @@ const initialState = {
         }  
 
     }
-  }
+  
   if (action.type === GET_ALL_PRODUCTS) {
     return {
       ...state,
