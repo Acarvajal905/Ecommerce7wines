@@ -7,10 +7,10 @@ server.get('/', (req, res, next) => {
 	Category.findAll({
         include: Product
     })
-		.then((categorys) => {
-			res.send(categorys);
-		})
-		.catch(err => { console.log(err) });
+	.then((categorys) => {
+		res.send(categorys);
+	})
+	.catch(err => { console.log(err) });
 
 });
 
@@ -37,7 +37,7 @@ server.delete('/:id', (req, res) => {
     }).catch(err => { console.log(err) });
 })
 
-//S20
+//S20 Modifica una categoria 
 
 server.put("/:id" , (req, res) => {
     Category.findOne({
@@ -51,14 +51,15 @@ server.put("/:id" , (req, res) => {
 });
 
 
-//S22
+//S22 retorna todos los productos asosociados a una categoria
 
-server.get("/:nombreCat" , (req, res) => {
+server.get("/:id" , (req, res) => {
     Category.findAll({
-        where: { name: req.params.nombreCat }
-    }).then(function (obj) {
-        if(obj) {
-            return res.send(obj);
+        where: { id: req.params.id },
+        include: Product
+    }).then( (result) => {
+        if(result) {
+            res.send(result);
         }
     }).catch(err => { console.log(err) });
 })

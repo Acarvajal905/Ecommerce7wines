@@ -33,7 +33,7 @@ export function handleSumit2(e) {
 
   axios.get(`http://localhost:3001/products/`)
   .then(ress =>{
-   let arr = ress.data.filter(p => p.name == Creado.name)
+   let arr = ress.data.filter(p => p.name === Creado.name)
     if(arr.length){
     alert( `El producto  ya existe`);
     }
