@@ -36,7 +36,7 @@ export default function  DeleteProduct() {
   const GetProducto = async (Prod) =>{  
     try{
       const resProd = await axios (`http://localhost:3001/products/`)
-      let Buscado= resProd.data.filter(p => p.name == Prod) //para probar busca que el id coinsida
+      let Buscado= resProd.data.filter(p => p.name === Prod) //para probar busca que el id coinsida
       console.log("me traje ", Buscado)  //modificar cuando este listo
         return Buscado
      } catch(error){

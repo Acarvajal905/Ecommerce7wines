@@ -30,12 +30,14 @@ export function handleSumit2(e) {
   //Me traigo los productos de la bd
 
   axios.get(`http://localhost:3001/products/`)
-    .then(ress => {
-      let arr = ress.data.filter(p => p.name == Creado.name)
-      if (arr.length) {
-        alert(`El producto  ya existe`);
-      }
-      if (!arr.length) {
+
+  .then(ress =>{
+   let arr = ress.data.filter(p => p.name === Creado.name)
+    if(arr.length){
+    alert( `El producto  ya existe`);
+    }
+    if(!arr.length){
+
 
         /* Aca va la funcion para editar la bd, creando producto */
         axios.post(`http://localhost:3001/products/`, Creado)
