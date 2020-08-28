@@ -55,20 +55,38 @@ server.get('/search', (req, res, next) => {
 	}
 });
 //S25 : Crear ruta para crear/agregar Producto
+// server.post('/', (req, res, next) => {
+// 	const item = req.body
+// 	console.log({ item });
+// 	Product.create(item)
+// 		.then((product) => {
+// 			// Category.findOne({
+// 			// 	where: { id: categoryId },
+// 			// }).then(result => {
+// 			// 		product.addCategory(result);
+// 			// 	})
+// 			// 	console.log(result);
+// 			return res.send(product)
+// 		}).catch(err => { console.log(err) });
+// });
+
 server.post('/', (req, res, next) => {
-	const item = req.body
-	console.log({ item });
-	Product.create(item)
-		.then((product) => {
-			// Category.findOne({
-			// 	where: { id: categoryId },
-			// }).then(result => {
-			// 		product.addCategory(result);
-			// 	})
-			// 	console.log(result);
-			return res.send(product)
-		}).catch(err => { console.log(err) });
-});
+    const item = req.body
+    console.log({ item });
+    Product.create(item)
+        .then((product) => {
+            const categoriesId = item.categories;//Array de ids de categorias.
+            //categoriesId.forEach(categoryId => {
+                Category.findOne({
+                    where: { id: categoriesId },
+           // })
+             }).then(result => {
+                     product.addCategory(result);
+                 })
+                 //console.log(result);
+            return res.send(product)
+        }).catch(err => { console.log(err) });
+	});
 
 //S26 : Crear ruta para Modificar Producto
 server.put('/:id', (req, res, next) => {
@@ -82,6 +100,8 @@ server.put('/:id', (req, res, next) => {
 			return res.json(product);
 		})
 		.catch(err => { console.log(err) });
+
+		
 })
 
 

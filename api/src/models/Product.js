@@ -13,10 +13,6 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT, //descripcion del producto
       allowNull: false
     },
-    category: {
-      type: DataTypes.TEXT, //descripcion del producto
-      allowNull: false
-    },
     price: {
       type: DataTypes.DECIMAL, //(o INTEGER LUEGO ME AYUDAN A DECIDIR)
       allowNull: false

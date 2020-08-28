@@ -10,8 +10,11 @@ class Minicat extends React.Component {
     componentDidMount(){
       this.props.get5Product()
     }
-    render() {
+    render() {if (!this.props.fiveproducts[0]){
+      return(<h1>Productos no encontrados</h1>)
+    }else
         return (
+          
 
             <div class="boxminicat">
                 {this.props.fiveproducts.map(v =>
