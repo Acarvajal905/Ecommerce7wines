@@ -1,4 +1,4 @@
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_RED_WINE, GET_WHITE_WINE, GET_ALL_CATEGORY} from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_WHITE_WINE, GET_ALL_CATEGORY} from "../Actions/index.js"
 
 const initialState = {
     allproducts: [],
@@ -30,16 +30,10 @@ const initialState = {
         fiveproducts: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
       }
     }
-    if (action.type === GET_RED_WINE){
+    if (action.type === GET_PRODUCT_CAT){
       return {
         ...state,
         vinotintos: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
-      }
-    }
-    if (action.type === GET_WHITE_WINE){
-      return {
-        ...state,
-        vinoblancos: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
       }
     }
     if (action.type === SEARCH_PRODUCT){
@@ -59,7 +53,7 @@ const initialState = {
         ...state,
         allcategories: action.payload  //modifico allproducts del store, agregando todos los productos de la bd
       }
-    }
+    } 
     
     return state
   }

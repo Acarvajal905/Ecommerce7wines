@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from "axios"
-import "../../Styles/CRUD.css"
+import axios from "axios";
+import "../../Styles/CRUD.css";
 
 export const handleSumit4 = function(e) {
   e.preventDefault();

@@ -4,7 +4,7 @@ export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
 export const ADD_TO_CARS = "ADD_TO_CARS"
 export const GET_5_PRODUCTS = "GET_5_PRODUCTS"
-export const GET_RED_WINE = "GET_RED_WINE"
+export const GET_PRODUCT_CAT = "GET_RED_WINE"
 export const GET_WHITE_WINE = "GET_WHITE_WINE"
 export const GET_ALL_CATEGORY = 'GET_ALL_CATEGORY'
 
@@ -61,33 +61,18 @@ export function get5Product(){
   }
 }
 
-//Trae todos los productos con categoria "Vinos Tintos"
+//Trae todos los productos con categoria 
 
 export function getVinosTintos(){
   return function(dispatch){
-    return axios.get(`http://localhost:3001/products/`)
-    .then(response => response.data.filter(a => a.category === "Vino Tinto"))
+    return axios.get(`http://localhost:3001/category/:id`)
+    .then(response => response.data.filter(a => a.categories.name))
     .then(ress => {
-      dispatch({ type: GET_RED_WINE, payload: ress});
+      dispatch({ type: GET_PRODUCT_CAT, payload: ress});
     })
     .catch(err =>{
       console.log(err)
-    });
-  }
-}
-
-//Trae todos los productos con categoria "Vinos Blanco"
-
-export function getVinosBlancos(){
-  return function(dispatch){
-    return axios.get(`http://localhost:3001/products/`)
-    .then(response => response.data.filter(a => a.category === "Vino Blanco"))
-    .then(ress => {
-      dispatch({ type: GET_WHITE_WINE, payload: ress});
-    })
-    .catch(err =>{
-      console.log(err)
-    });
+    }); 
   }
 }
 

@@ -149,7 +149,6 @@ export default function CreateProduct(){
     })
   }
 
- 
   return ( 
     <div class="adminbox">
       <form  onSubmit={handleSumit2} id="formulario">
@@ -178,7 +177,6 @@ export default function CreateProduct(){
           {errors.percentage && (<p className="danger">{errors.category}</p>)}
           </div>
         </div>
-
 {/* ------------------------------------------------------------------------------------------------- */}
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Descripcion:</label>
