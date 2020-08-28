@@ -5,7 +5,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   const Producto = sequelize.define('product', {
-    name: {  
+    name: {
       type: DataTypes.STRING, //podemos usarlo para el url combinado con su id
       allowNull: false
     },
@@ -42,18 +42,18 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     route: { //RUTA DEL PRODUCTO
-      type: DataTypes.VIRTUAL, 
+      type: DataTypes.VIRTUAL,
       get() {                          //NO SE SI AGREGARLE TAMBIEN EL ID ASI "+ this.getDataValur("id")"
-        return "/product" + this.getDataValue("name") + this.getDataValue("id") ;
+        return "/product" + this.getDataValue("name") + this.getDataValue("id");
       }
     }
 
   });
 
   Producto.addHook("beforeValidate", (product) => {
-    product.url = product.name.replace(/\s+/g,"_").replace(/\W/g,"")
+    product.url = product.name.replace(/\s+/g, "_").replace(/\W/g, "")
   })
- //cree un hook para la url para remplazar espacios y los valores como simbolos y caracterers raros
+  //cree un hook para la url para remplazar espacios y los valores como simbolos y caracterers raros
 
 };
 
