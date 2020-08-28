@@ -9,7 +9,6 @@ import carrito from './components/Shoppingcart/carrito.js'
 import ResultSearch from "./components/search.js"
 import axios from "axios";
 
-
 function App() {
 
   const [categorias, setCategorias] = React.useState([]);
@@ -30,16 +29,13 @@ function App() {
       <Route exact path='/products/:id' component={Producto}/>
       <Route exact path="/Catalogue" component={Catalogo} />
 
-
       {categorias.map(v =>
       <Route exact path={"/Catalogue/"+v.name} component={VinoTinto} />
       
       )}
 
-
       <Route exact path="/carrito" component={carrito} />
     </BrowserRouter>
-
 
   );
 }

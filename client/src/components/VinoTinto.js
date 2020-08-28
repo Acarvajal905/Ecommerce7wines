@@ -45,11 +45,11 @@ function mapStateToProps(state) {
     return {
         vinotintos: state.vinotintos,
     }
-  }
-  
-  function mapDispatchToProps(dispatch) {
+}
+    
+function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch);
-  }
+}
   
-  export default connect(mapStateToProps, mapDispatchToProps)(VinoTinto);
+export default connect(mapStateToProps, mapDispatchToProps)(VinoTinto);
   

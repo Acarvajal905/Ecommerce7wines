@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from "axios";
 import "../../Styles/CRUD.css"
-  
 
   // funcion del sumit
 export function handleSumit2(e) {

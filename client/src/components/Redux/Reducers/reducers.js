@@ -1,10 +1,9 @@
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_WHITE_WINE, GET_ALL_CATEGORY} from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_CATEGORY} from "../Actions/index.js"
 
 const initialState = {
     allproducts: [],
     fiveproducts: [],
     vinotintos: [],
-    vinoblancos:[],
     product: [],
     searchproduct: [],
     carrito: [],
@@ -54,7 +53,6 @@ const initialState = {
         allcategories: action.payload  //modifico allproducts del store, agregando todos los productos de la bd
       }
     } 
-    
     return state
   }
 

@@ -75,7 +75,6 @@ export function getVinosTintos(){
     }); 
   }
 }
-
 //Buscar productos
 
 export function SearchProduct(payload){

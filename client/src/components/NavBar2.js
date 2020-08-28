@@ -3,7 +3,6 @@ import "../Styles/Home.css"
 import axios from "axios";
 import { Link } from 'react-router-dom'
 
-
 export const NavCat = () => {
 
   const [categorias, setCategorias] = React.useState([]);
@@ -32,8 +31,7 @@ export const NavCat = () => {
             )
           }
         </ul>
-      </div>
-      
+      </div>  
     </nav>
   )
 }
