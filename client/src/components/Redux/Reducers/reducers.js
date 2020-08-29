@@ -4,7 +4,7 @@ import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PROD
 const initialState = {
   allproducts: [],
   fiveproducts: [],
-  vinotintos: [],
+  productcat: [],
   product: [],
   searchproduct: [],
   carrito: [],
@@ -34,7 +34,7 @@ function rootReducer(state = initialState, action) {
   if (action.type === GET_PRODUCT_CAT) {
     return {
       ...state,
-      vinotintos: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
+      productcat: action.payload  //modifico allproducts del store, agregando 5 productos de la bd
     }
   }
   if (action.type === SEARCH_PRODUCT) {
@@ -43,7 +43,6 @@ function rootReducer(state = initialState, action) {
       searchproduct: action.payload  // modifico searchproduct del store, agregando los producto que machean
     }
   }
-
   if (action.type === ADD_TO_CARS) {
     return {
       ...state,

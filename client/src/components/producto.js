@@ -31,11 +31,7 @@ class Producto extends React.Component {
 
             <div class="boxD">
               <h1 class="title" > {this.props.product.name}</h1>
-               {/*  <div>{this.props.product.categories.map(cate =>  //NO PUDE CORREGIR ESTO, PREGUNTAR A OLIVER
-                     <span class="categories">{cate.name}</span>
-                    )}
-                
-                </div> */}
+             {/*  <span class="categories">{this.props.product.categories}</span> */}
               <span class="price">{this.props.product.price} $</span>
 
               <ul class="list">
