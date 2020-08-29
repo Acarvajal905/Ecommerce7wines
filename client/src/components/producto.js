@@ -13,7 +13,7 @@ class Producto extends React.Component {
   componentDidMount() {
     const { match: { params: { id } } } = this.props;
     this.props.getProduct(id);
-    this.props.getAllReviews(id);
+    this.props.getAllReviews(id); /* traigo las reviews del producto */
     
   }
 
