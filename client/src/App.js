@@ -17,6 +17,7 @@ function App() {
     axios.get(`http://localhost:3001/category`)
     .then(result => {
       let categories = result.data
+      console.log(categories);
       setCategorias(categories);
     })
   }, [])
@@ -29,8 +30,9 @@ function App() {
       <Route exact path="/Catalogue" component={Catalogo} />
 
       {categorias.map(v =>
-      <Route exact path={"/Catalogue/"+v.id} component={ProdCat} />
+        <Route exact path={"/Catalogue/"+v.id} render={() => <ProdCat id={v.id} />} />
       )}
+
 
       <Route exact path="/carrito" component={carrito} />
     </BrowserRouter>
@@ -39,4 +41,3 @@ function App() {
 }
 
 export default App;
- 
