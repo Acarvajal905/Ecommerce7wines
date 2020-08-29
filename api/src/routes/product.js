@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Product, Category } = require('../db.js');
+const { Product, Category, product_category } = require('../db.js');
 
 
 //S21 : Crear ruta que devuelva todos los productos
@@ -112,12 +112,32 @@ server.delete('/:id', (req, res, next) => {
 	.catch(err=>{console.log(err)});
 });
 
-//S17 Crea ruta para sacar categorias de un producto.
-server.delete('/:idProducto/category/:idCategory', (req, res) => {
-	Product.findOne({
-		where: { id: req.params.idProducto }
+//S17 Crea ruta para sacar/agregar categorias de un producto.
+
+//agrega una categoria a un producto.
+server.post('/:idProd/category/:idCat', (req, res, next) => {
+	idP = req.params.idProd;
+	idC = req.params.idCat;
+	product_category.create({
+		categoryId: idC,
+		productId: idP
 	}).then((result) => {
-		if (result) return result.update({ Category: null });
+		res.send(result)
+	}).catch(err => { console.log(err) });
+});
+//Elimina la relacion entre un producto y una categoria.
+server.delete('/:idProd/category/:idCat', (req, res, next) => {
+	idP = req.params.idProd;
+	idC = req.params.idCat;
+	product_category.destroy({
+		where: { 
+			categoryId: idC,
+			productId : idP
+		}
+	}).then((result) => {
+		if (result === 1) {
+			res.json({ message: 'Categoria Borrada' });
+		}
 	})
 	.catch(err => { console.log(err) });
 });
