@@ -3,7 +3,7 @@ import Producto from './components/producto.js'
 import { BrowserRouter } from 'react-router-dom'
 import Home from './components/Home.js'
 import Catalogo from "./components/Catalogo.js"
-import VinoTinto from "./components/VinoTinto.js"
+import ProdCat from "./components/VinoTinto.js"
 import { Route } from "react-router-dom"
 import carrito from './components/Shoppingcart/carrito.js'
 import ResultSearch from "./components/search.js"
@@ -17,7 +17,6 @@ function App() {
     axios.get(`http://localhost:3001/category`)
     .then(result => {
       let categories = result.data
-      console.log(categories);
       setCategorias(categories);
     })
   }, [])
@@ -30,8 +29,7 @@ function App() {
       <Route exact path="/Catalogue" component={Catalogo} />
 
       {categorias.map(v =>
-      <Route exact path={"/Catalogue/"+v.name} component={VinoTinto} />
-      
+      <Route exact path={"/Catalogue/"+v.id} component={ProdCat} />
       )}
 
       <Route exact path="/carrito" component={carrito} />
@@ -41,3 +39,4 @@ function App() {
 }
 
 export default App;
+ 

@@ -10,9 +10,10 @@ export const GET_ALL_CATEGORY = 'GET_ALL_CATEGORY'
 export const GET_ALL_REVIEWS_PRODUCT = "GET_ALL_REVIEWS_PRODUCT"
 
 
-
-
-
+function prod(obj) {
+  let x=obj.products
+  return(x)
+}
 
 function getrandom(array) {
   let product = []
@@ -63,6 +64,7 @@ export function get5Product() {
       .then(ress => {
         dispatch({ type: GET_5_PRODUCTS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
       })
+      
       .catch(err => {
         console.log(err)
       });
@@ -71,10 +73,10 @@ export function get5Product() {
 
 //Trae todos los productos con categoria 
 
-export function getVinosTintos(){
+export function getProdCat(id){
   return function(dispatch){
-    return axios.get(`http://localhost:3001/category/:id`)
-    .then(response => response.data.filter(a => a.categories.name))
+    return axios.get(`http://localhost:3001/category/${id}`)
+    .then(response => prod(response.data))
     .then(ress => {
       dispatch({ type: GET_PRODUCT_CAT, payload: ress});
     })
@@ -83,6 +85,7 @@ export function getVinosTintos(){
     }); 
   }
 }
+
 //Buscar productos
 
 export function SearchProduct(payload) {
