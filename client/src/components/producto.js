@@ -14,9 +14,11 @@ class Producto extends React.Component {
     const { match: { params: { id } } } = this.props;
     this.props.getProduct(id);
     this.props.getAllReviews(id);
+    
   }
 
   render() {
+    var promedio= (this.props.reviews.reduce((a, b) => a + (b.calificacion),0))/this.props.reviews.length /* promerdio de las reviews */
     return (
       <div >
         <div class="box1">
@@ -48,6 +50,13 @@ class Producto extends React.Component {
               </ul>
             </div>
           </div>
+        </div>
+        <div> Promedio de calificacion:  {/* Ests div da el promedio general de las reviews */}
+           {(Math.ceil(promedio) === 5) && <h1>☆☆☆☆☆</h1>}   {/* condicionales de renderizar */}
+           {(Math.ceil(promedio) === 4) && <h1>☆☆☆☆</h1>}
+           {(Math.ceil(promedio) === 3) && <h1>☆☆☆</h1>}
+           {(Math.ceil(promedio) === 2) && <h1>☆☆</h1>}
+           {(Math.ceil(promedio) === 1) && <h1>☆</h1>}
         </div>
         <div>
          {this.props.reviews.slice(0, 3).map(re =>  /* Aca renderizamos las reviews, LIMITADO A LAS ULTIMAS 3 REVIEWS */
