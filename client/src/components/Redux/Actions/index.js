@@ -7,6 +7,7 @@ export const GET_5_PRODUCTS = "GET_5_PRODUCTS"
 export const GET_PRODUCT_CAT = "GET_RED_WINE"
 export const GET_WHITE_WINE = "GET_WHITE_WINE"
 export const GET_ALL_CATEGORY = 'GET_ALL_CATEGORY'
+export const GET_ALL_REVIEWS_PRODUCT = "GET_ALL_REVIEWS_PRODUCT"
 
 
 
@@ -122,6 +123,18 @@ export function getAllCategory(){
     return axios.get(`http://localhost:3001/category/`)
     .then(ress => {
       dispatch({ type: GET_ALL_CATEGORY, payload: ress.data});  // despacha la accion GET_ALL_PRODUCTS
+    })
+    .catch(err =>{
+      console.log(err)
+    });
+  }
+}
+
+export function getAllReviews(payload){
+  return function(dispatch){
+    return axios.get(`http://localhost:3001/products/${payload}/review/`)  // despacha la accion GET_ALL_REVIEWS_PRODUCT
+    .then(ress =>{
+      dispatch({type: GET_ALL_REVIEWS_PRODUCT, payload: ress.data})
     })
     .catch(err =>{
       console.log(err)
