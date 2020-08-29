@@ -132,7 +132,6 @@ export default function CreateProduct() {
     axios.get(`http://localhost:3001/category`)
     .then(result => {
       let categories = result.data
-      console.log(categories);
       setCategorias(categories);
     })
   }, [])

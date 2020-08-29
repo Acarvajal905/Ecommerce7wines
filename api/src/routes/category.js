@@ -54,7 +54,7 @@ server.put("/:id" , (req, res) => {
 //S22 retorna todos los productos asosociados a una categoria
 
 server.get("/:id" , (req, res) => {
-    Category.findAll({
+    Category.findOne({
         where: { id: req.params.id },
         include: Product
     }).then( (result) => {
@@ -63,6 +63,5 @@ server.get("/:id" , (req, res) => {
         }
     }).catch(err => { console.log(err) });
 })
-
 
 module.exports = server;
