@@ -5,22 +5,23 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from "../components/Redux/Actions/index.js"
 
-class VinoTinto extends React.Component {
-    
+class ProdCat extends React.Component {
+
     componentDidMount(){
-      this.props.getVinosTintos()
+      this.props.getProdCat()
+      console.log(this.props.productcat)
     }
-   
+
     render() {
         return (
-            
+
             <div class="box5">
-                {this.props.vinotintos.map(v =>
+                {this.props.productcat.map(v =>
 
                     <ProductCard
                         name={v.name}
                         id={v.id}
-                        description={v.description} 
+                        description={v.description}
                         price={v.price}
                         stock={v.stock}
                         image={v.image}
@@ -30,10 +31,8 @@ class VinoTinto extends React.Component {
                         country={v.country}
                         colour={v.colour}
                     />
-
-                    )
+                )
                 }
-                {console.log(this.props.vinotintos)}
          </div>
          
         );
@@ -41,9 +40,10 @@ class VinoTinto extends React.Component {
 
 }
 
+
 function mapStateToProps(state) {
     return {
-        vinotintos: state.vinotintos,
+        productcat: state.productcat,
     }
 }
     
@@ -51,5 +51,5 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch);
 }
   
-export default connect(mapStateToProps, mapDispatchToProps)(VinoTinto);
+export default connect(mapStateToProps, mapDispatchToProps)(ProdCat);
   

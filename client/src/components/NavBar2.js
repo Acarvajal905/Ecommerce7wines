@@ -25,7 +25,7 @@ export const NavCat = () => {
       <div class="collapse navbar-collapse" id="navbarcat">
         <ul class="navbar-nav">
           {categorias.map(v =>
-            <Link to={`/Catalogue/`+v.name} >
+            <Link to={`/Catalogue/`+v.id} >
               <li class="nav-link" name ="categories" value={v.id}>{v.name}</li>
             </Link>
             )
