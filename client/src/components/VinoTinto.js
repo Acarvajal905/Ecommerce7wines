@@ -8,8 +8,7 @@ import * as actionCreators from "../components/Redux/Actions/index.js"
 class ProdCat extends React.Component {
 
     componentDidMount(){
-      this.props.getProdCat()
-      console.log(this.props.productcat)
+     this.props.getProdCat(this.props.id)
     }
 
     render() {
