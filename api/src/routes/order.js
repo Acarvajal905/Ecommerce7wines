@@ -1,6 +1,5 @@
 const server = require('express').Router();
 const { Order, Product, User } = require('../db.js');
-const order = require('../models/order.js');
 
 // s44 retorne todas las ordenes
 server.get('/',(req,res,next)=>{
@@ -54,6 +53,20 @@ server.get('/:id/',(req,res)=>{
         res.send(order);
     })
     .catch(err => { console.log(err) });
+});
+
+//S38 Crear Ruta para agregar Item al Carrito
+//ruta /order/:idOrd/product/idProd
+//recibe id de orden e id de producto crea la relacion entre ellos.
+server.post('/:idOrd/product/:idProd', (req, res, next) => {
+	idP = req.params.idProd;
+	idO = req.params.idProd;
+	order_product.create({
+		orderId: idO,
+		productId: idP
+	}).then((result) => {
+		res.send(result)
+	}).catch(err => { console.log(err) });
 });
 
 module.exports = server;
