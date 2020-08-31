@@ -37,6 +37,7 @@ export function handleSumit3(e) {
                     .then(response => {
                         console.log('entre a ok')
                         alert(`Bienvenido a 7 Wines `)
+                        window.location.href = "/";
                     })
             }
         }).catch(error2 => {

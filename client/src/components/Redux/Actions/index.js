@@ -137,13 +137,13 @@ export function AddToCars(payload) {
 
 export function getAllCategory() {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/category/`)
-      .then(ress => {
-        dispatch({ type: GET_ALL_CATEGORY, payload: ress.data });  // despacha la accion GET_ALL_PRODUCTS
-      })
-      .catch(err => {
-        console.log(err)
-      });
+  return axios.get(`http://localhost:3001/category/`)
+    .then(ress => {
+      dispatch({ type: GET_ALL_CATEGORY, payload: ress.data });  // despacha la accion GET_ALL_PRODUCTS
+    })
+    .catch(err => {
+      console.log(err)
+    });
   }
 }
 
