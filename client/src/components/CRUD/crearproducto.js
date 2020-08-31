@@ -6,6 +6,8 @@ export function handleSumit2(e) {
   e.preventDefault();
 
   const x = e.target
+
+  
   //producto creado por el formulario
   let Creado = {
     name: x.name.value,
@@ -17,7 +19,6 @@ export function handleSumit2(e) {
     percentage: x.percentage.value,
     country: x.country.value,
     colour: x.colour.value,
-    categories: x.categories.value
   };
 
   for (var prop in Creado) {
@@ -26,7 +27,7 @@ export function handleSumit2(e) {
     }
   }
 
-  document.getElementById("formulario").reset();
+
   //Me traigo los productos de la bd
 
   axios.get(`http://localhost:3001/products/`)
@@ -36,21 +37,22 @@ export function handleSumit2(e) {
     if(arr.length){
     alert( `El producto  ya existe`);
     }
-    if(!arr.length){
+    if(!arr.length){     /* Aca va la funcion para editar la bd, creando producto */
+      axios.post(`http://localhost:3001/products/`, Creado)
+      .then(response => {
+        axios.post(`http://localhost:3001/products/${response.data.id}/category/${x.categories.value}`)
+      })
+      .then(ress => {
+        alert( `El producto fue Creado`)
+      })
 
-
-        /* Aca va la funcion para editar la bd, creando producto */
-        axios.post(`http://localhost:3001/products/`, Creado)
-          .then(response => {
-            console.log("entre a ok")
-            alert(`El producto fue creado`);
-          })
-      }
-    })
-    .catch(error2 => {
-      console.log(error2)
-      alert(`Hubo un problema al crear`);
-    })
+    }
+ })
+ 
+  .catch(error2 => {
+   console.log(error2)
+   alert(`Hubo un problema al crear`);
+  })
 };
 // Valido el input
 export function validate(input) {
