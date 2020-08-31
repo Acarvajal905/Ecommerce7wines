@@ -8,14 +8,7 @@ export const GET_PRODUCT_CAT = "GET_RED_WINE"
 export const GET_WHITE_WINE = "GET_WHITE_WINE"
 export const GET_ALL_CATEGORY = 'GET_ALL_CATEGORY'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
-// export const USER_SIGNING_SUCCESS = "USER_SIGNING_SUCCESS",
-// export const USER_SIGNIN_REQUEST = "USER_SIGNIN_REQUEST",
-// export const USER_SIGNING_FAIL = "USER_SIGNING_FAIL",
-
-
-
-
-
+export const GET_ALL_REVIEWS_PRODUCT = "GET_ALL_REVIEWS_PRODUCT"
 
 
 function prod(obj) {
@@ -153,14 +146,16 @@ export function getAllCategory() {
       });
   }
 }
-// export const signin = (email, password) => async (dispatch) => {
-//   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
 
-//   try {
-//     const { data } = await axios.post('/users/signin', { email, password })
-//     dispatch({ type: USER_SIGNING_SUCCESS, payload: data })
+export function getAllReviews(payload){
+  return function(dispatch){
+    return axios.get(`http://localhost:3001/products/${payload}/review/`)  // despacha la accion GET_ALL_REVIEWS_PRODUCT
+    .then(ress =>{
+      dispatch({type: GET_ALL_REVIEWS_PRODUCT, payload: ress.data})
+    })
+    .catch(err =>{
+      console.log(err)
+    });
+  }
+}
 
-//   } catch (error) {
-//     dispatch({ type: USER_SIGNING_FAIL, payload: error.message });
-//   }
-// }

@@ -1,5 +1,7 @@
 
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_CATEGORY, GET_ALL_USERS } from "../Actions/index.js"
+
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT } from "../Actions/index.js"
+
 
 const initialState = {
   allproducts: [],
@@ -9,10 +11,9 @@ const initialState = {
   searchproduct: [],
   carrito: [],
   allcategories: [],
-  loading: {},
-  userInfo: {},
-  error: {},
-  allusers: []
+  allusers: [],
+  reviews: []
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -66,25 +67,16 @@ function rootReducer(state = initialState, action) {
       allcategories: action.payload  //modifico allproducts del store, agregando todos los productos de la bd
     }
   }
-  // if (action.type === USER_SIGNIN_REQUEST) {
-  //   return {
-  //     loading: true
-  //   }
-  // }
-  // if (action.type === USER_SIGNING_SUCCESS) {
-  //   return {
-  //     loading: false, userInfo: action.payload
-  //   }
-  // }
-  // if (action.type === USER_SIGNING_FAIL) {
-  //   return {
-  //     loading: false, error: action.payload
-  //   }
-  // }
+
+  if(action.type === GET_ALL_REVIEWS_PRODUCT){
+    return{
+      ...state,
+      reviews: action.payload     //Agrego a la store las reviews del producto
+    }
+  }
+
   return state
 }
-
-
 
 
 
