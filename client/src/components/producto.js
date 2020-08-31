@@ -60,11 +60,12 @@ class Producto extends React.Component {
         </div>
         <div>
          {this.props.reviews.slice(0, 3).map(re =>  /* Aca renderizamos las reviews, LIMITADO A LAS ULTIMAS 3 REVIEWS */
+         
           <Reviews
             calificacion = {re.calificacion}
             descripcion ={re.descripcion}
             createdAt = {re.createdAt}
-            userId = {re.userID}
+            userId = {re.userId}
           />)}
         </div>
         <div class="title2">

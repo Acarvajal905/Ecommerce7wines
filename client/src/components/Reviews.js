@@ -4,6 +4,7 @@ import "../Styles/Reviews.css";
 export default function Reviews ({calificacion, descripcion, createdAt, userId}) {
 
   console.log(userId)
+  console.log(createdAt)
  
     const condicion = calificacion;
   return (
@@ -20,7 +21,7 @@ export default function Reviews ({calificacion, descripcion, createdAt, userId})
 
         </div>
         <div>{descripcion}</div>                       {/* Descripcion de la reviews */}
-        <div>{userId} {createdAt.substr(0,10)} </div> {/* Usuario, sino tiene setea anonimo y la fecha de creacion */}
+        <div>{userId || "anonimo"} {createdAt.substr(0,10)} </div> {/* Usuario, sino tiene setea anonimo y la fecha de creacion */}
       </div>
     </div>
   );

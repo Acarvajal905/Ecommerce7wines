@@ -21,13 +21,7 @@ export default function CrearRewied(id){
                     userId: user[0].id
                 }
                axios.post(`http://localhost:3001/products/${id.props}/review`, pruevarewies) 
-            } else 
-            var pruevarewies2 = {
-                   calificacion: usercalificacion,
-                    descripcion: userdescripcion,
-                    productId: id,
             }
-            axios.post(`http://localhost:3001/products/${id.props}/review`, pruevarewies)
         })
         .then(ressponse => {
             console.log(ressponse)
