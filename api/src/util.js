@@ -1,10 +1,5 @@
-import jwt from 'jsonwebtoken';
-import config from './config.js'
-
-const getToken = (user) => {
-    return jwt.sign(user, config.JWT_SECRET, {
-        expiresIn: '48h'
-    })
+module.exports = {
+    secret: process.env.AUTH_SECRET || "esto es un secreto",
+    expires: process.env.AUTH_EXPIRES || "24h",
+    rounds: process.env.AUTH_ROUNDS || 10
 }
-
-export { getToken }
