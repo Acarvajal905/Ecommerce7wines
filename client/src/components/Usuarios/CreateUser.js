@@ -64,7 +64,7 @@ export function validate(input) {
 };
 
 
-export default function CreateProduct() {
+export default function CreateUser() {
 
     //asigno estados
 
@@ -107,8 +107,8 @@ export default function CreateProduct() {
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Email:</label>
                     <div class="col-sm-10">
-                        <input className={`${errors.email && 'danger'}`} onChange={handleInputChange} value={input.email}
-                            type='text' placeholder='Email' name="email">
+                        <input type='email' className={`${errors.email && 'danger'}`} onChange={handleInputChange} value={input.email}
+                            placeholder='Email' name="email">
                         </input>
                         {errors.email && (<p className="danger">{errors.email}</p>)}
                     </div>

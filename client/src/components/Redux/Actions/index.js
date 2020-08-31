@@ -7,11 +7,13 @@ export const GET_5_PRODUCTS = "GET_5_PRODUCTS"
 export const GET_PRODUCT_CAT = "GET_RED_WINE"
 export const GET_WHITE_WINE = "GET_WHITE_WINE"
 export const GET_ALL_CATEGORY = 'GET_ALL_CATEGORY'
+export const GET_ALL_USERS = 'GET_ALL_USERS'
+export const GET_ALL_REVIEWS_PRODUCT = "GET_ALL_REVIEWS_PRODUCT"
 
 
 function prod(obj) {
-  let x=obj.products
-  return(x)
+  let x = obj.products
+  return (x)
 }
 
 function getrandom(array) {
@@ -53,6 +55,19 @@ export function getAllProduct() {
       });
   }
 }
+//Trae todos los usuarios
+export function getAllUser() {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/`)
+      .then(response => response.data.filter(a => a.email !== 0))
+      .then(ress => {
+        dispatch({ type: GET_ALL_USERS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
 
 //Trae 5 productos al azar de todo el catalogo
 
@@ -63,7 +78,7 @@ export function get5Product() {
       .then(ress => {
         dispatch({ type: GET_5_PRODUCTS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
       })
-      
+
       .catch(err => {
         console.log(err)
       });
@@ -72,16 +87,16 @@ export function get5Product() {
 
 //Trae todos los productos con categoria 
 
-export function getProdCat(id){
-  return function(dispatch){
+export function getProdCat(id) {
+  return function (dispatch) {
     return axios.get(`http://localhost:3001/category/${id}`)
-    .then(response => prod(response.data))
-    .then(ress => {
-      dispatch({ type: GET_PRODUCT_CAT, payload: ress});
-    })
-    .catch(err =>{
-      console.log(err)
-    }); 
+      .then(response => prod(response.data))
+      .then(ress => {
+        dispatch({ type: GET_PRODUCT_CAT, payload: ress });
+      })
+      .catch(err => {
+        console.log(err)
+      });
   }
 }
 
@@ -120,14 +135,27 @@ export function AddToCars(payload) {
   }
 }
 
-export function getAllCategory(){
-  return function(dispatch){
+export function getAllCategory() {
+  return function (dispatch) {
     return axios.get(`http://localhost:3001/category/`)
-    .then(ress => {
-      dispatch({ type: GET_ALL_CATEGORY, payload: ress.data});  // despacha la accion GET_ALL_PRODUCTS
+      .then(ress => {
+        dispatch({ type: GET_ALL_CATEGORY, payload: ress.data });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+
+export function getAllReviews(payload){
+  return function(dispatch){
+    return axios.get(`http://localhost:3001/products/${payload}/review/`)  // despacha la accion GET_ALL_REVIEWS_PRODUCT
+    .then(ress =>{
+      dispatch({type: GET_ALL_REVIEWS_PRODUCT, payload: ress.data})
     })
     .catch(err =>{
       console.log(err)
     });
   }
 }
+
