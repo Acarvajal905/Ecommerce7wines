@@ -45,16 +45,18 @@ class Producto extends React.Component {
                 <li>{this.props.product.content} ml/cc</li>
                 <li>Color:   {this.props.product.colour}</li>
                 <p class="description">{this.props.product.description}</p>
+                <Link to={`/products/${this.props.product.id}/newreviews`}>
+                <div>reviews{/* Ests div da el promedio general de las reviews */}
+                 {(Math.ceil(promedio) === 5) && <h1>☆☆☆☆☆</h1>}   {/* condicionales de renderizar */}
+                 {(Math.ceil(promedio) === 4) && <h1>☆☆☆☆</h1>}
+                 {(Math.ceil(promedio) === 3) && <h1>☆☆☆</h1>}
+                 {(Math.ceil(promedio) === 2) && <h1>☆☆</h1>}
+                 {(Math.ceil(promedio) === 1) && <h1>☆</h1>}
+                 </div>
+                 </Link>
               </ul>
             </div>
           </div>
-        </div>
-        <div> Promedio de calificacion:  {/* Ests div da el promedio general de las reviews */}
-           {(Math.ceil(promedio) === 5) && <h1>☆☆☆☆☆</h1>}   {/* condicionales de renderizar */}
-           {(Math.ceil(promedio) === 4) && <h1>☆☆☆☆</h1>}
-           {(Math.ceil(promedio) === 3) && <h1>☆☆☆</h1>}
-           {(Math.ceil(promedio) === 2) && <h1>☆☆</h1>}
-           {(Math.ceil(promedio) === 1) && <h1>☆</h1>}
         </div>
         <div>
          {this.props.reviews.slice(0, 3).map(re =>  /* Aca renderizamos las reviews, LIMITADO A LAS ULTIMAS 3 REVIEWS */

@@ -8,6 +8,7 @@ import { Route } from "react-router-dom"
 import carrito from './components/Shoppingcart/carrito.js'
 import ResultSearch from "./components/search.js"
 import axios from "axios";
+import CrearRewied from "./components/CrearReviews.js"
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         <Route exact path={"/Catalogue/"+v.id} render={() => <ProdCat id={v.id} />} />
       )}
 
+      <Route exact path={"/products/:id/newreviews"} render={({match}) => <CrearRewied props={match.params.id} />} />
 
       <Route exact path="/carrito" component={carrito} />
     </BrowserRouter>
