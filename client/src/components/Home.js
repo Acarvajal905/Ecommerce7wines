@@ -11,12 +11,11 @@ import CreateCategory from "./CRUD/crearcategoria.js"
 import Update from "./CRUD/actualizarproducto"
 import DeleteProduct from "./CRUD/borrarproducto.js"
 import CreateProduct from './CRUD/crearproducto.js'
-import NewUser from "./Usuarios/FormUsuario"
 import './Shoppingcart/carrito.css'
-import Usuario from './Usuarios/SigninScreen.js';
-import SigninScreen from "./Usuarios/SigninScreen.js";
+import CreateUser from "./Usuarios/CreateUser.js";
 import Categorias from './CRUD/testcategory.js';
-
+import LoginScreen from "./Usuarios/LoginScreen.js"
+import UsersCard from './Usuarios/UsersCard.js'
 
 
 export const Home = () => {
@@ -39,10 +38,10 @@ export const Home = () => {
         exact path="/" component={Minicat}
       />
       <Route
-        exact path="/signin/" component={SigninScreen}
+        exact path="/signin/" component={LoginScreen}
       />
       <Route
-        exact path="/users/create/" component={NewUser}
+        exact path="/signin/create" component={CreateUser}
       />
       <Route
         path="/Catalogue" component={NavCat}
@@ -51,7 +50,7 @@ export const Home = () => {
         path="/admin" component={Admin}
       />
       <Route
-        path="/admin/testcategories" component={Categorias} 
+        path="/admin/testcategories" component={Categorias}
       />
       <Route
         exact path='/admin/products/ordenes' component={Order}
@@ -67,6 +66,9 @@ export const Home = () => {
       />
       <Route
         exact path='/admin/products/actualizarproducto' component={Update}
+      />
+      <Route
+        exact path='/admin/users/roles' component={UsersCard}
       />
 
     </div>
