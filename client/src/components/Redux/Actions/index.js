@@ -108,8 +108,12 @@ export function SearchProduct(payload) {
       .then(response => response.data)
       .then(ress => {
         var arr = [];
+        var payloadMayus = payload.toUpperCase();
+        var payloadMinus =payload.toLowerCase() 
         for (var i = 0; i < ress.length; i++) {
-          if (ress[i].name.includes(payload)) {      // filtrar por coincidencias en el nombre
+          if (ress[i].name.includes(payloadMayus)) {      // filtrar por coincidencias en el nombre
+            arr.push(ress[i])
+          }if (ress[i].name.includes(payloadMinus)) {      // filtrar por coincidencias en el nombre
             arr.push(ress[i])
           }
         } return arr;
