@@ -19,11 +19,10 @@ const ProductCard = ( { name, id, price, image, AddToCars}) =>(
       <span class="precioprod">{price} $</span> 
 
       <Link to={`/carrito`} >
-      <button type="button" class="btn btn-danger btn-sm"
-      onClick={() =>{ AddToCars(id);}}>Agregar al carrito</button>  
+        <button type="button" class="btn btn-danger btn-sm"
+        onClick={() =>{ AddToCars(id);}}>Agregar al carrito</button>  
       </Link>
     </div>
-
   )
   
 

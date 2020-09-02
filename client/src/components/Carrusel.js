@@ -18,12 +18,12 @@ export const Carrusel = () => {
                 </Link>
             </div>
             <div class="carousel-item">
-                <Link to={`/Catalogue/VinoTinto`} >
+                <Link to={`/Catalogue/1`} >
                     <img src="https://cdn.discordapp.com/attachments/742768659256180832/747307812492804217/Bd1.jpg" class="d-block w-100" ></img>
                 </Link>
             </div>
             <div class="carousel-item">
-                <Link to={`/Catalogue/VinoBlanco`} >
+                <Link to={`/Catalogue/2`} >
                     <img src="https://cdn.discordapp.com/attachments/742768659256180832/747307808919257189/B2.jpg" class="d-block w-100" ></img>
                 </Link>
             </div>

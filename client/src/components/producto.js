@@ -27,7 +27,7 @@ class Producto extends React.Component {
               <img class="image" src={this.props.product.image} ></img>
               <Link to={`/carrito`} > 
                 <button type="button" class="btn btn-danger btn-sm"  
-                  onClick={() => { AddToCars(this.props.product.id); }}>Agregar al carrito</button>
+                onClick={AddToCars(this.props.product.id)}>Agregar al carrito</button>
               </Link> 
             </div>
 
