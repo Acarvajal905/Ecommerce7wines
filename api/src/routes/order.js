@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Order, Product, User } = require('../db.js');
+const { Order, Product, User, order_product } = require('../db.js');
 
 // s44 retorne todas las ordenes
 server.get('/',(req,res,next)=>{
@@ -31,6 +31,19 @@ server.put('/:id',(req,res,next)=>{
         return res.json(order);
     })
     .catch(err => { console.log(err) });;
+});
+
+//S44  ruta que retorna todas las ordenes con el status que recibe por params.
+server.get('/status/:status', (req, res, next) => {
+    const {status} = req.params;
+    console.log(status);
+    Order.findAll({
+        where: {
+            status: status
+        }
+    }).then(result => {
+        res.status(200).send(result);
+    }).catch(err => { console.log(err) })
 });
 
 // s46 ruta que retorne  una orden en particular
