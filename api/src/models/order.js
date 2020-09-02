@@ -3,14 +3,13 @@ const sequelize = require('sequelize');
 
 module.exports=(sequelize)=>{
     const Order= sequelize.define('order',{
-        cantidad:{
-            type:DataTypes.DECIMAL,
-            allowNull:false
+        productos: {//el nombre de los productos que esten en la orden
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        prince:{
-            type:DataTypes.DECIMAL,
-            allowNull:false
-        },
-        
-    })
+        status: {
+            type: DataTypes.ENUM('creada', 'procesando', 'cancelada', 'completa'),
+            defaultValue: 'procesando',
+        }
+    });
 }
