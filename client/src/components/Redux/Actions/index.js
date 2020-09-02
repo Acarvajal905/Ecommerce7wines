@@ -9,6 +9,9 @@ export const GET_WHITE_WINE = "GET_WHITE_WINE"
 export const GET_ALL_CATEGORY = 'GET_ALL_CATEGORY'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const GET_ALL_REVIEWS_PRODUCT = "GET_ALL_REVIEWS_PRODUCT"
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
+export const UPGRADE_USER = 'UPGRADE_USER'
+export const GET_ONE_USER = 'GET_ONE_USER'
 
 
 function prod(obj) {
@@ -27,6 +30,18 @@ function getrandom(array) {
 
 //Traer un producto en especifoco
 
+//Actualizar producto
+export function updateProduct(payload) {
+  return function (dispatch) {
+    return axios.put(`http://localhost:3000/products/${payload}`)
+      .then(res => res.data)
+      .then(data => {
+        dispatch({ type: UPDATE_PRODUCT, payload: data })
+      })
+      .then(() => alert('Se modifico el Producto'))
+      .catch(error => alert(error, 'Algo salió mal al modificar el producto'))
+  }
+}
 
 
 export function getProduct(payload) {
@@ -49,6 +64,17 @@ export function getAllProduct() {
       .then(response => response.data.filter(a => a.stock !== 0))
       .then(ress => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+export function getuser(payload) {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/${payload}`)
+      .then(response => {
+        dispatch({ type: GET_ONE_USER, payload: response.data });
       })
       .catch(err => {
         console.log(err)
@@ -147,15 +173,26 @@ export function getAllCategory() {
   }
 }
 
-export function getAllReviews(payload){
-  return function(dispatch){
+export function getAllReviews(payload) {
+  return function (dispatch) {
     return axios.get(`http://localhost:3001/products/${payload}/review/`)  // despacha la accion GET_ALL_REVIEWS_PRODUCT
-    .then(ress =>{
-      dispatch({type: GET_ALL_REVIEWS_PRODUCT, payload: ress.data})
-    })
-    .catch(err =>{
-      console.log(err)
-    });
+      .then(ress => {
+        dispatch({ type: GET_ALL_REVIEWS_PRODUCT, payload: ress.data })
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+
+export function UpgradeUser(payload) {
+  return function (dispatch) {
+    axios.put(`http://localhost:3001/users/promote/${payload}`)
+      .then((res) => res.data)
+      .then(data => {
+        dispatch({ type: UPGRADE_USER, payload: data });
+      })
+      .catch(error => alert(error, 'Error fatal'))
   }
 }
 

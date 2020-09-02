@@ -7,10 +7,10 @@ server.get('/', (req, res, next) => {
 	Product.findAll({
 		include: Category
 	})
-	.then((products) => {
-		res.send(products);
-	})
-	.catch(err => { console.log(err) });
+		.then((products) => {
+			res.send(products);
+		})
+		.catch(err => { console.log(err) });
 });
 
 //S24 : Crear ruta de producto individual, pasado un ID que retorne un producto con sus detalles
@@ -63,25 +63,78 @@ server.get('/search', (req, res, next) => {
 // });
 
 server.post('/', (req, res, next) => {
-    const item = req.body
-    console.log({ item });
-    Product.create(item)
-        .then((product) => {
+	const item = req.body
+	console.log({ item });
+	Product.create(item)
+		.then((product) => {
 			const categoriesId = item.categories;//Array de ids de categorias.
 			//Por ahora solo trae un solo id 
-            //categoriesId.forEach(categoryId => {
-                Category.findOne({
-                    where: { id: categoriesId },
-           // })
-             }).then(result => {
-                     product.addCategory(result);
-                 })
-                 //console.log(result);
-            return res.send(product)
-        }).catch(err => { console.log(err) });
-	});
+			//categoriesId.forEach(categoryId => {
+			Category.findOne({
+				where: { id: categoriesId },
+				// })
+			}).then(result => {
+				product.addCategory(result);
+			})
+			//console.log(result);
+			return res.send(product)
+		}).catch(err => { console.log(err) });
+});
 
 //S26 : Crear ruta para Modificar Producto
+// server.put('/:id', (req, res, next) => {
+// 	Product.update(req.body,
+// 		{
+// 			where:
+// 				{ id: req.params.id }
+// 		})
+// 		.then(function (product) {
+// 			if (!product) { return res.status(404).end() }
+// 			return res.json(product);
+// 		})
+// 		.catch(err => { console.log(err) });
+// })
+// server.put('/:producto', (req, res) => {
+// 	const { categories } = req.body
+// 	Product.findOne({
+// 		where: { id: req.params.producto }
+// 	}).then(product => {
+// 		// Category.findOne({
+// 		product.update(req.body)
+// 		product.addCategory(product)
+// 		// 	where: { id: categories }
+// 		// }).then(category => {
+// 		// })
+// 	}).catch(err => { console.log(err) })
+// })
+
+
+// server.put('/:name', (req, res) => {
+// 	Product.findOne({
+// 		where: { name: req.params.name }
+// 	}).then(product => {
+// 		const categoriesId = product.categories;//Array de ids de categorias.
+// 		Category.findOne({
+// 			where: { id: categoriesId },
+// 		}).then(categories => {
+// 			product.update({
+// 				name: req.body.name,
+// 				description: req.body.description,
+// 				price: req.body.price,
+// 				stock: req.body.stock,
+// 				image: req.body.image,
+// 				content: req.body.content,
+// 				percentage: req.body.percentage,
+// 				country: req.body.country,
+// 				colour: req.body.colour,
+// 				categories: categories.id,
+// 			}).then(product => { res.status(200).json({ product }); })
+// 				.catch(error => { res.status(400).json({ error }) });
+// 		}).catch(error => { res.status(400).json({ error }) });
+// 	}).catch(error => { res.status(400).json({ error }) });
+// });
+
+
 server.put('/:id', (req, res, next) => {
 	Product.update(req.body,
 		{
@@ -94,7 +147,6 @@ server.put('/:id', (req, res, next) => {
 		})
 		.catch(err => { console.log(err) });
 })
-
 
 //S27 Crear ruta para eliminar producto
 server.delete('/:id', (req, res, next) => {
@@ -109,7 +161,7 @@ server.delete('/:id', (req, res, next) => {
 		/* {return res.status(404) .end();}
 		return res.status(200).end(); */
 	})
-	.catch(err=>{console.log(err)});
+		.catch(err => { console.log(err) });
 });
 
 //S17 Crea ruta para sacar/agregar categorias de un producto.
@@ -130,16 +182,16 @@ server.delete('/:idProd/category/:idCat', (req, res, next) => {
 	idP = req.params.idProd;
 	idC = req.params.idCat;
 	product_category.destroy({
-		where: { 
+		where: {
 			categoryId: idC,
-			productId : idP
+			productId: idP
 		}
 	}).then((result) => {
 		if (result === 1) {
 			res.json({ message: 'Categoria Borrada' });
 		}
 	})
-	.catch(err => { console.log(err) });
+		.catch(err => { console.log(err) });
 });
 
 module.exports = server;

@@ -26,6 +26,7 @@ export function handleSumit2(e) {
 
     axios.get(`http://localhost:3001/users/`)
         .then(ress => {
+
             let arr = ress.data.filter(p => p.email == Creado.email)
             if (arr.length) {
                 alert(`El email  ya esta en uso`);
