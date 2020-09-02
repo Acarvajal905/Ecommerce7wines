@@ -25,25 +25,18 @@ server.post('/:id/review', (req, res) =>{
 //s55 ruta para editar una reviews de un producto
 //PUT /product/:id/review/:idReview
 
-//// NO ANDA ///
 server.put('/:id/review/:idReview', (req, res, next) => {
-    const review= req.body;
-    const id= req.params;
-    console.log(id.idReview)
-    
+  
    return  Reviews.update({
-        calificacion: review.calificacion,
-		descripcion: review.descripcion,
-        productId: id.id,
-        userId: review.userId
+        calificacion: req.body.calificacion,
+		descripcion:req.body.descripcion,
       }, {
         where: {
-          id: id.idReview
+		  id: req.params.idReview,
+		  productId: req.params.id
         }
     })
-    .then(update => { if(!update)
-        {return res.status(404).end()
-        } return res.json({ message: 'actualizado' });
+    .then(update => { res.json(update);
     })
 	.catch(err => { console.log(err) });
 })
