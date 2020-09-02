@@ -15,6 +15,7 @@ import './Shoppingcart/carrito.css'
 import CreateUser from "./Usuarios/CreateUser.js";
 import Categorias from './CRUD/testcategory.js';
 import LoginScreen from "./Usuarios/LoginScreen.js"
+import GetUsers from "./Usuarios/GetUsers.js"
 
 
 import AssignRoles from '../components/Usuarios/AssignRoles.js'
@@ -72,6 +73,9 @@ export const Home = () => {
       />
       <Route
         exact path='/admin/users/roles' component={AssignRoles}
+      />
+      <Route
+        exact path='/admin/users' component={GetUsers}
       />
 
     </div>

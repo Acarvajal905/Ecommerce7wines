@@ -1,32 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import "../../Styles/Cards.css"
+import "../../Styles/Users.css"
 import { connect } from 'react-redux';
 
 
-const UsersCard = ({ name, email, isAdmin }) => (
+const UsersCard = ({ name, email, id, isAdmin }) => (
 
 
-    <div >
+    <form >
+        <div class="list-group">
+            <a href={`roles`} class="list-group-item list-group-item-action active">
+                {name}
+            </a>
+            <a href={`roles`} class="list-group-item list-group-item-action">Email: {email}</a>
+            <a href={`roles`} class="list-group-item list-group-item-action">Es admin: {isAdmin}</a>
 
-        <ul>
-            <li>
-                <h3>{name}</h3>
-            </li>
-            <li>
-                <h3>{email}</h3>
-            </li>
-            <li>
-                <h3>{isAdmin}</h3>
-            </li>
-        </ul>
-
-
-        {/* <Link to={`/carrito`} >
-            <button type="button" class="btn btn-danger btn-sm"
-                onClick={() => { AddToCars(id); }}>Agregar al carrito</button>
-        </Link> */}
-    </div>
+        </div>
+    </form>
 
 )
 
