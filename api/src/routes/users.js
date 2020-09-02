@@ -60,6 +60,14 @@ server.get('/', (req, res) => {
         }).catch(err => { console.log(err) });
 })
 
+//TRAE TODOS LOS USUARIOS LOGEADOS
+server.get('/signin/:id', (req, res) => {
+    User.findAll()
+        .then((users) => {
+            res.send(users);
+        }).catch(err => { console.log(err) });
+})
+
 //MODIFICAR USUARIO (USAR PARA ASIGNAR ROL DE ADMIN)
 server.put('/:id', (req, res) => {
     User.update(req.body,
@@ -73,6 +81,7 @@ server.put('/:id', (req, res) => {
             return res.json(user);
         }).catch(err => { console.log(err) });
 })
+
 //NO SIRVE BUSCAR USUARIOS
 server.get('/search', (req, res) => {
     if (req.body.email) {
@@ -94,7 +103,7 @@ server.delete('/:id', (req, res) => {
     User.destroy({
         where:
             { id: req.params.id }
-    }).then((user) => {
+    }).then(function (user) {
         if (user === 1) {
             res.json({ message: 'usuario eliminado' })
         }
@@ -102,5 +111,27 @@ server.delete('/:id', (req, res) => {
         .catch((err) => { console.log(err) });
 });
 
+//PROMUEVE A ADMIN
+server.put('/promote/:id', (req, res) => {
+    User.findOne({
+        where: { id: req.params.id }
+    })
+        .then(user => {
+            user.update({
+                isAdmin: true
+            }).then(user => { res.status(200).json({ user }) })
+        }).catch(error => { res.status(400).json({ error }) })
+});
+//GET A 1 USER
+server.get('/:id', (req, res, next) => {
+    User.findByPk(req.params.id, {
+        // include: user.isAdmin
+    })
+        .then((user) => {
+            if (!user) { return res.status(404).end(); }
+            return res.json(user)
+        })
+        .catch(err => { console.log(err) });
+});
 
 module.exports = server

@@ -4,16 +4,22 @@ import "../../Styles/Cards.css"
 import { connect } from 'react-redux';
 
 
-const UsersCard = ({ name, id, email }) => (
+const UsersCard = ({ name, email, isAdmin }) => (
 
 
-    <div class="box3">
-        <Link to={`/users/${id}`} >
-            <h3 class="tituloprod">{name}</h3>
-        </Link>
-        <Link to={`/users/${id}`} >
-            <span class="imagenF" src={email} ></span>
-        </Link>
+    <div >
+
+        <ul>
+            <li>
+                <h3>{name}</h3>
+            </li>
+            <li>
+                <h3>{email}</h3>
+            </li>
+            <li>
+                <h3>{isAdmin}</h3>
+            </li>
+        </ul>
 
 
         {/* <Link to={`/carrito`} >

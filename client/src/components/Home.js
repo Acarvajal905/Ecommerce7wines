@@ -8,14 +8,17 @@ import Minicat from "./Minicatalogo.js"
 import Admin from "./CRUD/admin.js"
 import Order from "./CRUD/orders";
 import CreateCategory from "./CRUD/crearcategoria.js"
-import Update from "./CRUD/actualizarproducto"
+import Update from "./CRUD/actualizarproducto2.0"
 import DeleteProduct from "./CRUD/borrarproducto.js"
 import CreateProduct from './CRUD/crearproducto.js'
 import './Shoppingcart/carrito.css'
 import CreateUser from "./Usuarios/CreateUser.js";
 import Categorias from './CRUD/testcategory.js';
 import LoginScreen from "./Usuarios/LoginScreen.js"
-import UsersCard from './Usuarios/UsersCard.js'
+
+
+import AssignRoles from '../components/Usuarios/AssignRoles.js'
+
 
 
 export const Home = () => {
@@ -68,7 +71,7 @@ export const Home = () => {
         exact path='/admin/products/actualizarproducto' component={Update}
       />
       <Route
-        exact path='/admin/users/roles' component={UsersCard}
+        exact path='/admin/users/roles' component={AssignRoles}
       />
 
     </div>
