@@ -6,7 +6,7 @@ const sequelize = require('sequelize');
 module.exports=(sequelize)=>{
     const Order_Product = sequelize.define('order_product',{
 
-        price:{
+        price:{//Guarda el precio unitario del producto.
             type:DataTypes.DECIMAL,
             allowNull:false
         },

@@ -42,7 +42,7 @@ Product.belongsToMany(Category, { through: 'product_category' });
 Order.belongsToMany(Product, { through: 'order_product' });
 Product.belongsToMany(Order, { through: 'order_product' });
 
-User.hasOne(Order);//Esto va sin tabla intermedia, la tabla intermedia es para la relacion belongsToMany
+User.hasMany(Order);//Esto va sin tabla intermedia, la tabla intermedia es para la relacion belongsToMany
 Order.belongsTo(User);
 
 //el producto va a tener muchas reviews
