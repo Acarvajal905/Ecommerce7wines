@@ -8,7 +8,7 @@ import { Route } from "react-router-dom"
 import carrito from './components/Shoppingcart/carrito.js'
 import ResultSearch from "./components/search.js"
 import axios from "axios";
-import CrearRewied from "./components/CrearReviews.js"
+import CrearRewied from "./components/CRUD/CrearReviews"
 
 function App() {
 
