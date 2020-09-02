@@ -59,7 +59,8 @@ const Upgrade = () => {
         <form onSubmit={(e) => updateUser(e, user)}>
             <div>
                 {/* <input type='text' placeholder='filtrar usuarios' onChange={(e) => setSearch(e.target.value)} /> */}
-                <select name="user" onChange={(e) => previousValues(e.target.value)}>
+                <h3>Asignar Roles</h3>
+                <select class="nav-item" name="user" onChange={(e) => previousValues(e.target.value)}>
                     <option value="" selected="true">Buscar</option>
                     {filteredUsers && filteredUsers.map(u => {
                         return <option value={u.id} >{u.email}</option>
@@ -67,15 +68,15 @@ const Upgrade = () => {
                 </select>
             </div>
             <div>
-                <select name="isAdmin" value={input.isAdmin} onChange={handleInputChange}>
+                {/* <select name="isAdmin" value={input.isAdmin} onChange={handleInputChange}>
                     <option value="" selected="true">
                         Hacer admin
                     </option>
                     <option>true</option>
                     <option>false</option>
 
-                </select>
-                <input type="submit" value="Hacer admin" />
+                </select> */}
+                <input class="btn btn-danger" type="submit" value="Hacer admin" />
             </div>
 
         </form>

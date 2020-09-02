@@ -135,11 +135,11 @@ export function SearchProduct(payload) {
       .then(ress => {
         var arr = [];
         var payloadMayus = payload.toUpperCase();
-        var payloadMinus =payload.toLowerCase() 
+        var payloadMinus = payload.toLowerCase()
         for (var i = 0; i < ress.length; i++) {
           if (ress[i].name.includes(payloadMayus)) {      // filtrar por coincidencias en el nombre
             arr.push(ress[i])
-          }if (ress[i].name.includes(payloadMinus)) {      // filtrar por coincidencias en el nombre
+          } if (ress[i].name.includes(payloadMinus)) {      // filtrar por coincidencias en el nombre
             arr.push(ress[i])
           }
         } return arr;
@@ -167,13 +167,13 @@ export function AddToCars(payload) {
 
 export function getAllCategory() {
   return function (dispatch) {
-  return axios.get(`http://localhost:3001/category/`)
-    .then(ress => {
-      dispatch({ type: GET_ALL_CATEGORY, payload: ress.data });  // despacha la accion GET_ALL_PRODUCTS
-    })
-    .catch(err => {
-      console.log(err)
-    });
+    return axios.get(`http://localhost:3001/category/`)
+      .then(ress => {
+        dispatch({ type: GET_ALL_CATEGORY, payload: ress.data });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
   }
 }
 
@@ -196,6 +196,7 @@ export function UpgradeUser(payload) {
       .then(data => {
         dispatch({ type: UPGRADE_USER, payload: data });
       })
+      .then(() => alert('El usuario ahora es administrador'))
       .catch(error => alert(error, 'Error fatal'))
   }
 }
