@@ -1,6 +1,6 @@
 
 
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT, UPDATE_PRODUCT, UPGRADE_USER, GET_ONE_USER } from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_ADMINS, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT, UPDATE_PRODUCT, UPGRADE_USER, GET_ONE_USER, GET_ALL_CLIENTS } from "../Actions/index.js"
 
 
 const initialState = {
@@ -12,10 +12,11 @@ const initialState = {
   carrito: [],
   allcategories: [],
   allusers: [],
+  clients:[],
   reviews: [],
   UpgradeUser: [],
-  user: []
-
+  user: [],
+  admins:[]
 };
 
 function rootReducer(state = initialState, action) {
@@ -76,7 +77,6 @@ function rootReducer(state = initialState, action) {
       allcategories: action.payload  //modifico allproducts del store, agregando todos los productos de la bd
     }
   }
-
   if (action.type === GET_ALL_REVIEWS_PRODUCT) {
     return {
       ...state,
@@ -93,6 +93,18 @@ function rootReducer(state = initialState, action) {
     return {
       ...state,
       user: action.payload  // modifico product del store, agregando el producto seleccionado
+    }
+  }
+  if (action.type === GET_ALL_CLIENTS) {
+    return {
+      ...state,
+      clients: action.payload  // modifico product del store, agregando el producto seleccionado
+    }
+  }
+  if (action.type === GET_ALL_ADMINS) {
+    return {
+      ...state,
+      admins: action.payload  // modifico product del store, agregando el producto seleccionado
     }
   }
   return state

@@ -17,6 +17,8 @@ import DeleteUser from "./Usuarios/DeleteUser.js";
 import Categorias from './CRUD/testcategory.js';
 import LoginScreen from "./Usuarios/LoginScreen.js"
 import GetUsers from "./Usuarios/GetUsers.js"
+import Clientes from "./Usuarios/GetClients.js"
+import Admins from "./Usuarios/GetAdmins.js"
 import NavBarUser from "./Usuarios/NavBarUsuarios.js"
 
 
@@ -80,16 +82,16 @@ export const Home = () => {
         exact path='/admin/users/deleteuser' component={DeleteUser}
       />
       <Route
-        path='/admin/users' component={NavBarUser}
+        path='/admin/listusers' component={NavBarUser}
       />
       <Route
-        exact path='/admin/users' component={GetUsers}
+        exact path='/admin/listusers' component={GetUsers}
       />
       <Route
-        exact path='/admin/users/clients' component={NavBarUser}
+        exact path='/admin/users/listclients' component={Clientes}
       />
       <Route
-        exact path='/admin/users/admins' component={NavBarUser}
+        exact path='/admin/users/listadmins' component={Admins}
       />
 
     </div>

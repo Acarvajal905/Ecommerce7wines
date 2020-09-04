@@ -12,7 +12,8 @@ export const GET_ALL_REVIEWS_PRODUCT = "GET_ALL_REVIEWS_PRODUCT"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 export const UPGRADE_USER = 'UPGRADE_USER'
 export const GET_ONE_USER = 'GET_ONE_USER'
-
+export const GET_ALL_CLIENTS = 'GET_ALL_CLIENTS'
+export const GET_ALL_ADMINS = 'GET_ALL_ADMINS'
 
 function prod(obj) {
   let x = obj.products
@@ -27,9 +28,8 @@ function getrandom(array) {
   }
   return (product)
 }
-
+/* ==============================================PRODUCTOS================================================== */
 //Traer un producto en especifoco
-
 //Actualizar producto
 export function updateProduct(payload) {
   return function (dispatch) {
@@ -43,7 +43,7 @@ export function updateProduct(payload) {
   }
 }
 
-
+//Traer un producto
 export function getProduct(payload) {
   return function (dispatch) {
     return axios.get(`http://localhost:3001/products/${payload}`)
@@ -57,7 +57,6 @@ export function getProduct(payload) {
 }
 
 //Trae todos los productos
-
 export function getAllProduct() {
   return function (dispatch) {
     return axios.get(`http://localhost:3001/products/`)
@@ -70,33 +69,8 @@ export function getAllProduct() {
       });
   }
 }
-export function getuser(payload) {
-  return function (dispatch) {
-    return axios.get(`http://localhost:3001/users/${payload}`)
-      .then(response => {
-        dispatch({ type: GET_ONE_USER, payload: response.data });
-      })
-      .catch(err => {
-        console.log(err)
-      });
-  }
-}
-//Trae todos los usuarios
-export function getAllUser() {
-  return function (dispatch) {
-    return axios.get(`http://localhost:3001/users/`)
-      .then(response => response.data.filter(a => a.email !== 0))
-      .then(ress => {
-        dispatch({ type: GET_ALL_USERS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
-      })
-      .catch(err => {
-        console.log(err)
-      });
-  }
-}
 
 //Trae 5 productos al azar de todo el catalogo
-
 export function get5Product() {
   return function (dispatch) {
     return axios.get(`http://localhost:3001/products/`)
@@ -112,7 +86,6 @@ export function get5Product() {
 }
 
 //Trae todos los productos con categoria 
-
 export function getProdCat(id) {
   return function (dispatch) {
     return axios.get(`http://localhost:3001/category/${id}`)
@@ -127,7 +100,6 @@ export function getProdCat(id) {
 }
 
 //Buscar productos
-
 export function SearchProduct(payload) {
   return function (dispatch) {
     axios.get(`http://localhost:3001/products/`) //trae todo los productos 
@@ -146,18 +118,6 @@ export function SearchProduct(payload) {
       })
       .then(arr => {
         dispatch({ type: SEARCH_PRODUCT, payload: arr })  //despacha SEARCH_PRODUCT con los matchs
-      })
-      .catch(err => {
-        console.log(err)
-      });
-  }
-}
-
-export function AddToCars(payload) {
-  return function (dispatch) {
-    return axios.get(`http://localhost:3001/products/${payload}`)
-      .then(response => {
-        dispatch({ type: ADD_TO_CARS, payload: response.data });  // despacha la accion ADD_TO_CARS
       })
       .catch(err => {
         console.log(err)
@@ -189,6 +149,62 @@ export function getAllReviews(payload) {
   }
 }
 
+/* ==============================================USUARIOS====================================================== */
+
+//Traer un usuario
+export function getuser(payload) {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/${payload}`)
+      .then(response => {
+        dispatch({ type: GET_ONE_USER, payload: response.data });
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+//Trae todos los usuarios
+export function getAllUser() {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/`)
+      .then(response => response.data.filter(a => a.email !== 0))
+      .then(ress => {
+        dispatch({ type: GET_ALL_USERS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+
+export function getAllClients() {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/`)
+      .then(response => response.data.filter(a => a.isAdmin !== true))
+      .then(ress => {
+        console.log(ress)
+        dispatch({ type: GET_ALL_CLIENTS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+
+export function getAllAdmins() {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/`)
+      .then(response => response.data.filter(a => a.isAdmin !== false))
+      .then(ress => {
+        console.log(ress)
+        dispatch({ type: GET_ALL_ADMINS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+
 export function UpgradeUser(payload) {
   return function (dispatch) {
     axios.put(`http://localhost:3001/users/promote/${payload}`)
@@ -200,4 +216,20 @@ export function UpgradeUser(payload) {
       .catch(error => alert(error, 'Error fatal'))
   }
 }
+
+/* ============================================CARRITO==================================================== */
+
+export function AddToCars(payload) {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/products/${payload}`)
+      .then(response => {
+        dispatch({ type: ADD_TO_CARS, payload: response.data });  // despacha la accion ADD_TO_CARS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
+
+
 
