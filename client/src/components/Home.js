@@ -13,9 +13,11 @@ import DeleteProduct from "./CRUD/borrarproducto.js"
 import CreateProduct from './CRUD/crearproducto.js'
 import './Shoppingcart/carrito.css'
 import CreateUser from "./Usuarios/CreateUser.js";
+import DeleteUser from "./Usuarios/DeleteUser.js";
 import Categorias from './CRUD/testcategory.js';
 import LoginScreen from "./Usuarios/LoginScreen.js"
 import GetUsers from "./Usuarios/GetUsers.js"
+import NavBarUser from "./Usuarios/NavBarUsuarios.js"
 
 
 import AssignRoles from '../components/Usuarios/AssignRoles.js'
@@ -75,7 +77,19 @@ export const Home = () => {
         exact path='/admin/users/roles' component={AssignRoles}
       />
       <Route
+        exact path='/admin/users/deleteuser' component={DeleteUser}
+      />
+      <Route
+        path='/admin/users' component={NavBarUser}
+      />
+      <Route
         exact path='/admin/users' component={GetUsers}
+      />
+      <Route
+        exact path='/admin/users/clients' component={NavBarUser}
+      />
+      <Route
+        exact path='/admin/users/admins' component={NavBarUser}
       />
 
     </div>

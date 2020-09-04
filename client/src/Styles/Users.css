@@ -4,3 +4,23 @@
     background-color: #ac2c67;
     border-color: #000000;
 }
+.list-group-titulo{
+    margin-top: 10px;
+}
+
+.list-group {
+    background-color: blueviolet;
+    width: 400px;
+}
+
+.userbox {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2 , auto);
+    align-items: start;
+    justify-content: space-around;
+}
+
+.usercard{
+    margin-block-start: 10px;
+}

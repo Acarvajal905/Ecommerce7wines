@@ -28,6 +28,9 @@ export default function Admin() {
                         <a class="nav-link" href="/admin/users/roles">Asignar roles</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/users/deleteuser">Eliminar usuarios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin/users/">Lista de usuarios</a>
                     </li>
 

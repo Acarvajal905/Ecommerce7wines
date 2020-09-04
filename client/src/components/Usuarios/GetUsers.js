@@ -1,6 +1,6 @@
 import React from 'react';
 import UsersCard from "./UsersCard";
-// import "../../Styles/Users.css";
+import "../../Styles/Users.css";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from "../Redux/Actions/index.js"
@@ -13,31 +13,21 @@ class Usuarios extends React.Component {
     }
     render() {
         return (
-
             <div>
-
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active">
-                        <h3> Lista de Usuarios</h3>
-                    </a>
-                </div>
+                <div class="userbox">
                 {this.props.allusers.map(v =>
 
                     <UsersCard
-
                         name={v.name}
                         email={v.email}
                         isAdmin={v.isAdmin.toString()}
-
                     />
-
-                )
-                }
+                )}
+                </div>
+                
             </div>
-
         );
     }
-
 }
 
 function mapStateToProps(state) {
