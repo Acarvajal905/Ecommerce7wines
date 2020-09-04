@@ -27,7 +27,7 @@ export default function CrearRewied(id){
             return alert("maximo 50 caracteres")
         }
 
-        axios.get(`http://localhost:3001/users/`)
+        axios.get(`http://localhost:3001/users/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
         .then(ress => {
             var user = ress.data.filter(p => p.email === useremail)
             if(user.length){
@@ -38,7 +38,7 @@ export default function CrearRewied(id){
                     userId: user[0].id
                 }
              
-               axios.post(`http://localhost:3001/products/${id.props}/review`, pruevarewies) 
+               axios.post(`http://localhost:3001/products/${id.props}/review`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}}, pruevarewies) 
                .then(ressponse => {
 
                 let Url = "http://localhost:3000/products/" + id.props;

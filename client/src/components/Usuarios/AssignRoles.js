@@ -15,7 +15,7 @@ const Upgrade = () => {
     const dispatch = useDispatch()
 
     function previousValues(e) {
-        axios.get(`http://localhost:3001/users/${e}`)
+        axios.get(`http://localhost:3001/users/${e}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
             .then(res => {
                 console.log(res)
                 const c = res.data;
@@ -26,6 +26,7 @@ const Upgrade = () => {
 
                 });
             })
+            .catch(error => { console.log(error)})
     }
 
     useEffect(() => {

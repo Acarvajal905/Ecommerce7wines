@@ -36,7 +36,7 @@ import "../../Styles/CRUD.css"
 
 export const GetProducto = async (Prod) =>{  
   try{
-    const resProd = await axios (`https://jsonplaceholder.typicode.com/posts/`)
+    const resProd = await axios (`https://jsonplaceholder.typicode.com/posts/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
     let Buscado= resProd.data.filter(p => p.id == Prod) //para probar busca que el id coinsida
     console.log("me traje ", Buscado)                   //modificar cuando este listo
       return Buscado
@@ -122,7 +122,7 @@ GetProducto(x.name.value)
 })
 //envia el produco modificado con un put
 .then( Actualizado => 
-  axios.put(`https://jsonplaceholder.typicode.com/posts/${Actualizado.id}`,
+  axios.put(`https://jsonplaceholder.typicode.com/posts/${Actualizado.id}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}},
   { 
     //Actualizar el artchivo que envia para nuesra bd
     Actualizado

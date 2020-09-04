@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Home from '../Home.js'
 
-
+export function handleSumit23(e){
+    e.preventDefault();
+    console.log( localStorage.getItem('token'))
+    console.log("salgo")
+    localStorage.removeItem('token')
+    console.log( localStorage.getItem('token'))
+    alert("sesion cerrada")
+}
 export function handleSumit3(e) {
     e.preventDefault();
 
@@ -20,7 +27,6 @@ export function handleSumit3(e) {
             return alert(`${prop} es requerido`)
         }
     }
-    document.getElementById('formulario').reset();
 
     axios.get(`http://localhost:3001/users`)
         .then(ress => {
@@ -35,32 +41,20 @@ export function handleSumit3(e) {
             if (arr.length) {
                 axios.post(`http://localhost:3001/users/signin`, Login)
                     .then(response => {
-                        console.log('entre a ok')
+
+                        localStorage.setItem('token', response.data.token)
+                      
                         alert(`Bienvenido a 7 Wines `)
-                        window.location.href = "/";
+                        window.location.href = "/"; 
+                    }).catch(err => {
+                        console.log(err)
+                        alert(`Usuario o contraseña incorrecta`)
                     })
             }
         }).catch(error2 => {
             console.log(error2)
             alert(`Usuario o contraseña incorrecta`)
         })
-    // axios.get(`http://localhost:3001/users`)
-    //     .then(ress => {
-    //         let arr = ress.data.filter(u => u.password == Login.password)
-    //         if (!arr.length) {
-    //             alert(`Contraseña incorrecta`)
-    //         }
-    //         if (arr.length) {
-    //             axios.post(`http://localhost:3001/users/signin`, Login)
-    //                 .then(response => {
-    //                     console.log('entre a ok')
-    //                     alert(`Bienvenido a 7 Wines`)
-    //                 })
-    //         }
-    //     }).catch(error2 => {
-    //         console.log(error2)
-    //         alert(`Usuario o contraseña incorrecta`)
-    //     })
 }
 
 export function validate(input) {
@@ -139,6 +133,9 @@ export default function LoginUser() {
                         </Link>
                     </li>
                 </ul>
+            </form>
+            <form onSubmit={handleSumit23}>
+                <button type="submit">salir</button>
             </form>
         </div>
     )

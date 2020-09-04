@@ -33,7 +33,7 @@ function getrandom(array) {
 //Actualizar producto
 export function updateProduct(payload) {
   return function (dispatch) {
-    return axios.put(`http://localhost:3000/products/${payload}`)
+    return axios.put(`http://localhost:3000/products/${payload}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(res => res.data)
       .then(data => {
         dispatch({ type: UPDATE_PRODUCT, payload: data })
@@ -46,7 +46,7 @@ export function updateProduct(payload) {
 
 export function getProduct(payload) {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/products/${payload}`)
+    return axios.get(`http://localhost:3001/products/${payload}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
         dispatch({ type: GET_PRODUCTO, payload: response.data });  // despacha la accion GET_PRODUCTO
       })
@@ -60,7 +60,7 @@ export function getProduct(payload) {
 
 export function getAllProduct() {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/products/`)
+    return axios.get(`http://localhost:3001/products/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => response.data.filter(a => a.stock !== 0))
       .then(ress => {
         dispatch({ type: GET_ALL_PRODUCTS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
@@ -72,7 +72,7 @@ export function getAllProduct() {
 }
 export function getuser(payload) {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/users/${payload}`)
+    return axios.get(`http://localhost:3001/users/${payload}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
         dispatch({ type: GET_ONE_USER, payload: response.data });
       })
@@ -84,7 +84,7 @@ export function getuser(payload) {
 //Trae todos los usuarios
 export function getAllUser() {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/users/`)
+    return axios.get(`http://localhost:3001/users/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => response.data.filter(a => a.email !== 0))
       .then(ress => {
         dispatch({ type: GET_ALL_USERS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
@@ -99,7 +99,7 @@ export function getAllUser() {
 
 export function get5Product() {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/products/`)
+    return axios.get(`http://localhost:3001/products/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => getrandom(response.data))
       .then(ress => {
         dispatch({ type: GET_5_PRODUCTS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
@@ -115,7 +115,7 @@ export function get5Product() {
 
 export function getProdCat(id) {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/category/${id}`)
+    return axios.get(`http://localhost:3001/category/${id}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => prod(response.data))
       .then(ress => {
         dispatch({ type: GET_PRODUCT_CAT, payload: ress });
@@ -130,16 +130,13 @@ export function getProdCat(id) {
 
 export function SearchProduct(payload) {
   return function (dispatch) {
-    axios.get(`http://localhost:3001/products/`) //trae todo los productos 
+    axios.get(`http://localhost:3001/products/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}}) //trae todo los productos 
       .then(response => response.data)
       .then(ress => {
         var arr = [];
-        var payloadMayus = payload.toUpperCase();
-        var payloadMinus =payload.toLowerCase() 
+        var payloadMayus = payload.toUpperCase(); 
         for (var i = 0; i < ress.length; i++) {
-          if (ress[i].name.includes(payloadMayus)) {      // filtrar por coincidencias en el nombre
-            arr.push(ress[i])
-          }if (ress[i].name.includes(payloadMinus)) {      // filtrar por coincidencias en el nombre
+          if (ress[i].name.toUpperCase().includes(payloadMayus)) {      // filtrar por coincidencias en el nombre
             arr.push(ress[i])
           }
         } return arr;
@@ -155,7 +152,7 @@ export function SearchProduct(payload) {
 
 export function AddToCars(payload) {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/products/${payload}`)
+    return axios.get(`http://localhost:3001/products/${payload}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
         dispatch({ type: ADD_TO_CARS, payload: response.data });  // despacha la accion ADD_TO_CARS
       })
@@ -167,7 +164,7 @@ export function AddToCars(payload) {
 
 export function getAllCategory() {
   return function (dispatch) {
-  return axios.get(`http://localhost:3001/category/`)
+  return axios.get(`http://localhost:3001/category/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
     .then(ress => {
       dispatch({ type: GET_ALL_CATEGORY, payload: ress.data });  // despacha la accion GET_ALL_PRODUCTS
     })
@@ -179,7 +176,7 @@ export function getAllCategory() {
 
 export function getAllReviews(payload) {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/products/${payload}/review/`)  // despacha la accion GET_ALL_REVIEWS_PRODUCT
+    return axios.get(`http://localhost:3001/products/${payload}/review/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})  // despacha la accion GET_ALL_REVIEWS_PRODUCT
       .then(ress => {
         dispatch({ type: GET_ALL_REVIEWS_PRODUCT, payload: ress.data })
       })
@@ -191,7 +188,7 @@ export function getAllReviews(payload) {
 
 export function UpgradeUser(payload) {
   return function (dispatch) {
-    axios.put(`http://localhost:3001/users/promote/${payload}`)
+    axios.put(`http://localhost:3001/users/promote/${payload}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then((res) => res.data)
       .then(data => {
         dispatch({ type: UPGRADE_USER, payload: data });

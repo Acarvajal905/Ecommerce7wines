@@ -8,11 +8,14 @@ export const NavCat = () => {
   const [categorias, setCategorias] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(`http://localhost:3001/category`)
+    axios.get(`http://localhost:3001/category`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
     .then(result => {
       let categories = result.data
       console.log(categories);
       setCategorias(categories);
+    })
+    .catch(error => {
+      console.log(error)
     })
   }, [])
 

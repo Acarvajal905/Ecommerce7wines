@@ -32,19 +32,24 @@ export function handleSumit2(e) {
 
   axios.get(`http://localhost:3001/products/`)
 
-  .then(ress =>{
+  .then(ress =>{ console.log("entreaca")
    let arr = ress.data.filter(p => p.name === Creado.name)
     if(arr.length){
     alert( `El producto  ya existe`);
     }
     if(!arr.length){     /* Aca va la funcion para editar la bd, creando producto */
-      axios.post(`http://localhost:3001/products/`, Creado)
+      axios.post(`http://localhost:3001/products/`, Creado ,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
-        axios.post(`http://localhost:3001/products/${response.data.id}/category/${x.categories.value}`)
+        axios.post(`http://localhost:3001/products/${response.data.id}/category/${x.categories.value}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       })
       .then(ress => {
+        console.log(ress)
         alert( `El producto fue Creado`)
       })
+      .catch(err => {
+        console.log(err)
+        alert(`Hubo un problema al crear`);
+       })
 
     }
  })
@@ -136,6 +141,7 @@ export default function CreateProduct() {
       let categories = result.data
       setCategorias(categories);
     })
+    .catch(error =>{ console.log(error)})
   }, [])
   
   const handleInputChange = function(e){
