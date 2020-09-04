@@ -38,7 +38,7 @@ export function handleSumit2(e) {
                     .then(response => {
                         console.log("entre a ok")
                         alert(`Bienvenido a 7Wines`);
-                        window.location.href = "/";
+                        window.location.href = "/signin/";
                     })
             }
         })

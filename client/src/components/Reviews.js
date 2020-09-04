@@ -7,7 +7,7 @@ export default function Reviews ({calificacion, descripcion, createdAt, userId})
   const [usuariorew, setUser] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(`http://localhost:3001/users`)
+    axios.get(`http://localhost:3001/users`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
     .then(result => {
       let usuario = result.data.filter(p => p.id === userId)
     

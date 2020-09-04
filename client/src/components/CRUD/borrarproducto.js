@@ -35,7 +35,7 @@ export default function  DeleteProduct() {
   //funcion que trae los productos de la bd
   const GetProducto = async (Prod) =>{  
     try{
-      const resProd = await axios (`http://localhost:3001/products/`)
+      const resProd = await axios (`http://localhost:3001/products/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       let Buscado= resProd.data.filter(p => p.name === Prod) //para probar busca que el id coinsida
       console.log("me traje ", Buscado)  //modificar cuando este listo
       return Buscado
@@ -53,7 +53,7 @@ export default function  DeleteProduct() {
 
     /* Elimino el producto */
     .then(Buscado =>
-        axios.delete(`http://localhost:3001/products/${Buscado[0].id}`))
+        axios.delete(`http://localhost:3001/products/${Buscado[0].id}` ,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}}))
 
     .then(response => {
           console.log("entre a ok")
