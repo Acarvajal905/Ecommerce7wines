@@ -171,6 +171,7 @@ export function getAllCategory() {
     .catch(err => {
       console.log(err)
     });
+
   }
 }
 
@@ -193,6 +194,7 @@ export function UpgradeUser(payload) {
       .then(data => {
         dispatch({ type: UPGRADE_USER, payload: data });
       })
+      .then(() => alert('El usuario ahora es administrador'))
       .catch(error => alert(error, 'Error fatal'))
   }
 }
