@@ -60,64 +60,22 @@ const Upgrade = () => {
     return (
         <form onSubmit={(e) => updateUser(e, user)}>
             <NavBarUser/>
-            <div>
-                {/* <input type='text' placeholder='filtrar usuarios' onChange={(e) => setSearch(e.target.value)} /> */}
-                <h3>Asignar Roles</h3>
+            <div class="adminbox">
+
+                <h1>Asignar Roles</h1>
+                <div >
                 <select class="nav-item" name="user" onChange={(e) => previousValues(e.target.value)}>
-                    <option value="" selected="true">Buscar</option>
+                    <option value="" selected="true">Buscar usuario a promover</option>
                     {filteredUsers && filteredUsers.map(u => {
                         return <option value={u.id} >{u.email}</option>
                     })}
                 </select>
-            </div>
-            <div>
-                {/* <select name="isAdmin" value={input.isAdmin} onChange={handleInputChange}>
-                    <option value="" selected="true">
-                        Hacer admin
-                    </option>
-                    <option>true</option>
-                    <option>false</option>
-
-                </select> */}
+                <br></br>
                 <input class="btn btn-danger" type="submit" value="Hacer admin" />
+                </div>
             </div>
-
         </form>
     )
 }
-
-// return (
-//     <div class="adminbox">
-//         <form onSubmit={handleSumit3} id="formulario">
-//             <div> <h1>Asigna un rol</h1> </div>
-
-//             <div class="form-group row">
-//                 <label class="col-sm-2 col-form-label">Email:</label>
-//                 <div class="col-sm-10">
-//                     <input onChange={handleInputChange} value={input.email}
-//                         type='email' placeholder='Email' name="email">
-//                     </input>
-
-//                 </div>
-//             </div>
-
-
-//             <div class="form-group row">
-//                 <label class="col-sm-2 col-form-label">Admin:</label>
-//                 <div class="col-sm-10">
-//                     <input onChange={handleInputChange} value={input.isAdmin}
-//                         type='boolean' placeholder='Admin' name="isAdmin">
-//                     </input>
-
-//                 </div>
-//             </div>
-
-//             <input class="btn btn-danger" type="submit" value="Actualizar" />
-
-//         </form>
-//     </div>
-// )
-
-
 
 export default Upgrade;

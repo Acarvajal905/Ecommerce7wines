@@ -26,3 +26,12 @@ input.danger {
   background-color:#67143f;
   border-color: #982b64;
 }
+input{
+  width: 350px;
+}
+textarea{
+  width: 350px;
+}
+select{
+  width: 350px;
+}

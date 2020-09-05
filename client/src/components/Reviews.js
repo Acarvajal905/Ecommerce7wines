@@ -15,7 +15,6 @@ export default function Reviews ({calificacion, descripcion, createdAt, userId})
     })
   }, [])
 
- 
     const condicion = calificacion;
   return (
     <div class="boxrew">

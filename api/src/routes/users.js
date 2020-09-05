@@ -63,12 +63,6 @@ server.get('/', (req, res) => {
 })
 
 //TRAE TODOS LOS USUARIOS LOGEADOS
-server.get('/signin/:id', (req, res) => {
-    User.findAll()
-        .then((users) => {
-            res.send(users);
-        }).catch(err => { console.log(err) });
-})
 
 //MODIFICAR USUARIO (USAR PARA ASIGNAR ROL DE ADMIN)
 server.put('/:id', (req, res) => {
@@ -84,6 +78,24 @@ server.put('/:id', (req, res) => {
         }).catch(err => { console.log(err) });
 })
 
+ //TRAE TODOS LOS USUARIOS LOGEADOS
+server.get('/signin/', (req, res) => {
+    User.findAll()
+        .then((users) => {
+            res.send(users);
+        }).catch(err => { console.log(err) });
+})
+
+//TRAE A UN USUARIO LOGEADO 
+// server.get('/signin/:id', (req, res) => {
+//     User.findOne({
+//         where: {id: req.params.id}
+//     })
+//         .then((users) => {
+//             res.send(users);
+//         }).catch(err => { console.log(err) });
+// })
+ 
 //NO SIRVE BUSCAR USUARIOS
 server.get('/search', (req, res) => {
     if (req.body.email) {

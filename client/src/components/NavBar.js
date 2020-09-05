@@ -31,6 +31,11 @@ export const Home = () => {
             </Link>
           </li>
           <li class="nav-item">
+            <Link to={`/me`} >
+              <a class="nav-link" >Perfil</a>
+            </Link>
+          </li>
+          <li class="nav-item">
             <Link to={`/admin`} >
               <a class="nav-link" >Admin</a>
             </Link>

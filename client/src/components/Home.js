@@ -17,6 +17,7 @@ import CreateUser from "./Usuarios/CreateUser.js";
 import DeleteUser from "./Usuarios/DeleteUser.js";
 import Categorias from './CRUD/testcategory.js';
 import LoginScreen from "./Usuarios/LoginScreen.js"
+import Profile from "./Usuarios/getperfil.js"
 import GetUsers from "./Usuarios/GetUsers.js"
 import NavBarUser from "./Usuarios/NavBarUsuarios.js"
 import Clientes from "./Usuarios/GetClients.js"
@@ -60,7 +61,7 @@ export const Home = () => {
         path="/admin/testcategories" component={Categorias}
       />
       <Route
-        exact path='/admin/products/ordenes' component={Order}
+        exact path='/admin/ordenes' component={Order}
       />
       <Route
        path='/admin/products/' component={AdminProd}
@@ -95,6 +96,10 @@ export const Home = () => {
       <Route
         exact path='/admin/users/listadmins' component={Admins}
       />
+      <Route
+        exact path='/me' component={Profile}
+      />
+      
 
     </div>
 
