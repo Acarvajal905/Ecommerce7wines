@@ -2,7 +2,6 @@ import React from 'react';
 import axios from "axios";
 import "../../Styles/CRUD.css";
 
-
 export function validate(input) {
     let errors = {};
  
@@ -11,7 +10,7 @@ export function validate(input) {
     } else if (!/\S/.test(input.descripcion)) {
       errors.descripcion = 'Description is invalid';
     } return errors
-  }
+}
 
  export default function CrearRewied(id){
     const handleSumit = function(e) {
@@ -54,57 +53,57 @@ export function validate(input) {
 
      const [input, setInput] = React.useState({
         descripcion: ""
-      });
-      const [errors, setErrors] = React.useState({});
+  });
     
-      const handleInputChange = function(e){
-        setErrors(validate({
-          ...input,
-          [e.target.name]: e.target.value
-        }));
+  const [errors, setErrors] = React.useState({});
     
-        setInput({
-          ...input,
-          [e.target.name]: e.target.value
-        })
-      }
+  const handleInputChange = function(e){
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
 
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value
+    })
+  }
 
-      return  (
+  return  (
 
-        
-            <form onSubmit={handleSumit}>
-                <div> <h1>Crear Reviews</h1> </div>
-              <div class="form-group row">
-                 <label class="col-sm-2 col-form-label">Calificacion:</label>
-                 <div class="col-sm-10">
-                     <select name ="calificacion">
-                          <option name ="calificacion" value="5">☆☆☆☆☆</option>
-                          <option name ="calificacion" value="4">☆☆☆☆</option>
-                          <option name ="calificacion" value="3">☆☆☆</option>
-                          <option name ="calificacion" value="2">☆☆</option>
-                          <option name ="calificacion" value="1">☆</option>
-                     </select>
-                     {errors.calificacion && (<p className="danger">{errors.calificacion}</p>)}
-                 </div>
-              </div>
+  <form onSubmit={handleSumit} class="adminbox">
 
+    <div> <h1>Crear Reviews</h1> </div>
 
-              <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">Descripcion</label>
-                  <input className={`${errors.descripcion && 'danger'}`} onChange={handleInputChange} value={input.descripcion}
-                   type= 'text' placeholder = 'Descripcion de la Reviews' name ="descripcion"></input>
-                   {errors.descripcion && (<p className="danger" >{errors.descripcion}</p>)}
-              </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Calificacion:</label>
+      <div class="col-sm-10">
+        <select name ="calificacion">
+          <option name ="calificacion" value="5">☆☆☆☆☆</option>
+          <option name ="calificacion" value="4">☆☆☆☆</option>
+          <option name ="calificacion" value="3">☆☆☆</option>
+          <option name ="calificacion" value="2">☆☆</option>
+          <option name ="calificacion" value="1">☆</option>
+        </select>
+        {errors.calificacion && (<p className="danger">{errors.calificacion}</p>)}
+      </div>
+    </div>
 
-              <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">Email</label>
-                  <input type= 'text' placeholder = 'e-mail' name ="email"></input>
-              </div>
-             
-                <input class="btn btn-danger" type="submit" value="Nueva Reviews" />  
-             
-            </form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Descripcion</label>
+      <textarea className={`${errors.descripcion && 'danger'}`} onChange={handleInputChange} value={input.descripcion}
+      type= 'text' placeholder = 'Descripcion de la Reviews' name ="descripcion"></textarea>
+      {errors.descripcion && (<p className="danger" >{errors.descripcion}</p>)}
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Email</label>
+      <input type= 'text' placeholder = 'e-mail' name ="email"></input>
+    </div>
+  
+    <input class="btn btn-danger" type="submit" value="Nueva Reviews" />  
+    
+  </form>
         
 
     
