@@ -19,6 +19,7 @@ export function handleSumit2(e) {
     percentage: x.percentage.value,
     country: x.country.value,
     colour: x.colour.value,
+    categories: x.categories.value
   };
 
   for (var prop in Creado) {
@@ -39,9 +40,9 @@ export function handleSumit2(e) {
     }
     if(!arr.length){     /* Aca va la funcion para editar la bd, creando producto */
       axios.post(`http://localhost:3001/products/`, Creado ,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
-      .then(response => {
+        .then(response => {
         axios.post(`http://localhost:3001/products/${response.data.id}/category/${x.categories.value}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
-      })
+      }) 
       .then(ress => {
         console.log(ress)
         alert( `El producto fue Creado`)
