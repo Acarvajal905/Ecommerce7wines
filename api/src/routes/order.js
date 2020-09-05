@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Order, Product, User, order_product } = require('../db.js');
+const { Order, Product, User, Order_Product } = require('../db.js');
 
 // s44 retorne todas las ordenes
 server.get('/',(req,res,next)=>{
@@ -74,7 +74,7 @@ server.get('/:id/',(req,res)=>{
 server.post('/:idOrd/product/:idProd', (req, res, next) => {
 	idP = req.params.idProd;
 	idO = req.params.idProd;
-	order_product.create({
+	Order_Product.create({
 		orderId: idO,
 		productId: idP
 	}).then((result) => {
