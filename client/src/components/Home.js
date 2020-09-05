@@ -9,6 +9,7 @@ import Admin from "./CRUD/admin.js"
 import Order from "./CRUD/orders";
 import CreateCategory from "./CRUD/crearcategoria.js"
 import Update from "./CRUD/actualizarproducto2.0"
+import AdminProd from "./CRUD/adminproduct.js"
 import DeleteProduct from "./CRUD/borrarproducto.js"
 import CreateProduct from './CRUD/crearproducto.js'
 import './Shoppingcart/carrito.css'
@@ -18,8 +19,8 @@ import Categorias from './CRUD/testcategory.js';
 import LoginScreen from "./Usuarios/LoginScreen.js"
 import GetUsers from "./Usuarios/GetUsers.js"
 import NavBarUser from "./Usuarios/NavBarUsuarios.js"
-
-
+import Clientes from "./Usuarios/GetClients.js"
+import Admins from "./Usuarios/GetAdmins.js"
 import AssignRoles from '../components/Usuarios/AssignRoles.js'
 
 
@@ -62,6 +63,9 @@ export const Home = () => {
         exact path='/admin/products/ordenes' component={Order}
       />
       <Route
+       path='/admin/products/' component={AdminProd}
+      />
+      <Route
         exact path='/admin/products/borrarproducto' component={DeleteProduct}
       />
       <Route
@@ -80,16 +84,16 @@ export const Home = () => {
         exact path='/admin/users/deleteuser' component={DeleteUser}
       />
       <Route
-        path='/admin/users' component={NavBarUser}
+        path='/admin/listusers' component={NavBarUser}
       />
       <Route
-        exact path='/admin/users' component={GetUsers}
+        exact path='/admin/listusers' component={GetUsers}
       />
       <Route
-        exact path='/admin/users/clients' component={NavBarUser}
+        exact path='/admin/users/listclients' component={Clientes}
       />
       <Route
-        exact path='/admin/users/admins' component={NavBarUser}
+        exact path='/admin/users/listadmins' component={Admins}
       />
 
     </div>

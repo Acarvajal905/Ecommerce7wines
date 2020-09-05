@@ -9,8 +9,12 @@
 }
 
 .list-group {
-    background-color: blueviolet;
     width: 400px;
+}
+
+.cartinfo{
+    display: flex;
+    justify-content: space-around;
 }
 
 .userbox {

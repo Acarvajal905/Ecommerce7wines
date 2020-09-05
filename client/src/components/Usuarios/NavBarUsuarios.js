@@ -10,13 +10,19 @@ export default function NavBarUser() {
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/users">Todos</a>
+                        <a class="nav-link" href="/admin/listusers">Todos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/users/clients">Clientes</a>
+                        <a class="nav-link" href="/admin/users/listclients">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/users/admins">Admins</a>
+                        <a class="nav-link" href="/admin/users/listadmins">Admins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/users/roles">Asignar roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/users/deleteuser">Eliminar usuarios</a>
                     </li>
 
                 </ul>

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import "../../Styles/CRUD.css"
+import NavBarUser from "./NavBarUsuarios.js"
 
 export function validate(input) {
     let errors = {};
@@ -67,6 +68,7 @@ export default function DeleteUser() {
 
     return (
         <div>
+            <NavBarUser/>
             <form onSubmit={handleSumit}>
                     <div> <h1>Eliminar Usuario</h1> </div>
 

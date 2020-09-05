@@ -4,18 +4,19 @@ import "../../Styles/Users.css";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from "../Redux/Actions/index.js"
+import NavBarUser from "./NavBarUsuarios.js"
 
-
-class Usuarios extends React.Component {
+class Admins extends React.Component {
 
     componentDidMount() {
-        this.props.getAllUser()
+        this.props.getAllAdmins()
     }
     render() {
         return (
             <div>
+                <NavBarUser/>
                 <div class="userbox">
-                {this.props.allusers.map(v =>
+                {this.props.admins.map(v =>
 
                     <UsersCard
                         name={v.name}
@@ -25,7 +26,7 @@ class Usuarios extends React.Component {
                     />
                 )}
                 </div>
-                
+
             </div>
         );
     }
@@ -33,7 +34,7 @@ class Usuarios extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        allusers: state.allusers,
+        admins: state.admins,
     }
 }
 
@@ -41,4 +42,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actionCreators, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Usuarios);
+export default connect(mapStateToProps, mapDispatchToProps)(Admins);

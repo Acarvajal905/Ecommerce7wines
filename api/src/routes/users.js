@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { User } = require('../db.js');
+const { User, Product, Order } = require('../db.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../util.js');
@@ -54,10 +54,12 @@ server.post('/signin', (req, res) => {
 })
 // TRAE TODOS LOS USUARIOS
 server.get('/', (req, res) => {
-    User.findAll()
-        .then((users) => {
-            res.send(users);
-        }).catch(err => { console.log(err) });
+    User.findAll({
+        include: Order
+    })
+    .then((users) => {
+        res.send(users);
+    }).catch(err => { console.log(err) });
 })
 
 //TRAE TODOS LOS USUARIOS LOGEADOS
@@ -126,12 +128,28 @@ server.put('/promote/:id', (req, res) => {
 server.get('/:id', (req, res, next) => {
     User.findByPk(req.params.id, {
         // include: user.isAdmin
+        include: Order
     })
+    .then((user) => {
+        if (!user) { return res.status(404).end(); }
+        return res.json(user)
+    })
+    .catch(err => { console.log(err) });
+});
+
+
+//POST /users/:idUser/cart
+//Crear Ruta para agregar Item al Carrito
+server.post('/:id/cart', (req, res, next) => {
+    User.findByPk(req.params.id)
         .then((user) => {
-            if (!user) { return res.status(404).end(); }
-            return res.json(user)
+            if (!user) { return res.status(404).end()}
+            Order.create(req.body)
+            .then((order) => {
+               const userOrd = user.addOrder(order);
+                 res.send(userOrd);
+            });
         })
         .catch(err => { console.log(err) });
 });
-
 module.exports = server
