@@ -57,9 +57,9 @@ server.get('/', (req, res) => {
     User.findAll({
         include: Order
     })
-    .then((users) => {
-        res.send(users);
-    }).catch(err => { console.log(err) });
+        .then((users) => {
+            res.send(users);
+        }).catch(err => { console.log(err) });
 })
 
 //TRAE TODOS LOS USUARIOS LOGEADOS
@@ -78,7 +78,7 @@ server.put('/:id', (req, res) => {
         }).catch(err => { console.log(err) });
 })
 
- //TRAE TODOS LOS USUARIOS LOGEADOS
+//TRAE TODOS LOS USUARIOS LOGEADOS
 server.get('/signin/', (req, res) => {
     User.findAll()
         .then((users) => {
@@ -87,15 +87,29 @@ server.get('/signin/', (req, res) => {
 })
 
 //TRAE A UN USUARIO LOGEADO 
-// server.get('/signin/:id', (req, res) => {
-//     User.findOne({
-//         where: {id: req.params.id}
-//     })
-//         .then((users) => {
-//             res.send(users);
-//         }).catch(err => { console.log(err) });
-// })
- 
+server.get('/signin/:id', (req, res) => {
+    User.findOne({
+        where: { id: req.params.id }
+    })
+        .then((users) => {
+            res.send(users);
+        }).catch(err => { console.log(err) });
+})
+//ELIMINA LA SESION
+server.delete('/signin/:id', (req, res, next) => {
+    User.destroy({
+        where:
+            { id: req.params.id }
+    }).then(function (product) {
+        if (user === 1) {
+            res.json({ message: 'Sesion eliminada' });
+        }
+        return next;
+		/* {return res.status(404) .end();}
+		return res.status(200).end(); */
+    })
+        .catch(err => { console.log(err) });
+});
 //NO SIRVE BUSCAR USUARIOS
 server.get('/search', (req, res) => {
     if (req.body.email) {
@@ -142,11 +156,11 @@ server.get('/:id', (req, res, next) => {
         // include: user.isAdmin
         include: Order
     })
-    .then((user) => {
-        if (!user) { return res.status(404).end(); }
-        return res.json(user)
-    })
-    .catch(err => { console.log(err) });
+        .then((user) => {
+            if (!user) { return res.status(404).end(); }
+            return res.json(user)
+        })
+        .catch(err => { console.log(err) });
 });
 
 
@@ -155,12 +169,12 @@ server.get('/:id', (req, res, next) => {
 server.post('/:id/cart', (req, res, next) => {
     User.findByPk(req.params.id)
         .then((user) => {
-            if (!user) { return res.status(404).end()}
+            if (!user) { return res.status(404).end() }
             Order.create(req.body)
-            .then((order) => {
-               const userOrd = user.addOrder(order);
-                 res.send(userOrd);
-            });
+                .then((order) => {
+                    const userOrd = user.addOrder(order);
+                    res.send(userOrd);
+                });
         })
         .catch(err => { console.log(err) });
 });

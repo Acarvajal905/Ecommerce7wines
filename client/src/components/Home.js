@@ -64,7 +64,7 @@ export const Home = () => {
         exact path='/admin/ordenes' component={Order}
       />
       <Route
-       path='/admin/products/' component={AdminProd}
+        path='/admin/products/' component={AdminProd}
       />
       <Route
         exact path='/admin/products/borrarproducto' component={DeleteProduct}
@@ -99,7 +99,7 @@ export const Home = () => {
       <Route
         exact path='/me' component={Profile}
       />
-      
+
 
     </div>
 
