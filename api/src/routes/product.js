@@ -135,18 +135,19 @@ server.post('/', (req, res, next) => {
 // });
 
 
-server.put('/:id', (req, res, next) => {
+server.put('/:id', (req, res) => {
 	Product.update(req.body,
 		{
 			where:
 				{ id: req.params.id }
-		})
-		.then(function (product) {
-			if (!product) { return res.status(404).end() }
+		}).then(function (product) {
+			if (!product) {
+				return res.status(404).end()
+			}
 			return res.json(product);
-		})
-		.catch(err => { console.log(err) });
+		}).catch(err => { console.log(err) });
 })
+
 
 //S27 Crear ruta para eliminar producto
 server.delete('/:id', (req, res, next) => {
