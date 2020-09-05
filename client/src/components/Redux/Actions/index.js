@@ -12,7 +12,8 @@ export const GET_ALL_REVIEWS_PRODUCT = "GET_ALL_REVIEWS_PRODUCT"
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT"
 export const UPGRADE_USER = 'UPGRADE_USER'
 export const GET_ONE_USER = 'GET_ONE_USER'
-
+export const GET_ALL_CLIENTS = 'GET_ALL_CLIENTS'
+export const GET_ALL_ADMINS = 'GET_ALL_ADMINS'
 
 function prod(obj) {
   let x = obj.products
@@ -199,3 +200,30 @@ export function UpgradeUser(payload) {
   }
 }
 
+export function getAllAdmins() {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/`)
+    .then(response => response.data.filter(a => a.isAdmin !== false))
+    .then(ress => {
+      console.log(ress)
+      dispatch({ type: GET_ALL_ADMINS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
+    })
+    .catch(err => {
+      console.log(err)
+    });
+  }
+}
+
+export function getAllClients() {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/`)
+      .then(response => response.data.filter(a => a.isAdmin !== true))
+      .then(ress => {
+        console.log(ress)
+        dispatch({ type: GET_ALL_CLIENTS, payload: ress });  // despacha la accion GET_ALL_PRODUCTS
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+}
