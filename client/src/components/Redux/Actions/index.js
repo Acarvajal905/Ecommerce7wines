@@ -116,7 +116,7 @@ export function get5Product() {
 export function getProdCat(id) {
   return function (dispatch) {
     return axios.get(`http://localhost:3001/category/${id}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
-      .then(response => prod(response.data))
+      .then(response => response.data.products)
       .then(ress => {
         dispatch({ type: GET_PRODUCT_CAT, payload: ress });
       })

@@ -16,7 +16,6 @@ export const handleSumit4 = function(e) {
   //traigo las categorias del bd
   axios.get(`http://localhost:3001/category/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
   .then(ress =>{
-    console.log(ress.data);
    let arr = ress.data.filter(p => p.name === NuevaCategori.name)
     if(arr.length){
     alert( `La categoria ya existe`);
@@ -24,8 +23,11 @@ export const handleSumit4 = function(e) {
      
      axios.post(`http://localhost:3001/category/`, NuevaCategori ,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}}) /* Aca va la funcion para editar la bd, creando categoria */
      .then(response => {
-        console.log("entre a ok")
         alert ("Categoria Creada")
+     })
+     .catch(er => {
+       console.log(er)
+       alert ("Algo salio mal")
      })
   }
 })

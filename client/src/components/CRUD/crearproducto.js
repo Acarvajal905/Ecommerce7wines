@@ -19,6 +19,7 @@ export function handleSumit2(e) {
     percentage: x.percentage.value,
     country: x.country.value,
     colour: x.colour.value,
+    categories: x.categories.value
   };
 
   for (var prop in Creado) {
@@ -26,24 +27,20 @@ export function handleSumit2(e) {
       return alert(`${prop} es requerido`)
     }
   }
-
+ 
 
   //Me traigo los productos de la bd
 
-  axios.get(`http://localhost:3001/products/`)
+  axios.get(`http://localhost:3001/products/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
 
-  .then(ress =>{ console.log("entreaca")
+  .then(ress =>{ 
    let arr = ress.data.filter(p => p.name === Creado.name)
     if(arr.length){
     alert( `El producto  ya existe`);
     }
     if(!arr.length){     /* Aca va la funcion para editar la bd, creando producto */
       axios.post(`http://localhost:3001/products/`, Creado ,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
-      .then(response => {
-        axios.post(`http://localhost:3001/products/${response.data.id}/category/${x.categories.value}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
-      })
-      .then(ress => {
-        console.log(ress)
+      .then(ress1 => {
         alert( `El producto fue Creado`)
       })
       .catch(err => {
@@ -136,7 +133,7 @@ export default function CreateProduct() {
   const [categorias, setCategorias] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(`http://localhost:3001/category`)
+    axios.get(`http://localhost:3001/category`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
     .then(result => {
       let categories = result.data
       setCategorias(categories);
