@@ -100,7 +100,7 @@ server.delete('/signin/:id', (req, res, next) => {
     User.destroy({
         where:
             { id: req.params.id }
-    }).then(function (product) {
+    }).then(function (user) {
         if (user === 1) {
             res.json({ message: 'Sesion eliminada' });
         }
