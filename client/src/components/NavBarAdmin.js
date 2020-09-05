@@ -4,7 +4,7 @@ import SearchBar from "./searchbar";
 import { Link } from 'react-router-dom'
 
 
-export const NavBar = () => {
+export const NavBarAdmin = () => {
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,7 +30,16 @@ export const NavBar = () => {
               <a class="nav-link" >Iniciar sesión/Registrarse</a>
             </Link>
           </li>
-
+          <li class="nav-item">
+            <Link to={`/me`} >
+              <a class="nav-link" >Perfil</a>
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link to={`/admin`} >
+              <a class="nav-link" >Admin</a>
+            </Link>
+          </li>
         </ul>
         <div class='cart'>
           <a class='derecho'>
@@ -46,4 +55,4 @@ export const NavBar = () => {
   )
 }
 
-export default NavBar;
+export default NavBarAdmin;
