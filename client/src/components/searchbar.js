@@ -23,7 +23,7 @@ export default function SearchBar () {
                     name ="searchbar"
                 />
 
-                <input class="btn btn-outline-danger" type="submit" value="Buscar..." />   
+                <input class="btn btn-outline-danger button" type="submit" value="Buscar..." />   
             </form>
         </nav>
 

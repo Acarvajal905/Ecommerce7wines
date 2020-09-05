@@ -14,6 +14,7 @@ export const UPGRADE_USER = 'UPGRADE_USER'
 export const GET_ONE_USER = 'GET_ONE_USER'
 export const GET_ALL_CLIENTS = 'GET_ALL_CLIENTS'
 export const GET_ALL_ADMINS = 'GET_ALL_ADMINS'
+export const GET_LOGGED_USER = 'GET_LOGGED_USER'
 
 function prod(obj) {
   let x = obj.products
@@ -95,6 +96,18 @@ export function getAllUser() {
       });
   }
 }
+/* //TRAE AL USUARIO LOGEADO  
+export function getLoggedUser(payload) {
+  return function (dispatch) {
+    return axios.get(`http://localhost:3001/users/signin`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+      .then(response => {
+        dispatch({ type: GET_LOGGED_USER, payload: response.data });  // despacha la accion GET_LOGED_USER
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+} */
 
 //Trae 5 productos al azar de todo el catalogo
 

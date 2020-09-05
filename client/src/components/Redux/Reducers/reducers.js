@@ -1,6 +1,6 @@
 
 
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_ADMINS, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT, UPDATE_PRODUCT, UPGRADE_USER, GET_ONE_USER, GET_ALL_CLIENTS } from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_ADMINS, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT, UPDATE_PRODUCT, UPGRADE_USER, GET_ONE_USER, GET_ALL_CLIENTS, GET_LOGGED_USER } from "../Actions/index.js"
 
 
 const initialState = {
@@ -47,6 +47,12 @@ function rootReducer(state = initialState, action) {
     }
 
   }
+ /*  if (action.type === GET_LOGGED_USER) {
+    return {
+      ...state,
+      user: action.payload  // modifico product del store, agregando el user seleccionado
+    }
+  } */
   if (action.type === GET_5_PRODUCTS) {
     return {
       ...state,
