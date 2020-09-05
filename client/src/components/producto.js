@@ -14,7 +14,7 @@ class Producto extends React.Component {
     const { match: { params: { id } } } = this.props;
     this.props.getProduct(id);
     this.props.getAllReviews(id); /* traigo las reviews del producto */
-    
+    this.props.AddToCars(id)
   }
 
   render() {
@@ -55,8 +55,7 @@ class Producto extends React.Component {
                  <Link to={`/products/${this.props.product.id}/newreviews`}>
                  <span>Deja tu reviews</span>
                  </Link>
-                 </div>
-                
+                </div>
               </ul>
             </div>
           </div>
@@ -83,7 +82,7 @@ function mapStateToProps(state) {
   return {
     product: state.product,
     reviews: state.reviews,
-
+    carrito: state.carrito
   }
 }
 
