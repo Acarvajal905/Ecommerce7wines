@@ -4,7 +4,7 @@ const util = require("../util.js");
 module.exports = function(req, res, next){
   if(req.path.substr(0,10) == "/category/"){
     if(req.method == "GET"){
-      return  next();
+        next();
     }if(req.headers.authorization ){
 
         let token = req.headers.authorization.split(" ")[1]
@@ -15,12 +15,12 @@ module.exports = function(req, res, next){
             }if(req.method != "GET"){
                 
                 if(decoded.user.isAdmin == true){
-                   return next();
+                    next();
                 }else {
-                   return res.status(403).send({message: "no tiene permisos"})
+                    res.status(403).send({message: "no tiene permisos"})
                 }
             }
         })
     } 
-  }else return next();
+  }else next();
 }
