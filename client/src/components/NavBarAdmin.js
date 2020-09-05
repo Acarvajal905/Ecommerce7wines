@@ -3,7 +3,6 @@ import "../Styles/Home.css"
 import SearchBar from "./searchbar";
 import { Link } from 'react-router-dom'
 
-
 export const NavBarAdmin = () => {
 
   return (
@@ -23,11 +22,6 @@ export const NavBarAdmin = () => {
           <li class="nav-item">
             <Link to={`/Catalogue`} >
               <a class="nav-link" >Catalogo</a>
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link to={`/signin/`} >
-              <a class="nav-link" >Iniciar sesión/Registrarse</a>
             </Link>
           </li>
           <li class="nav-item">

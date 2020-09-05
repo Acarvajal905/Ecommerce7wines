@@ -38,9 +38,7 @@ export const NavBarUserIn = () => {
             </Link>
           </a>
         </div>
-
       </div>
-
     </nav>
   )
 }

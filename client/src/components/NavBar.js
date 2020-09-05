@@ -39,9 +39,7 @@ export const NavBar = () => {
             </Link>
           </a>
         </div>
-
       </div>
-
     </nav>
   )
 }

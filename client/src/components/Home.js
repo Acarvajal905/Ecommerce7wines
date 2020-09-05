@@ -26,8 +26,6 @@ import Clientes from "./Usuarios/GetClients.js"
 import Admins from "./Usuarios/GetAdmins.js"
 import AssignRoles from '../components/Usuarios/AssignRoles.js'
 
-
-
 export const Home = () => {
 
   return (
@@ -106,8 +104,7 @@ export const Home = () => {
       />
       <Route
         exact path='/me' component={Profile}
-      />
-      
+      /> 
 
     </div>
 
