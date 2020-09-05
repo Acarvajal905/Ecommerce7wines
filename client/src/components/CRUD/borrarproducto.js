@@ -37,11 +37,11 @@ export default function  DeleteProduct() {
     try{
       const resProd = await axios (`http://localhost:3001/products/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       let Buscado= resProd.data.filter(p => p.name === Prod) //para probar busca que el id coinsida
-      console.log("me traje ", Buscado)  //modificar cuando este listo
       return Buscado
     } 
     catch(error){
       console.log(error);
+      alert( `algo salio mal`)
     }
   }
 
@@ -57,7 +57,6 @@ export default function  DeleteProduct() {
 
     .then(response => {
           console.log("entre a ok")
-          console.log(response)
           alert( `El producto fue Eliminado`)
         })
     .catch (error2 => {

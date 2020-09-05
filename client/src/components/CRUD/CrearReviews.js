@@ -12,60 +12,46 @@ export function validate(input) {
     } return errors
 }
 
-export default function CrearRewied(id){
+ export default function CrearRewied(id){
+    const handleSumit = function(e) {
+      e.preventDefault();
 
-  const handleSumit = function(e) {
-
-    e.preventDefault();
-
-    const useremail= e.target.email.value; 
-    const usercalificacion= e.target.calificacion.value;
-    const userdescripcion= e.target.descripcion.value;
+      const useremail= e.target.email.value; 
+      const usercalificacion= e.target.calificacion.value;
+      const userdescripcion= e.target.descripcion.value;
         
-    if(userdescripcion === ""){
-      return alert("descripcion requerida")
-    }
-    if(userdescripcion.length > 50){
-      return alert("maximo 50 caracteres")
-    }
-
-    axios.get(`http://localhost:3001/users/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
-    .then(ress => {
-      var user = ress.data.filter(p => p.email === useremail)
-      if(user.length){
-        var pruevarewies = {
-            calificacion: usercalificacion,
-            descripcion: userdescripcion,
-            productId: id.props,
-            userId: user[0].id
-        }
-          
-        axios.post(`http://localhost:3001/products/${id.props}/review`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}}, pruevarewies) 
-        .then(ressponse => {
-
-        let Url = "http://localhost:3000/products/" + id.props;
-
-        alert(`Reviews Creada`)
-        window.location.replace(Url)
-      })
+      if(userdescripcion === ""){
+        return alert("descripcion requerida")
+      }if(userdescripcion.length > 50){
+       return alert("maximo 50 caracteres")
       }
-    })
-    /*.then(ress => {
-    axios.get(`http://localhost:3001/products/${id.props}/review`)
-    .then(ress2 =>{
-        console.log(ress2.data, useremail )
 
-    })
-    }) */ 
-        
-    .catch (error2 => {
-      console.log(error2);
-  
-      }) 
+      axios.get(`http://localhost:3001/users/`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+        .then(ress => {
+          var user = ress.data.filter(p => p.email === useremail)
+          if(user.length){
+            var pruevarewies = {
+             calificacion: usercalificacion,
+              descripcion: userdescripcion,
+              productId: id.props,
+              userId: user[0].id
+           }
+            console.log(pruevarewies)
 
-  };
+            axios.post(`http://localhost:3001/products/${id.props}/review`, pruevarewies,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}}) 
+             .then(ressponse => {
+               let Url = "http://localhost:3000/products/" + id.props;
+               alert(`Reviews Creada`)
+               window.location.replace(Url)
+            })
+            }
+        })
+        .catch (error2 => {
+         console.log(error2);
+        }) 
+     };
 
-  const [input, setInput] = React.useState({
+     const [input, setInput] = React.useState({
         descripcion: ""
   });
     
@@ -82,7 +68,6 @@ export default function CrearRewied(id){
       [e.target.name]: e.target.value
     })
   }
-
 
   return  (
 

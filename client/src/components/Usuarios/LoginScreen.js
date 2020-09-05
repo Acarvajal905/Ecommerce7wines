@@ -9,6 +9,10 @@ export function handleSumit23(e){
     console.log( localStorage.getItem('token'))
     console.log("salgo")
     localStorage.removeItem('token')
+
+    
+    localStorage.setItem('token', "estoesuntokenfalso")
+
     console.log( localStorage.getItem('token'))
     alert("sesion cerrada")
 }

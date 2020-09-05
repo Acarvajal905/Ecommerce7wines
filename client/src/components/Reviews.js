@@ -31,7 +31,7 @@ export default function Reviews ({calificacion, descripcion, createdAt, userId})
         </div>
         <p class="description">{descripcion.substr(0,25)}</p>
         <p class="description">{descripcion.substr(26,25)}</p>                      {/* Descripcion de la reviews */}
-        <div>{usuariorew + "."} {createdAt.substr(8,2)}-{createdAt.substr(5,2)} </div> {/* Usuario, sino tiene setea anonimo y la fecha de creacion */}
+        <div>{usuariorew} {createdAt.substr(8,2)}-{createdAt.substr(5,2)} </div> {/* Usuario, sino tiene setea anonimo y la fecha de creacion */}
       </div>
     </div>
   );
