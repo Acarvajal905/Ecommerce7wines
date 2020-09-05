@@ -3,6 +3,7 @@ import { UpgradeUser, getAllUser, getuser } from '../Redux/Actions/index.js';
 import "../../Styles/CRUD.css"
 import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios';
+import NavBarUser from "./NavBarUsuarios.js"
 
 const Upgrade = () => {
 
@@ -58,6 +59,7 @@ const Upgrade = () => {
 
     return (
         <form onSubmit={(e) => updateUser(e, user)}>
+            <NavBarUser/>
             <div>
                 {/* <input type='text' placeholder='filtrar usuarios' onChange={(e) => setSearch(e.target.value)} /> */}
                 <h3>Asignar Roles</h3>

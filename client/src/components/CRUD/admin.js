@@ -10,28 +10,13 @@ export default function Admin() {
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/products/ordenes">Ordenes</a>
+                        <a class="nav-link" href="/admin/ordenes">Ordenes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/products/crearproducto">Crear producto</a>
+                        <a class="nav-link" href="/admin/products/">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/products/borrarproducto">Borrar producto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/products/crearcategoria">Crear categoria </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/products/actualizarproducto">Actualizar producto </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/users/roles">Asignar roles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/users/deleteuser">Eliminar usuarios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/users/">Lista de usuarios</a>
+                        <a class="nav-link" href="/admin/listusers">Usuarios</a>
                     </li>
 
                 </ul>

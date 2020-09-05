@@ -7,16 +7,17 @@ import { connect } from 'react-redux';
 const UsersCard = ({ name, email, id, isAdmin }) => (
 
 
-    <form class="usercard">
+    <form class="card text-white bg-danger mb-3 usercard">
         <div class="list-group">
         
-            <a href={`roles`} class="list-group-item list-group-item-action active">
-                {name}
-            </a>
-           
-            <a href={`roles`} class="list-group-item list-group-item-action">Email: {email}</a>
-            <a href={`roles`} class="list-group-item list-group-item-action">Es admin: {isAdmin}</a>
-
+            <div class="card-header">{name}</div>
+            <div class="card-body">
+                    <h5 class="card-title">Email: {email}</h5>
+                    <div class="cartinfo">
+                        <p class="card-text">ID: {id}</p>
+                        <p class="card-text">Es admin: {isAdmin}</p>
+                    </div>
+            </div>
         </div>
     </form>
 
