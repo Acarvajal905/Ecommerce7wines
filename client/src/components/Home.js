@@ -1,9 +1,6 @@
 import React from "react";
 import { Route, Link } from "react-router-dom"
 import "../Styles/Home.css"
-import NavBar from './NavBar.js'
-import NavBarUserIn from './NavBarUser.js'
-import NavBarAdmin from './NavBarAdmin.js'
 import NavCat from './NavBar2.js'
 import Carrusel from './Carrusel.js'
 import Minicat from "./Minicatalogo.js"
@@ -25,6 +22,7 @@ import NavBarUser from "./Usuarios/NavBarUsuarios.js"
 import Clientes from "./Usuarios/GetClients.js"
 import Admins from "./Usuarios/GetAdmins.js"
 import AssignRoles from '../components/Usuarios/AssignRoles.js'
+import NatBarCondicional from "./Usuarios/NatBarCondicional.js"
 
 export const Home = () => {
 
@@ -36,15 +34,8 @@ export const Home = () => {
         </header>
       </Link>
 
-      <Route
-        path="/" component={NavBar}
-      />
-      <Route
-        path="/" component={NavBarUserIn}
-      />
-      <Route
-        path="/" component={NavBarAdmin}
-      />
+      <NatBarCondicional/>
+
       <Route
         exact path="/" component={Carrusel}
       />

@@ -47,12 +47,12 @@ function rootReducer(state = initialState, action) {
     }
 
   }
- /*  if (action.type === GET_LOGGED_USER) {
+  if (action.type === GET_LOGGED_USER) {
     return {
       ...state,
       user: action.payload  // modifico product del store, agregando el user seleccionado
     }
-  } */
+  }
   if (action.type === GET_5_PRODUCTS) {
     return {
       ...state,
