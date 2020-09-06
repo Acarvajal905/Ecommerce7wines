@@ -9,6 +9,8 @@ import carrito from './components/Shoppingcart/carrito.js'
 import ResultSearch from "./components/search.js"
 import axios from "axios";
 import CrearRewied from "./components/CRUD/CrearReviews"
+import EditRewied from "./components/CRUD/EditarReviews.js"
+import ContenedorReviews from "./components/EdiReviewsContenedor.js"
 
 function App() {
 
@@ -34,6 +36,8 @@ function App() {
       {categorias.map(v =>
         <Route exact path={"/Catalogue/"+v.id} render={() => <ProdCat id={v.id} />} />
       )}
+      <Route exact path={"/products/:id/editreviews"} render={({match}) => <ContenedorReviews props={match.params.id} />} />
+      <Route exact path={"/products/:id/editreviews"} render={({match}) => <EditRewied props={match.params.id} />} />
 
       <Route exact path={"/products/:id/newreviews"} render={({match}) => <CrearRewied props={match.params.id} />} />
 

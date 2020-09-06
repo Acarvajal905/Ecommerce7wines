@@ -1,21 +1,8 @@
 import '../../Styles/SigninScreen.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Home from '../Home.js'
 
-export function handleSumit23(e){
-    e.preventDefault();
-    console.log( localStorage.getItem('token'))
-    console.log("salgo")
-    localStorage.removeItem('token')
-
-    
-    localStorage.setItem('token', "estoesuntokenfalso")
-
-    console.log( localStorage.getItem('token'))
-    alert("sesion cerrada")
-}
 export function handleSumit3(e) {
     e.preventDefault();
 
@@ -46,7 +33,15 @@ export function handleSumit3(e) {
                 axios.post(`http://localhost:3001/users/signin`, Login)
                     .then(response => {
 
-                        localStorage.setItem('token', response.data.token)
+                        localStorage.setItem('userId',response.data.user.id);
+                        localStorage.setItem('userName',response.data.user.name);
+                        localStorage.setItem('userIsAdmin',response.data.user.isAdmin);
+                        localStorage.setItem('token', response.data.token);
+                        
+                        console.log(localStorage.getItem('userId'))
+                        console.log(localStorage.getItem('userName'))
+                        console.log(localStorage.getItem('userIsAdmin'))
+                        console.log(localStorage.getItem('token'))
                       
                         alert(`Bienvenido a 7 Wines `)
                         window.location.href = "/"; 
@@ -98,10 +93,13 @@ export default function LoginUser() {
 
     }
 
+   let condicion = localStorage.getItem('userIsAdmin');
+   if( condicion === "false" || condicion === "true"){window.location.href = "/"}
 
     return (
-
+        
         <div className='adminbox'>
+            
             <form onSubmit={handleSumit3} id="formulario">
 
                 <ul className='form-container'>
@@ -137,9 +135,6 @@ export default function LoginUser() {
                         </Link>
                     </li>
                 </ul>
-            </form>
-            <form onSubmit={handleSumit23}>
-                <button type="submit">salir</button>
             </form>
         </div>
     )

@@ -96,10 +96,10 @@ export function getAllUser() {
       });
   }
 }
-/* //TRAE AL USUARIO LOGEADO  
+//TRAE AL USUARIO LOGEADO  
 export function getLoggedUser(payload) {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/users/signin`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+    return axios.get(`http://localhost:3001/users/signin/${payload}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
       .then(response => {
         dispatch({ type: GET_LOGGED_USER, payload: response.data });  // despacha la accion GET_LOGED_USER
       })
@@ -107,7 +107,7 @@ export function getLoggedUser(payload) {
         console.log(err)
       });
   }
-} */
+}
 
 //Trae 5 productos al azar de todo el catalogo
 

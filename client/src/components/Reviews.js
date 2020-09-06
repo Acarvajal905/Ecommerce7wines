@@ -13,6 +13,7 @@ export default function Reviews ({calificacion, descripcion, createdAt, userId})
     
       setUser(usuario[0].name.substr(0,10));
     })
+    .catch(error =>{console.log(error)})
   }, [])
 
     const condicion = calificacion;

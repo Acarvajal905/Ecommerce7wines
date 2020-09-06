@@ -6,7 +6,6 @@ const routes = require('./routes/index.js');
 const cors = require("cors");
 
 const AuthToken = require("./middlewares/AuthToken.js");
-const AuthTokenCate = require("./middlewares/AuthTokenCate.js");
 
 
 require('./db.js');
@@ -26,8 +25,8 @@ server.use(morgan('dev'));
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 }); */
-server.use(AuthToken);
-server.use(AuthTokenCate);
+ server.use(AuthToken);
+
 
 server.use('/', routes);
 

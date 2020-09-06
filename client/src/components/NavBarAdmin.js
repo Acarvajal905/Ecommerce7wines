@@ -2,6 +2,7 @@ import React from "react";
 import "../Styles/Home.css"
 import SearchBar from "./searchbar";
 import { Link } from 'react-router-dom'
+import handleSumitSalir from "./Usuarios/logout.js"
 
 export const NavBarAdmin = () => {
 
@@ -33,6 +34,11 @@ export const NavBarAdmin = () => {
             <Link to={`/admin`} >
               <a class="nav-link" >Admin</a>
             </Link>
+          </li>
+          <li>
+            <form onSubmit={handleSumitSalir}>
+               <button class="btn btn-danger" type="submit">salir</button>
+            </form>
           </li>
         </ul>
         <div class='cart'>
