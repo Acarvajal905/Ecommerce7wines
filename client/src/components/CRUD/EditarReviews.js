@@ -2,7 +2,6 @@ import React from 'react';
 import axios from "axios";
 import "../../Styles/CRUD.css";
 import '../../Styles/SigninScreen.css'
-import { Link } from 'react-router-dom';
 
 export function validate(input) {
     let errors = {};
@@ -14,7 +13,27 @@ export function validate(input) {
     } return errors
 }
 
-export default function CrearRewied(id){
+export default function EditRewied(id){
+
+    const handleSumitBorrar = function(e){
+        e.preventDefault();
+        axios.get(`http://localhost:3001/products/${id.props}/review`, {headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+        .then(ress => { 
+            let arr = ress.data.filter(p => p.user.id == localStorage.getItem('userId'))
+            if(arr.length){
+              return axios.delete(`http://localhost:3001/products/${id.props}/review/${arr[0].id}`, {headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+              .then(ressponse => {
+                  console.log(ressponse)
+                let Url = "http://localhost:3000/products/" + id.props;
+                alert(`borrada`)
+                window.location.replace(Url) 
+              })
+            }
+            if(!arr.length){
+              return alert( `la review no existe`);
+             }
+          })
+    }
 
   const handleSumit = function(e) {
     e.preventDefault();
@@ -34,18 +53,18 @@ export default function CrearRewied(id){
     axios.get(`http://localhost:3001/products/${id.props}/review`, {headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
     .then(ress => { 
       let arr = ress.data.filter(p => p.user.id == localStorage.getItem('userId'))
-      console.log(arr)
       if(arr.length){
-       return alert( `Ya dejo su review`);
-      }
-      if(!arr.length){
-        return axios.post(`http://localhost:3001/products/${id.props}/review`, NuevaReviews, {headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+        return axios.put(`http://localhost:3001/products/${id.props}/review/${arr[0].id}`, NuevaReviews, {headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
         .then(ressponse => {
+            console.log(ressponse)
           let Url = "http://localhost:3000/products/" + id.props;
-          alert(`Reviews Creada`)
+          alert(`modificada`)
           window.location.replace(Url) 
         })
       }
+      if(!arr.length){
+        return alert( `la review no existe`);
+       }
     })
     
     .catch(er => {
@@ -74,11 +93,11 @@ export default function CrearRewied(id){
   }
 
   return  (
-    <div>
+   <div>
 
    <form onSubmit={handleSumit} class="adminbox">
 
-    <div> <h1>Crear Reviews</h1> </div>
+    <div> <h1>Edita tu Reviews</h1> </div>
 
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Calificacion:</label>
@@ -101,20 +120,11 @@ export default function CrearRewied(id){
       {errors.descripcion && (<p className="danger" >{errors.descripcion}</p>)}
     </div>
   
-    <input class="btn btn-danger" type="submit" value="Nueva Reviews" />  
+    <input class="btn btn-danger" type="submit" value="Nueva Reviews" />  <button onClick={handleSumitBorrar} class="btn btn-danger" type="submit">Borrar Review</button>
     
    </form>
-   <lu className='form-container'>
-     <li>
-     ¿Ya dejaste tu reviews y queres editarla?
-     </li>
-     <li class="nav-item">
-       <Link to={`/products/${id.props}/editreviews`} >
-         <a className='button full-wi'>Edita tu reviews</a>
-        </Link>
-     </li>
+  
 
-   </lu>
    </div>
           
   );

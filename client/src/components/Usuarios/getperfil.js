@@ -8,22 +8,22 @@ import * as actionCreators from "../Redux/Actions/index.js"
 class Profile extends React.Component {
 
     componentDidMount() {
-        this.props.getLoggedUser()
+        this.props.getLoggedUser(localStorage.getItem('userId'))
     }
     render() {
         return (
             <div>
                 perfil
                 <div class="userbox">
-                {this.props.user.map(v =>
+                
 
                     <Perfilcart
-                        name={v.name}
-                        email={v.email}
-                        id={v.id}
-                        isAdmin={v.isAdmin.toString()}
+                        name={this.props.user.name}
+                        email={this.props.user.email}
+                        id={this.props.user.id}
+                        isAdmin={this.props.user.isAdmin == true && "true" || "false"}
                     />
-                )}
+                
                 </div>
 
             </div>
