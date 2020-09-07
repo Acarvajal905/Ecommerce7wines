@@ -13,7 +13,6 @@ class Profile extends React.Component {
     render() {
         return (
             <div>
-                perfil
                 <div class="userbox">
                 
 
