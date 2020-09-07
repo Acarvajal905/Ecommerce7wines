@@ -1,9 +1,8 @@
 import '../Shoppingcart/carrito.css'
 import React from 'react';
-import Comprar from "../Shoppingcart/Comprar.js"
 import { Link } from 'react-router-dom'
 
-export default function OrderCart(){
+export default function OrderUser(){
   let cantidad;
 
   if(!localStorage.getItem('cantidades')){
@@ -56,6 +55,5 @@ export default function OrderCart(){
     </div>
   )
 }
-
 
 
