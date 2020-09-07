@@ -105,9 +105,7 @@ export const Home = () => {
       <Route
         exact path="/" component={Footer}
       />
-
     </div>
-
   )
 }
 
