@@ -1,6 +1,6 @@
 
 
-import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_ADMINS, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT, UPDATE_PRODUCT, UPGRADE_USER, GET_ONE_USER, GET_ALL_CLIENTS, GET_LOGGED_USER } from "../Actions/index.js"
+import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_ADMINS, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT, UPDATE_PRODUCT, UPGRADE_USER, GET_ONE_USER, GET_ALL_CLIENTS, GET_LOGGED_USER, RESET_PASSWORD } from "../Actions/index.js"
 
 
 const initialState = {
@@ -15,8 +15,9 @@ const initialState = {
   reviews: [],
   UpgradeUser: [],
   user: [],
-  clients:[],
-  admins:[]
+  clients: [],
+  admins: [],
+  users: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -27,12 +28,9 @@ function rootReducer(state = initialState, action) {
     }
   }
   if (action.type === UPDATE_PRODUCT) {
-    return {
-      ...state,
-      product: state.product.filter(item => item.name !== action.payload.name)
-
-    }
+    return { ...state, allproducts: state.allproducts.filter(item => item.id !== action.payload.id) }
   }
+
   if (action.type === GET_ALL_PRODUCTS) {
     return {
       ...state,
@@ -96,6 +94,10 @@ function rootReducer(state = initialState, action) {
       UpgradeUser: action.payload
     }
   }
+  if (action.type === RESET_PASSWORD) {
+    return { ...state, allusers: state.allusers.filter(item => item.id !== action.payload.id) }
+  }
+
   if (action.type === GET_ONE_USER) {
     return {
       ...state,
@@ -114,9 +116,9 @@ function rootReducer(state = initialState, action) {
       admins: action.payload  // modifico product del store, agregando el producto seleccionado
     }
   }
-  
+
   return state
 }
-  
+
 export default rootReducer;
 

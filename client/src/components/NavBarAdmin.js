@@ -30,6 +30,11 @@ export const NavBarAdmin = () => {
               <a class="nav-link" >Admin</a>
             </Link>
           </li>
+          <li>
+            <form onSubmit={handleSumitSalir}>
+              <button class="btn btn-danger" type="submit">Salir</button>
+            </form>
+          </li>
         </ul>
         <div class='cart'>
           <a class='derecho'>

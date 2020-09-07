@@ -65,18 +65,19 @@ server.get('/', (req, res) => {
 //TRAE TODOS LOS USUARIOS LOGEADOS
 
 //MODIFICAR USUARIO (USAR PARA ASIGNAR ROL DE ADMIN)
-server.put('/:id', (req, res) => {
-    User.update(req.body,
-        {
-            where:
-                { id: req.params.id }
-        }).then(function (user) {
-            if (!user) {
-                return res.status(404).end()
-            }
-            return res.json(user);
-        }).catch(err => { console.log(err) });
-})
+server.put('/:id/passwordReset', (req, res) => {
+    let password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
+    User.findOne({
+        where: { id: req.params.id }
+    })
+
+        .then(user => {
+
+            user.update({
+                password: password,
+            }).then(user => { res.status(200).json({ user }) })
+        }).catch(error => { res.status(400).json({ error }) })
+});
 
 //TRAE TODOS LOS USUARIOS LOGEADOS
 server.get('/signin/', (req, res) => {
@@ -146,7 +147,7 @@ server.put('/promote/:id', (req, res) => {
     })
         .then(user => {
             user.update({
-                isAdmin: true
+                isAdmin: !user.isAdmin
             }).then(user => { res.status(200).json({ user }) })
         }).catch(error => { res.status(400).json({ error }) })
 });

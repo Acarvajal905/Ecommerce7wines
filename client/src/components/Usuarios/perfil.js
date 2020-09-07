@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 const Perfilcart = ({ name, email, id, isAdmin }) => (
 
+
     <form class="perfilbox">
         <div>
             <div class="list-group">
@@ -16,6 +17,13 @@ const Perfilcart = ({ name, email, id, isAdmin }) => (
                             <p class="card-text">ID: {id}</p>
                             <p class="card-text">Es admin: {isAdmin}</p>
                         </div>
+                    <p class="card-text">
+                        <Link to={`${id}/passwordReset`} >
+                            <button type='submit' class="btn btn-danger"> Cambiar contraseña</button>
+                        </Link>
+                    </p>
+
+
                 </div>
             </div>
         </div>        
