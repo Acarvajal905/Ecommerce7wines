@@ -14,6 +14,7 @@ export const GET_ONE_USER = 'GET_ONE_USER'
 export const GET_ALL_CLIENTS = 'GET_ALL_CLIENTS'
 export const GET_ALL_ADMINS = 'GET_ALL_ADMINS'
 export const GET_LOGGED_USER = 'GET_LOGGED_USER'
+export const RESET_PASSWORD = 'RESET_PASSWORD'
 
 function prod(obj) {
   let x = obj.products
@@ -32,14 +33,15 @@ function getrandom(array) {
 //Traer un producto en especifoco
 
 //Actualizar producto
-export function updateProduct(payload) {
+export function updateProduct(id, input) {
   return function (dispatch) {
-    return axios.put(`http://localhost:3001/products/${payload.id}`, payload , { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+    const url = `http://localhost:3001/products/${id}`;
+    return axios.put(url, input, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(res => res.data)
       .then(data => {
-        dispatch({ type: UPDATE_PRODUCT, payload: data })
+        dispatch({ type: UPGRADE_USER, payload: data })
       })
-      .then(() => alert('Se modifico el Producto'))
+      .then(() => alert('El producto ha sido actualizado'))
       .catch(error => alert(error, 'Algo salió mal al modificar el producto'))
   }
 }
@@ -98,7 +100,7 @@ export function getAllUser() {
 //TRAE AL USUARIO LOGEADO  
 export function getLoggedUser(payload) {
   return function (dispatch) {
-    return axios.get(`http://localhost:3001/users/signin/${payload}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+    return axios.get(`http://localhost:3001/users/signin/${payload}`, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(response => {
         dispatch({ type: GET_LOGGED_USER, payload: response.data });  // despacha la accion GET_LOGED_USER
       })
@@ -198,8 +200,22 @@ export function UpgradeUser(payload) {
       .then(data => {
         dispatch({ type: UPGRADE_USER, payload: data });
       })
-      .then(() => alert('El usuario ahora es administrador'))
+      .then(() => alert('Se dieron/quitaron privilegios de Administrador'))
       .catch(error => alert(error, 'Error fatal'))
+  }
+}
+
+//RESET PASSWORD
+export function ResetPassword(id, input) {
+  return function (dispatch) {
+    const url = `http://localhost:3001/users/${id}/passwordReset`;
+    return axios.put(url, input, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+      .then(res => res.data)
+      .then(data => {
+        dispatch({ type: RESET_PASSWORD, payload: data })
+      })
+      .then(() => alert('La contraseña ha sido cambiada'))
+      .catch(error => alert(error, 'Algo salió mal al modificar la Contraseña'))
   }
 }
 
