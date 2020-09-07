@@ -33,10 +33,10 @@ function getrandom(array) {
 //Traer un producto en especifoco
 
 //Actualizar producto
-export function updateProduct(id, input) {
+export function updateProduct(payload) {
   return function (dispatch) {
-    const url = `http://localhost:3001/products/${id}`;
-    return axios.put(url, input, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+    const url = `http://localhost:3001/products/${payload.id}`;
+    return axios.put(url, payload, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(res => res.data)
       .then(data => {
         dispatch({ type: UPGRADE_USER, payload: data })

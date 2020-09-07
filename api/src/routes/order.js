@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { Order, Product, User, order_products, Order_Product } = require('../db.js');
+const { Order, Product, User, order_product ,order_products, Order_Product } = require('../db.js');
 const order = require('../models/order.js');
 
 // s44 retorne todas las ordenes
@@ -62,10 +62,9 @@ server.get('/:id',(req,res,next)=>{
 });
 
 //s45 retornar todas las ordenes de un usuario
-server.get('/:id/',(req,res)=>{
-    Order.findOne({
-        where:{id:req.params.id},
-        include: User
+server.get('/users/:id',(req,res)=>{
+    Order.findAll({
+        where:[{userId: req.params.id},{status : 'creada'}]
     })
     .then((order) => {
         res.send(order);
@@ -123,5 +122,22 @@ server.post('/:idOrd/product/:idProd', (req, res, next) => {
         })
         .catch(err => { console.log(err) });
 }); */
+
+server.delete('/:idOrd/products/:idPro', (req, res, next) => {
+    idO = req.params.idOrd;
+    idP = req.params.idPro;
+   const quantity = req.body.quantity
+    order_product.destroy({
+        where: {
+            orderId: idO,
+            productId: idP
+        }, through: { cantidad: quantity } 
+    }).then((result) => {
+        if (result === 1) {
+            res.json({ message: 'Producto Eliminado' });
+        }
+    })
+    .catch(err => { console.log(err) });
+});
 
 module.exports = server;
