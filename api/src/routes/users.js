@@ -89,7 +89,8 @@ server.get('/signin/', (req, res) => {
 //TRAE A UN USUARIO LOGEADO 
 server.get('/signin/:id', (req, res) => {
     User.findOne({
-        where: { id: req.params.id }
+        where: { id: req.params.id },
+        include: Order
     })
         .then((users) => {
             res.send(users);

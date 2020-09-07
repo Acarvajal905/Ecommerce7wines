@@ -1,9 +1,12 @@
 const server = require('express').Router();
-const { Order, Product, User, Order_Product } = require('../db.js');
+const { Order, Product, User, order_products, Order_Product } = require('../db.js');
+const order = require('../models/order.js');
 
 // s44 retorne todas las ordenes
 server.get('/',(req,res,next)=>{
-    Order.findAll()
+    Order.findAll({
+        include: Product
+    })
     .then((order) => {
         if (!order) {return res.status(404).end()}
         res.send(order)
@@ -48,7 +51,9 @@ server.get('/status/:status', (req, res, next) => {
 
 // s46 ruta que retorne  una orden en particular
 server.get('/:id',(req,res,next)=>{
-    Order.findByPk(req.params.id)
+    Order.findByPk(req.params.id,{
+        include: Product
+    })
     .then((order) => {
         if (!order) {return res.status(404).end()}
         return res.json(order);
@@ -71,15 +76,52 @@ server.get('/:id/',(req,res)=>{
 //S38 Crear Ruta para agregar Item al Carrito
 //ruta /order/:idOrd/product/idProd
 //recibe id de orden e id de producto crea la relacion entre ellos.
-server.post('/:idOrd/product/:idProd', (req, res, next) => {
+/* server.post('/:idOrd/product/:idProd', (req, res, next) => {
 	idP = req.params.idProd;
-	idO = req.params.idProd;
+	idO = req.params.idOrd;
 	Order_Product.create({
-		orderId: idO,
-		productId: idP
-	}).then((result) => {
+        where: { 
+            orderId: idO,
+            productId: idP
+        }
+    }).then((result) => {
 		res.send(result)
 	}).catch(err => { console.log(err) });
 });
+ */
+//orders/:id/product/:id
+server.post('/:idOrd/product/:idProd', (req, res, next) => {
+	idP = req.params.idProd;
+    idO = req.params.idOrd;
+    const quantity = req.body.quantity; //cantidad de productos.
+	Order.findByPk(idO)
+    .then((order) => {
+        Product.findByPk(idP)//busco el producto
+        .then((product) => {
+            console.log(product)
+           order.addProduct(product, { through: { cantidad: quantity } });
+           console.log(order);
+           res.json("success");
+        })
+        .catch(err => { console.log(err) })
+    })
+    .catch(err => { console.log(err) })
+});
+
+
+/* server.post('/product/:id', (req, res, next) => {
+    Product.findByPk(req.params.id)
+        .then((product) => {
+            console.log(product)
+            if (!product) { return res.status(404).end() }
+            Order.create(req.body)
+                .then((order) => {
+                    console.log(order);
+                    const ordProd = order.addOrder(product);
+                    res.send(ordProd);
+            })
+        })
+        .catch(err => { console.log(err) });
+}); */
 
 module.exports = server;
