@@ -2,59 +2,8 @@ import '../../Styles/SigninScreen.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import LoginSumit from './LoginSumit'
 
-export function handleSumit3(e) {
-    e.preventDefault();
-
-    const x = e.target
-
-    let Login = {
-        email: x.email.value,
-        password: x.password.value
-    };
-
-    for (var prop in Login) {
-        if (!Login[prop]) {
-            return alert(`${prop} es requerido`)
-        }
-    }
-
-    axios.get(`http://localhost:3001/users`)
-        .then(ress => {
-            let arr = ress.data.filter(u => u.email == Login.email)
-            let arrp = ress.data.filter(u => u.password == Login.password)
-            if (!arr.length) {
-                alert(`El email no existe`)
-            }
-            if (arrp.length) {
-                console.log(arrp.length)
-            }
-            if (arr.length) {
-                axios.post(`http://localhost:3001/users/signin`, Login)
-                    .then(response => {
-
-                        localStorage.setItem('userId',response.data.user.id);
-                        localStorage.setItem('userName',response.data.user.name);
-                        localStorage.setItem('userIsAdmin',response.data.user.isAdmin);
-                        localStorage.setItem('token', response.data.token);
-                        
-                        console.log(localStorage.getItem('userId'))
-                        console.log(localStorage.getItem('userName'))
-                        console.log(localStorage.getItem('userIsAdmin'))
-                        console.log(localStorage.getItem('token'))
-                      
-                        alert(`Bienvenido a 7 Wines `)
-                        window.location.href = "/"; 
-                    }).catch(err => {
-                        console.log(err)
-                        alert(`Usuario o contraseña incorrecta`)
-                    })
-            }
-        }).catch(error2 => {
-            console.log(error2)
-            alert(`Usuario o contraseña incorrecta`)
-        })
-}
 
 export function validate(input) {
     let errors = {};
@@ -100,7 +49,7 @@ export default function LoginUser() {
         
         <div className='adminbox'>
             
-            <form onSubmit={handleSumit3} id="formulario">
+            <form onSubmit={LoginSumit} id="formulario">
 
                 <ul className='form-container'>
                     <h2>Iniciar sesión</h2>

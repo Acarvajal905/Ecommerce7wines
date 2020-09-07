@@ -12,6 +12,7 @@ import CrearRewied from "./components/CRUD/CrearReviews"
 import EditRewied from "./components/CRUD/EditarReviews.js"
 import ContenedorReviews from "./components/EdiReviewsContenedor.js"
 
+
 function App() {
 
   const [categorias, setCategorias] = React.useState([]);

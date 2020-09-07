@@ -25,7 +25,7 @@ server.use(morgan('dev'));
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 }); */
-server.use(AuthToken);
+/* server.use(AuthToken); */
 
 
 server.use('/', routes);

@@ -62,7 +62,7 @@ const Update = () => {
     function updateP(e, product) {
         e.preventDefault();
 
-        
+        console.log(product)
         dispatch(updateProduct(product));
 
         setInput({
