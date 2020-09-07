@@ -1,10 +1,11 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
+
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/development`, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -31,7 +32,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Product, Category, User, Order, Reviews, Order_Product} = sequelize.models;
+const { Product, Category, User, Order, Reviews } = sequelize.models;
 
 
 // Aca vendrian las relaciones
@@ -39,8 +40,16 @@ const { Product, Category, User, Order, Reviews, Order_Product} = sequelize.mode
 Category.belongsToMany(Product, { through: 'product_category' });
 Product.belongsToMany(Category, { through: 'product_category' });
 
-Order.belongsToMany(Product, { through: 'order_product' });
-Product.belongsToMany(Order, { through: 'order_product' });
+const Order_Product = sequelize.define('order_product',{
+  cantidad:{
+      type:DataTypes.DECIMAL,
+      allowNull:false
+  }
+});
+
+
+Order.belongsToMany(Product, { through: Order_Product });
+Product.belongsToMany(Order, { through: Order_Product });
 
 User.hasMany(Order);//Esto va sin tabla intermedia, la tabla intermedia es para la relacion belongsToMany
 Order.belongsTo(User);
