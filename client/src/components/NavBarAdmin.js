@@ -37,7 +37,7 @@ export const NavBarAdmin = () => {
           </li>
           <li>
             <form onSubmit={handleSumitSalir}>
-               <button class="btn btn-danger" type="submit">salir</button>
+              <button class="btn btn-danger" type="submit">Salir</button>
             </form>
           </li>
         </ul>

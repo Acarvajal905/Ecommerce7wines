@@ -13,9 +13,8 @@ class Profile extends React.Component {
     render() {
         return (
             <div>
-                perfil
                 <div class="userbox">
-                
+
 
                     <Perfilcart
                         name={this.props.user.name}
@@ -23,7 +22,7 @@ class Profile extends React.Component {
                         id={this.props.user.id}
                         isAdmin={this.props.user.isAdmin == true && "true" || "false"}
                     />
-                
+
                 </div>
 
             </div>

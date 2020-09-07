@@ -16,7 +16,7 @@ const Upgrade = () => {
     const dispatch = useDispatch()
 
     function previousValues(e) {
-        axios.get(`http://localhost:3001/users/${e}`,{headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}})
+        axios.get(`http://localhost:3001/users/${e}`, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
             .then(res => {
                 console.log(res)
                 const c = res.data;
@@ -27,7 +27,7 @@ const Upgrade = () => {
 
                 });
             })
-            .catch(error => { console.log(error)})
+            .catch(error => { console.log(error) })
     }
 
     useEffect(() => {
@@ -59,19 +59,19 @@ const Upgrade = () => {
 
     return (
         <form onSubmit={(e) => updateUser(e, user)}>
-            <NavBarUser/>
+            <NavBarUser />
             <div class="adminbox">
 
                 <h1>Asignar Roles</h1>
                 <div >
-                <select class="nav-item" name="user" onChange={(e) => previousValues(e.target.value)}>
-                    <option value="" selected="true">Buscar usuario a promover</option>
-                    {filteredUsers && filteredUsers.map(u => {
-                        return <option value={u.id} >{u.email}</option>
-                    })}
-                </select>
-                <br></br>
-                <input class="btn btn-danger" type="submit" value="Hacer admin" />
+                    <select class="nav-item" name="user" onChange={(e) => previousValues(e.target.value)}>
+                        <option value="" selected="true">Buscar usuario a promover</option>
+                        {filteredUsers && filteredUsers.map(u => {
+                            return <option value={u.id} >{u.email}</option>
+                        })}
+                    </select>
+                    <br></br>
+                    <input class="btn btn-danger" type="submit" value="Hacer/Quitar admin" />
                 </div>
             </div>
         </form>
