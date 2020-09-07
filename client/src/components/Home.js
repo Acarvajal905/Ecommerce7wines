@@ -24,6 +24,8 @@ import Admins from "./Usuarios/GetAdmins.js"
 import AssignRoles from '../components/Usuarios/AssignRoles.js'
 import NatBarCondicional from "./Usuarios/NatBarCondicional.js"
 
+import PasswordReset from "./Usuarios/Password";
+
 export const Home = () => {
 
   return (
@@ -34,7 +36,7 @@ export const Home = () => {
         </header>
       </Link>
 
-      <NatBarCondicional/>
+      <NatBarCondicional />
 
       <Route
         exact path="/" component={Carrusel}
@@ -95,6 +97,9 @@ export const Home = () => {
       />
       <Route
         exact path='/me' component={Profile}
+      />
+      <Route
+        exact path='/:id/passwordReset' component={PasswordReset}
       />
 
     </div>
