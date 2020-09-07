@@ -15,7 +15,6 @@ class Profile extends React.Component {
             <div>
                 <div class="userbox">
                 
-
                     <Perfilcart
                         name={this.props.user.name}
                         email={this.props.user.email}

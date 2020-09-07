@@ -20,8 +20,6 @@ const Perfilcart = ({ name, email, id, isAdmin }) => (
             </div>
         </div>        
     </form>
-
 )
-
 
 export default connect(null,)(Perfilcart)
