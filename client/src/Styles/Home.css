@@ -15,8 +15,15 @@
 .btn-outline-danger{
     color: #982b64;
     border-color: #982b64;
-  }
-  .btn-outline-danger:hover{
-    background-color: #982b64;
-    border-color: #982b64;
-  }
+}
+.btn-outline-danger:hover{
+background-color: #982b64;
+border-color: #982b64;
+}
+.navbar{
+    flex-direction: row;
+    align-items: center;
+}
+.perfilbutton{
+    margin-right: 10px;
+}

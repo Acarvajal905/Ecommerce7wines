@@ -3,6 +3,7 @@ import "../Styles/Home.css"
 import SearchBar from "./searchbar";
 import { Link } from 'react-router-dom'
 import handleSumitSalir from "./Usuarios/logout.js"
+import AccountOn from "./AccountOn.js"
 
 export const NavBarAdmin = () => {
 
@@ -12,7 +13,6 @@ export const NavBarAdmin = () => {
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
@@ -23,11 +23,6 @@ export const NavBarAdmin = () => {
           <li class="nav-item">
             <Link to={`/Catalogue`} >
               <a class="nav-link" >Catalogo</a>
-            </Link>
-          </li>
-          <li class="nav-item">
-            <Link to={`/me`} >
-              <a class="nav-link" >Perfil</a>
             </Link>
           </li>
           <li class="nav-item">
@@ -48,9 +43,8 @@ export const NavBarAdmin = () => {
             </Link>
           </a>
         </div>
-
       </div>
-
+      <AccountOn/>
     </nav>
   )
 }
