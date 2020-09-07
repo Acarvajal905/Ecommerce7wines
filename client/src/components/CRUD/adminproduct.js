@@ -16,10 +16,16 @@ export default function AdminProd() {
                         <a class="nav-link" href="/admin/products/borrarproducto">Borrar producto</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/products/actualizarproducto">Actualizar producto </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin/products/crearcategoria">Crear categoria </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/products/actualizarproducto">Actualizar producto </a>
+                        <a class="nav-link" href="/admin/products/agregarcategoria">Agregar categoria </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/products/quitarcategoria">Quitar categoria </a>
                     </li>
                 </ul>
             </div>

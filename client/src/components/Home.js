@@ -24,7 +24,8 @@ import Clientes from "./Usuarios/GetClients.js"
 import Admins from "./Usuarios/GetAdmins.js"
 import AssignRoles from '../components/Usuarios/AssignRoles.js'
 import NatBarCondicional from "./Usuarios/NatBarCondicional.js"
-
+import AgregarCategoria from "./CRUD/AgregarCate"
+import QuitarCategoria from "./CRUD/QuitarCate"
 import PasswordReset from "./Usuarios/Password";
 import OrderUser from './Usuarios/OrderUser.js'
 import UsersCard from "./Usuarios/UsersCard";
@@ -79,6 +80,13 @@ export const Home = () => {
       />
       <Route
         exact path='/admin/products/actualizarproducto' component={Update}
+      />
+      <Route 
+        exact path="/admin/products/agregarcategoria" component={QuitarCategoria}
+      />
+
+      <Route 
+        exact path="/admin/products/quitarcategoria" component={AgregarCategoria}
       />
       <Route
         exact path='/admin/users/roles' component={AssignRoles}
