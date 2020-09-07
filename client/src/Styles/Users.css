@@ -38,3 +38,8 @@
     text-align: center; 
     width: 50%;
 }
+
+.but-container {
+    display: flex;
+    justify-content: space-around;
+}

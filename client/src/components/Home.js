@@ -26,6 +26,8 @@ import AssignRoles from '../components/Usuarios/AssignRoles.js'
 import NatBarCondicional from "./Usuarios/NatBarCondicional.js"
 
 import PasswordReset from "./Usuarios/Password";
+import OrderUser from './Usuarios/OrderUser.js'
+import UsersCard from "./Usuarios/UsersCard";
 
 export const Home = () => {
 
@@ -104,6 +106,9 @@ export const Home = () => {
       />
       <Route
         exact path="/" component={Footer}
+      />
+      <Route
+        exact path='/:id/userorder' component={OrderUser}
       />
     </div>
   )

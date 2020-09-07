@@ -1,6 +1,6 @@
 import React from 'react';
 import Perfilcart from "./perfil.js";
-import OrderUser from "./OrderUser.js";
+// import OrderUser from "./OrderUser.js";
 import "../../Styles/Users.css";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -21,7 +21,7 @@ class Profile extends React.Component {
                         id={this.props.user.id}
                         isAdmin={this.props.user.isAdmin == true && "true" || "false"}
                     />
-                    <OrderUser/>
+                    {/* <OrderUser/> */}
                 </div>
             </div>
         );
