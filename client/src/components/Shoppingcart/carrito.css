@@ -43,20 +43,42 @@
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(241,243,245,1) 35%, rgba(238,241,245,1) 60%, rgba(209,211,214,1) 100%);
     border-bottom-right-radius: 50px;
     border-top-left-radius: 50px;
-    width: 27%;
-    position: fixed;
-    right: 0px;
+    width: 30%;
     margin: 17px;
     padding: 20px;
+    position: absolute;
+    right: 0px;
 }
 .cart {
     display: flex;
+}
+.total{
+    text-align: center;
 }
 .titulost{
     font-size: large;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 20px;
 }
 .nameprod{
     font-size: small;
+    margin-bottom: auto;
+}
+.borders{
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+/* ===================================================================================================== */
+.totalboxORDER{
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(241,243,245,1) 35%, rgba(238,241,245,1) 60%, rgba(209,211,214,1) 100%);
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
+    width: 30%;
+    margin: 17px;
+    padding: 20px;
 }

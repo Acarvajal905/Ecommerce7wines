@@ -2,7 +2,6 @@ import React from "react";
 import "../Styles/Home.css"
 import SearchBar from "./searchbar";
 import { Link } from 'react-router-dom'
-import handleSumitSalir from "./Usuarios/logout.js"
 import AccountOn from "./AccountOn.js"
 
 export const NavBarAdmin = () => {
@@ -34,7 +33,7 @@ export const NavBarAdmin = () => {
         <div class='cart'>
           <a class='derecho'>
             <Link to={`/carrito`} >
-              <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
+              <ion-icon name="cart"></ion-icon>Carrito<span></span>
             </Link>
           </a>
         </div>

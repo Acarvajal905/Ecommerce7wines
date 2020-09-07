@@ -56,8 +56,6 @@ export default function Prodcart () {
 
             <span class="precioprod">{v.price} $</span> 
 
-
-
             <div class="btn-group" role="group" aria-label="Basic example">
               <form onSubmit={RestaUno}>
                 <button type="button" class="btn btn-danger" type="submit" value={v.id} name="restauno">-</button>
@@ -67,9 +65,6 @@ export default function Prodcart () {
                 <button type="button" class="btn btn-danger" type="submit" value={v.id} name="sumauno">+</button>
               </form>
             </div>
-
-
-
 
             <form onSubmit={DeleteToCard}>
               <button class="btn btn-danger btn-sm" type="submit" value={v.id} name="delete">Eliminar</button>

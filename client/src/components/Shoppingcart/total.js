@@ -1,7 +1,7 @@
 import '../Shoppingcart/carrito.css'
 import React from 'react';
 import Comprar from "./Comprar.js"
-
+import { Link } from 'react-router-dom'
 
 export default function Total(){
   let cantidad;
@@ -35,24 +35,26 @@ export default function Total(){
     total = total + (productosCarrito[i].price * productosCarrito[i].cantidad)
   }
 
-
-
   return(
     <div class="totalbox">
       <h5 class="titulost">LISTA DE COMPRA</h5>
       {productosCarrito.map(v=>
-      <div>
-        <p class="nameprod">{v.name}</p>
-        <p class="precioprod">{v.price} x {v.cantidad} = {v.price * v.cantidad} $</p>
+      <div> 
+        <Link to={`/products/${v.id}`} >  
+          <p class="nameprod">{v.name}</p>
+        </Link>
+        <p class="precioprod">{v.price} x {v.cantidad} = {(v.price * v.cantidad).toFixed(3)} $</p>
       </div>
       )}
-      <h2 class="titulost">TOTAL</h2>
-      <p class="precioprod"> {total}$</p>
-      
-      <form  onSubmit={Comprar} >
-        <button class="btn btn-danger" type="submit" value={total} name="Comprar">COMPRAR</button>
-      </form>
 
+      <div class="card-header borders">
+        <h2 class="titulost">TOTAL</h2>
+        <p class="precioprod total"> {total.toFixed(3)}$</p>
+        
+        <form  onSubmit={Comprar} >
+          <button class="btn btn-danger total" type="submit"  value={total} name="Comprar">COMPRAR</button>
+        </form>
+      </div>
     </div>
   )
 }

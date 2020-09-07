@@ -30,7 +30,7 @@ export const NavBarUserIn = () => {
         <div class='cart'>
           <a class='derecho'>
             <Link to={`/carrito`} >
-              <ion-icon name="cart"></ion-icon>Carrito<span> 0</span>
+              <ion-icon name="cart"></ion-icon>Carrito<span></span>
             </Link>
           </a>
         </div>

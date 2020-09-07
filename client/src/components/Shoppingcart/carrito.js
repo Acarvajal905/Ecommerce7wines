@@ -3,6 +3,7 @@ import React from 'react';
 import Prodcart from './orders.js'
 import Total from './total.js'
 
+
 class Carrito extends React.Component {
   render() {
     return (
