@@ -56,16 +56,18 @@ export default function Prodcart () {
 
             <span class="precioprod">{v.price} $</span> 
 
-            <form onSubmit={DeleteToCard}>
-              <button  type="submit" value={v.id} name="delete">x</button>
-            </form>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <form onSubmit={RestaUno}>
+                <button type="button" class="btn btn-danger" type="submit" value={v.id} name="restauno">-</button>
+              </form>
+              <a type="button" class="page-link">{v.cantidad}</a>
+              <form onSubmit={SumarUno}>
+                <button type="button" class="btn btn-danger" type="submit" value={v.id} name="sumauno">+</button>
+              </form>
+            </div>
 
-            <form onSubmit={RestaUno}>
-              <button class="btn btn-danger" type="submit" value={v.id} name="restauno">-</button>
-            </form>
-              <a class="page-link" >{v.cantidad}</a>
-            <form onSubmit={SumarUno}>
-              <button class="btn btn-danger" type="submit" value={v.id} name="sumauno">+</button>
+            <form onSubmit={DeleteToCard}>
+              <button class="btn btn-danger btn-sm" type="submit" value={v.id} name="delete">Eliminar</button>
             </form>
 
           </div>
