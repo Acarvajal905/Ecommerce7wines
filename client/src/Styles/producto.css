@@ -79,3 +79,7 @@
     background-color: #982b64;
     border-color: #982b64;
 }
+.rev{
+    display: flex;
+    flex-direction: column;
+}
