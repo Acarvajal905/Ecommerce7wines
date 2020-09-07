@@ -27,3 +27,18 @@ border-color: #982b64;
 .perfilbutton{
     margin-right: 10px;
 }
+.footerbox{
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(241,243,245,1) 35%, rgba(238,241,245,1) 60%, rgba(209,211,214,1) 100%);
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 25px;
+}
+.footerinfo2{
+    text-align: center;
+}
+.adv{
+    text-align: center;
+    font-size: smaller;
+}

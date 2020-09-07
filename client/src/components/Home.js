@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom"
 import "../Styles/Home.css"
 import NavCat from './NavBar2.js'
 import Carrusel from './Carrusel.js'
+import Footer from './Footer.js'
 import Minicat from "./Minicatalogo.js"
 import Admin from "./CRUD/admin.js"
 import Order from "./CRUD/orders";
@@ -101,9 +102,10 @@ export const Home = () => {
       <Route
         exact path='/:id/passwordReset' component={PasswordReset}
       />
-
+      <Route
+        exact path="/" component={Footer}
+      />
     </div>
-
   )
 }
 
