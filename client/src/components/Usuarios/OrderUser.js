@@ -36,7 +36,6 @@ export default function OrderUser(){
 
   return(
     <div class="totalboxORDER">
-        <h5 class="titulost">COMPRADOR</h5>
         <h5 class="titulost">LISTA DE COMPRA</h5>
       {productosCarrito.map(v=>
       <div> 
@@ -55,5 +54,7 @@ export default function OrderUser(){
     </div>
   )
 }
+
+
 
 

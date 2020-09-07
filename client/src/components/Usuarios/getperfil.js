@@ -15,8 +15,6 @@ class Profile extends React.Component {
         return (
             <div>
                 <div class="userbox">
-
-                
                     <Perfilcart
                         name={this.props.user.name}
                         email={this.props.user.email}
@@ -24,9 +22,7 @@ class Profile extends React.Component {
                         isAdmin={this.props.user.isAdmin == true && "true" || "false"}
                     />
                     <OrderUser/>
-
                 </div>
-
             </div>
         );
     }
