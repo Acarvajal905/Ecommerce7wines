@@ -12,6 +12,7 @@ const Update = () => {
     const [product, setProduct] = useState("")
 
     const [input, setInput] = useState({
+        id: "",
         name: "",
         description: "",
         price: "",
@@ -35,6 +36,7 @@ const Update = () => {
                 const c = res.data;
                 setProduct(e)
                 setInput({
+                    id: c.id,
                     name: c.name,
                     description: c.description,
                     price: c.price,
@@ -59,9 +61,12 @@ const Update = () => {
 
     function updateP(e, product) {
         e.preventDefault();
+
+        
         dispatch(updateProduct(product));
 
         setInput({
+            id: "",
             name: "",
             description: "",
             price: "",
@@ -105,6 +110,17 @@ const Update = () => {
 
             </div>
             <div >
+                <div >
+                    <input
+                        type="text"
+
+                        placeholder="Id"
+                        name="id"
+                        value={input.id}
+                        onChange={handleInputChange}
+                    />
+
+                </div>
                 <div >
                     <input
                         type="text"

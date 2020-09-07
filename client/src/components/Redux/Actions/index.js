@@ -34,7 +34,7 @@ function getrandom(array) {
 //Actualizar producto
 export function updateProduct(payload) {
   return function (dispatch) {
-    return axios.put(`http://localhost:3001/products/${payload}`, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+    return axios.put(`http://localhost:3001/products/${payload.id}`, payload , { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(res => res.data)
       .then(data => {
         dispatch({ type: UPDATE_PRODUCT, payload: data })
