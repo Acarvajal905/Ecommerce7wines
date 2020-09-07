@@ -38,3 +38,7 @@
     border-bottom-right-radius: 50px;
     border-top-left-radius: 50px;
 }
+.card-header{
+    border-top-left-radius: 50px !important;
+    text-align: center; 
+}

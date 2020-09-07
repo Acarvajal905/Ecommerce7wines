@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const UsersCard = ({ name, email, id, isAdmin }) => (
 
 
-    <form class="card text-white bg-danger mb-3 usercard">
+    <form class="perfilbox">
         <div class="list-group">
         
             <div class="card-header">{name}</div>
@@ -22,6 +22,5 @@ const UsersCard = ({ name, email, id, isAdmin }) => (
     </form>
 
 )
-
 
 export default connect(null,)(UsersCard)

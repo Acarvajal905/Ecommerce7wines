@@ -46,7 +46,7 @@ class Producto extends React.Component {
                 <li>Color:   {this.props.product.colour}</li>
                 <p class="description">{this.props.product.description}</p>
                 
-                <div>Puntuacion general{/* Ests div da el promedio general de las reviews */}
+                <div class="rev">Puntuacion general{/* Ests div da el promedio general de las reviews */}
                  {(Math.ceil(promedio) === 5) && <h1>☆☆☆☆☆</h1>}   {/* condicionales de renderizar */}
                  {(Math.ceil(promedio) === 4) && <h1>☆☆☆☆</h1>}
                  {(Math.ceil(promedio) === 3) && <h1>☆☆☆</h1>}

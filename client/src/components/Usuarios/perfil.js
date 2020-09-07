@@ -10,7 +10,7 @@ const Perfilcart = ({ name, email, id, isAdmin }) => (
     <form class="perfilbox">
         <div>
             <div class="list-group">
-                <h2 class="card-title">{name}</h2>
+                <h2 class="card-header">{name}</h2>
                 <div class="card-body">
                         <h5 class="card-title">Email: {email}</h5>
                         <div class="cartinfo">
