@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import Minicat from "./Minicatalogo.js"
-import { AddToCars } from './Redux/Actions/index.js';
+import AddToCars from "./Shoppingcart/AddToCard"
+
 import Reviews from "./Reviews";
 
 class Producto extends React.Component {
@@ -14,10 +15,10 @@ class Producto extends React.Component {
     const { match: { params: { id } } } = this.props;
     this.props.getProduct(id);
     this.props.getAllReviews(id); /* traigo las reviews del producto */
-    this.props.AddToCars(id)
   }
 
   render() {
+    
     var promedio= (this.props.reviews.reduce((a, b) => a + (b.calificacion),0))/this.props.reviews.length /* promerdio de las reviews */
     return (
       <div >
@@ -25,10 +26,9 @@ class Producto extends React.Component {
           <div class="box2">
             <div class="boximg">
               <img class="image" src={this.props.product.image} ></img>
-              <Link to={`/carrito`} > 
-                <button type="button" class="btn btn-danger btn-sm"  
-                onClick={AddToCars(this.props.product.id)}>Agregar al carrito</button>
-              </Link> 
+               <form onSubmit={AddToCars}>
+                  <button class="btn btn-danger" type="submit" value={this.props.product.id} name="add">Agregar al carrito</button>
+                </form>
             </div>
 
             <div class="boxD">
@@ -82,7 +82,6 @@ function mapStateToProps(state) {
   return {
     product: state.product,
     reviews: state.reviews,
-    carrito: state.carrito
   }
 }
 

@@ -2,7 +2,6 @@ import axios from "axios"
 export const GET_PRODUCTO = "GET_PRODUCTO"
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
-export const ADD_TO_CARS = "ADD_TO_CARS"
 export const GET_5_PRODUCTS = "GET_5_PRODUCTS"
 export const GET_PRODUCT_CAT = "GET_RED_WINE"
 export const GET_WHITE_WINE = "GET_WHITE_WINE"
@@ -164,22 +163,13 @@ export function SearchProduct(payload) {
   }
 }
 
-export function AddToCars(payload) {
-  return function (dispatch) {
-    return axios.get(`http://localhost:3001/products/${payload}`, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
-      .then(response => {
-        dispatch({ type: ADD_TO_CARS, payload: response.data });  // despacha la accion ADD_TO_CARS
-      })
-      .catch(err => {
-        console.log(err)
-      });
-  }
-}
 
 export function getAllCategory() {
   return function (dispatch) {
     return axios.get(`http://localhost:3001/category/`, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(ress => {
+
+
         dispatch({ type: GET_ALL_CATEGORY, payload: ress.data });  // despacha la accion GET_ALL_PRODUCTS
       })
       .catch(err => {

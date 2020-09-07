@@ -1,52 +1,76 @@
 import '../Shoppingcart/carrito.css'
 import React from 'react';
-import * as actionCreators from "../Redux/Actions/index.js"
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom'
+import DeleteToCard from "./DeletetoCard.js"
+import SumarUno from "./SumarUno.js"
+import RestaUno from "./RestaUno.js"
 
-class Prodcart extends React.Component {
-  render() {
+export default function Prodcart () {
+  let cantidad;
+
+  if(!localStorage.getItem('cantidades')){
+    cantidad = [];
+  }else {
+    cantidad = JSON.parse(localStorage.getItem('cantidades'));
+  }
+
+  let productosCarrito; 
+
+  if(!localStorage.getItem('productos')){
+    productosCarrito = [];
+  }else {
+    productosCarrito = JSON.parse(localStorage.getItem('productos'));
+  }
+
+ 
+
+  
+
+  for(let i = 0; i < productosCarrito.length; i++){
+
+    for(let j = 0; j< cantidad.length; j++){
+
+      if(productosCarrito[i].id == cantidad[j][0]){
+
+        productosCarrito[i].cantidad = cantidad[j][1]
+
+      }
+    }
+ }
+
+     
+  
     return (
       <div class="boxcart"> 
-        {this.props.carrito.map(v =>
+        {productosCarrito.map(v =>
 
           <div class="boxorder">
+        
             <Link to={`/products/${v.id}`} >
               <img class="imagencart" src={v.image} ></img>
             </Link>
+            
             <Link to={`/products/${v.id}`} >  
               <h3 class="tituloprod">{v.name}</h3>
             </Link>
 
             <span class="precioprod">{v.price} $</span> 
 
-            <form class="btn-group" role="group" aria-label="Basic example">
+            <form onSubmit={DeleteToCard}>
+              <button  type="submit" value={v.id} name="delete">x</button>
             </form>
 
-            <nav aria-label="...">
-                <ul class="pagination pagination-sm">
-                    <li class="page-item active"><a class="page-link" href="#">-</a></li>
-                    <li class="page-item"><a class="page-link" href="#">0</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">+</a></li>
-                </ul>
-            </nav>
+            <form onSubmit={RestaUno}>
+              <button class="btn btn-danger" type="submit" value={v.id} name="restauno">-</button>
+            </form>
+              <a class="page-link" >{v.cantidad}</a>
+            <form onSubmit={SumarUno}>
+              <button class="btn btn-danger" type="submit" value={v.id} name="sumauno">+</button>
+            </form>
 
           </div>
         )}
       </div>
     );
-  }
-}
 
-function mapStateToProps(state) {
-  return {
-    carrito: state.carrito
-  }
 }
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Prodcart);

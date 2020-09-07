@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import "../Styles/Cards.css"
-import { AddToCars } from './Redux/Actions/index.js';
-import { connect } from 'react-redux';
+import AddToCars from "./Shoppingcart/AddToCard.js"
 
-
-const ProductCard = ( { name, id, price, image, AddToCars}) =>(
+const ProductCard = ( { name, id, price, image}) =>(
 
     /* Podemos agregar mas destalles a la vista previa */
  
@@ -17,13 +15,12 @@ const ProductCard = ( { name, id, price, image, AddToCars}) =>(
         <img class="imagenF" src={image} ></img>
       </Link>
       <span class="precioprod">{price} $</span> 
-
-      <Link to={`/carrito`} >
-        <button type="button" class="btn btn-danger btn-sm"
-        onClick={() =>{ AddToCars(id);}}>Agregar al carrito</button>  
-      </Link>
+      <form onSubmit={AddToCars}>
+        <button class="btn btn-danger" type="submit" value={id} name="add">Agregar al carrito</button>
+      </form> 
+       
     </div>
   )
   
 
-  export default connect(null, { AddToCars })(ProductCard)
+  export default ProductCard
