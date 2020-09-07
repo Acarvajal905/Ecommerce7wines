@@ -1,6 +1,8 @@
 
 
+
 import { GET_PRODUCTO, GET_ALL_PRODUCTS, SEARCH_PRODUCT, ADD_TO_CARS, GET_5_PRODUCTS, GET_PRODUCT_CAT, GET_ALL_ADMINS, GET_ALL_CATEGORY, GET_ALL_USERS, GET_ALL_REVIEWS_PRODUCT, UPDATE_PRODUCT, UPGRADE_USER, GET_ONE_USER, GET_ALL_CLIENTS, GET_LOGGED_USER, RESET_PASSWORD } from "../Actions/index.js"
+
 
 
 const initialState = {
@@ -9,7 +11,6 @@ const initialState = {
   productcat: [],
   product: [],
   searchproduct: [],
-  carrito: [],
   allcategories: [],
   allusers: [],
   reviews: [],
@@ -67,12 +68,6 @@ function rootReducer(state = initialState, action) {
     return {
       ...state,
       searchproduct: action.payload  // modifico searchproduct del store, agregando los producto que machean
-    }
-  }
-  if (action.type === ADD_TO_CARS) {
-    return {
-      ...state,
-      carrito: state.carrito.concat(action.payload) // modifico carrito del store, agregando los producto que agrege
     }
   }
   if (action.type === GET_ALL_CATEGORY) {

@@ -1,4 +1,3 @@
-import axios from "axios"
 export default function handleSumitSalir(e){
     e.preventDefault();
         
@@ -6,6 +5,9 @@ export default function handleSumitSalir(e){
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
     localStorage.removeItem('userIsAdmin');
+    localStorage.removeItem('productos');
+    localStorage.removeItem('cantidades');
+
     
     alert("sesion cerrada")
     window.location.href = "/" 
