@@ -36,8 +36,17 @@ export default function Comprar(e){
                   {headers: { Authorization: 'Bearer ' + localStorage.getItem('token')}
                 })
                .then(response => {
-                   console.log("entre a ok")
-                   console.log(response)
+                 return axios.get(`http://localhost:3001/products/${productos[i].id}`, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+                   
+                })
+                .then(ress => {
+                    let pr = ress.data
+                    pr.stock = pr.stock -cantidad[j][1]
+                    
+                   return axios.put(`http://localhost:3001/products/${productos[i].id}`, pr, { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } }) 
+                })
+                .then(ress11 => {
+                    console.log(ress11)
                 })
                 .catch (error2 => {
                     console.log(error2);
