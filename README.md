@@ -1,8 +1,4 @@
-<p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
-</p>
 
-# Henry
 
 ## Objetivos del Proyecto
 
@@ -156,21 +152,3 @@ Algunas constrains qué deberás implementar:
     + Todas las reviews deben pertenecer a un usuario.
     + Todas las reviews deben tener por lo menos x caractéres.
 
-### Milestones
-
-Este proyecto tiene muchas tareas para realizar, asi que es fácil sentirse abrumado. Estas son las features que esperamos que muestres en cada demo:
-
-- Demo **1**: Catálogo de productos
-    + Los usuarios pueden ver los productos y filtrar por categoría.
-    + Los administradores pueden editar y agregar productos
-- Demo **2**:
-    + Los usuarios pueden buscar productos en el catálogo.
-    + El catálogo está paginado.
-    + Los usuarios tienen un carrito al que pueden agregar productos.
-- Demo **3**:
-    + Los usuarios pueden ver su historial de compras.
-    + Los usuarios tienen su carrito en cualquier device al que se logueen.
-- Demo **Final**:
-    + Los usuarios pueden hacer el checkout.
-    + Los admins pueden ver las ordenes pendientes.
-    + Los usuarios reciben mails de notificaciones.
