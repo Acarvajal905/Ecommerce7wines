@@ -19,6 +19,7 @@ PostgreSQL
 
 
 How to start the project:
+
 If you want to see the page for yourself, you'll need to do the following:
 
 Clone the repository
